@@ -1,0 +1,960 @@
+﻿@using Bia.Internal.BookLibrary.Data;
+@model NewOrEditBookViewModel;
+@{
+    ViewData["Title"] = "Создание книги";
+}
+
+<link href="~/css/autoCompleteMultiValue.css" rel="stylesheet" />
+<link href="~/css/fromBooks.css" rel="stylesheet" />
+<link href="~/css/dragAndDrop.css" rel="stylesheet" />
+<link href="~/css/newOrEdit.css" rel="stylesheet" />
+<script src="~/js/autoCompleteMultiValue.js"> </script>
+<script src="~/js/dragAndDrop.js"></script>
+<link href="~/css/selectDropDawn.css" rel="stylesheet" />
+<script src="~/js/selectDropDawn.js"></script>
+
+<section class="main_section">
+    <section class="container">
+        <div class="row">
+            <div class="breadcrumb_control">
+                <nav>
+                    <ol class="breadcrumb breadcrumb_conteiner">
+                        <li class="breadcrumb-item breadcrumb_link"><a class="" href="@Url.Action("Index","Home")">Главная</a></li>
+                        <li class="breadcrumb-item breadcrumb_link">
+                            <a class="" href="@Url.Action("Manage","Admin")">
+                                Хранитель библиотеки
+                            </a>
+                        </li>
+                        @if (Model.Id == 0)
+                        {
+                            <li class="breadcrumb-item breadcrumb_text" aria-current="page">Новая книга</li>
+                        }
+                        else
+                        {
+                            <li class="breadcrumb-item breadcrumb_text" aria-current="page">Редактирование книги</li>
+                        }
+                    </ol>
+                </nav>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-8 card_pad">
+                <div class="col-12">
+                    <div class="form-books">
+                        <div class="books-card">
+                            <div class="cards-list">
+                                <div class="cards-list__title">
+                                    @if (Model.Id == 0)
+                                    {
+                                        <div class="cards-list__title_text">Новая книга</div>
+                                    }
+                                    else
+                                    {
+                                        <div class="cards-list__title_text">Редактирование книги</div>
+                                    }
+                                </div>
+                                <div class="controls_new_or_edit_book">
+                                    <div class="position-relative">
+                                        <input autocomplete="off" type="text" class="form-control" id="txtBoxBookName" placeholder="Название" maxlength="255" value="@(Model.Id == 0 ? string.Empty : Model.Title )">
+                                        <div id="lblBookName" class="floatingLabel">Название</div>
+                                        <div class="invalid">
+                                            Заполните название
+                                        </div>
+                                    </div>
+                                    <div class="position-relative">
+                                        <input autocomplete="off" type="text" class="form-control" id="txtBoxBookSubtitle" placeholder="Подзаголовок" maxlength="255" value="@(Model.Id == 0 ? string.Empty : Model.Subtitle)">
+                                        <div id="lblBookSubtitle" class="floatingLabel">Подзаголовок</div>
+                                        <div class="invalid">
+                                            Заполните подзаголовок
+                                        </div>
+                                    </div>
+                                    <div class="custom-placeholder autocomplete-container position-relative">
+                                        <input type="hidden" id="authorUIDs" name="authorUIDs" />
+                                        <div class="autocomplete">
+                                            <div class="tags"></div>
+                                            <input id="autoCompleteAuthors" class="autocomplete-input form-control custom-from-control"
+                                                   type="text" placeholder="Авторы" />
+                                            <div class="floatingLabel lbl-text" id="lblAutoCompleteAuthors">Авторы</div>
+                                        </div>
+                                        <div class="autocomplete-suggestions form-books-floating"></div>
+                                        <div class="nothing-data-container" style="display: none">
+                                            <div class='nothing-data'>
+                                                Ничего не найдено!
+                                                <button id="btnAddAuthor" class='btn btn-bia-author-categories'>
+                                                    Добавить
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="invalid">
+                                            Заполните авторов
+                                        </div>
+                                    </div>
+                                    <div class="custom-placeholder autocomplete-container position-relative">
+                                        <input type="hidden" id="categoryIDs" name="categoryIDs" />
+                                        <div class="autocomplete">
+                                            <div class="tags"></div>
+                                            <input id="autoCompleteCategory" class="autocomplete-input form-control custom-from-control"
+                                                   type="text" placeholder="Категории" />
+                                            <div class="floatingLabel lbl-text" id="lblAutoCompleteCategory">Категории</div>
+                                        </div>
+                                        <div class="autocomplete-suggestions form-books-floating"></div>
+                                        <div class="nothing-data-container" style="display: none">
+                                            <div class='nothing-data'>
+                                                Ничего не найдено!
+                                                <button id="btnAddCategory" class='btn btn-bia-author-categories'>
+                                                    Добавить
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="invalid">
+                                            Заполните категории
+                                        </div>
+                                    </div>
+                                    <div class="position-relative">
+                                        <textarea class="form-control" placeholder="Описание" id="txtBoxDescription">@(Model.Id == 0 ? string.Empty : Model.Annotation)</textarea>
+                                        <div id="lblDescription" class="floatingLabel">Описание</div>
+                                        <div class="invalid">
+                                            Заполните описание
+                                        </div>
+                                    </div>
+                                    <div class="row g-2">
+                                        <div class="col">
+                                            @{
+                                                int startYear = 1900;
+                                                int endYear = DateTime.Now.Year;
+                                            }
+                                            <div class="custom-select-container mb-4">
+                                                <input autocomplete="off" type="text" id="txtBoxYear" class="form-control custom-select-input custom-select-input-year"
+                                                       placeholder="Год" readonly value="@(Model.Id == 0 ? string.Empty : Model.Year.ToString())">
+                                                <div class="invalid">
+                                                    Заполните Год
+                                                </div>
+                                                <div class="text-on-border">Год</div>
+                                                <div class="custom-select-dropdown">
+                                                    @foreach (var year in Enumerable.Range(startYear, endYear - startYear + 1).Reverse())
+                                                    {
+                                                        <div class="custom-select-option" data-value="@year">@year</div>
+                                                    }
+                                                    <div class="custom-select-no-results">Ничего не найдено</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="position-relative">
+                                                <input autocomplete="off" type="number" class="form-control" id="txtBoxBookPages" placeholder="Стр." min="0" value="@(Model.Id == 0 ? 0 : Model.Pages)">
+                                                <div id="lblBookPages" class="floatingLabel">Стр.</div>
+                                                <div class="invalid">
+                                                    Количество страниц не может начинаться с 0
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="custom-select-container">
+                                                <input autocomplete="off" type="text" id="txtBoxLenguege" class="form-control custom-select-input custom-select-input-lenguege"
+                                                       placeholder="Язык" readonly value="@(Model.Language == LanguageId.Rus ? "Русский" : "Английский")">
+                                                <div class="invalid">
+                                                    Заполните Язык
+                                                </div>
+                                                <div class="text-on-border">Язык</div>
+                                                <div class="custom-select-dropdown">
+                                                    <div class="custom-select-option" data-value="0">Английский</div>
+                                                    <div class="custom-select-option" data-value="1">Русский</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="container-dragNdrop">
+                                        <div class="file-upload" id="file-upload">
+                                            <div class="icon-wrapper">
+                                                <img src="~/icons/file.svg" />
+                                            </div>
+                                            <div>
+                                                <p>Выберите файл для обложки книги<br><span>или перетащите сюда</span></p>
+                                            </div>
+                                        </div>
+                                        <div class="file-container">
+                                            <div class="file-name" id="file-name">@(Model.CoverImage == null ? string.Empty : Model.CoverImage.Split('/').Last())</div>
+                                            <div class="file-size" id="file-size"></div>
+                                            <img class="file-del" id="file-del" src="~/icons/fileDel.svg" style="display: none;" />
+                                        </div>
+                                        <div class="invalid" hidden>
+                                            Необходимо вложить файл для обложки
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                @if (Model.Id == 0)
+                                {
+                                    <button id="addOrEditBtn" type="button" class="btn btn-bia-request_details" onclick="addBook()">
+                                        Добавить книгу
+                                    </button>
+                                }
+                                else
+                                {
+                                    <button id="addOrEditBtn" type="button" class="btn btn-bia-request_details" onclick="addBook()">
+                                        Редактировать книгу
+                                    </button>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="request-main col-4">
+                <div class="col-12">
+                    @* Model.UserRole != null && Model.UserRole == "Admin" *@
+                    @if (true)
+                    {
+                        <div class="admin-card">
+                            <div class="admin-header">
+                                Хранитель библиотеки
+                            </div>
+                            <a href="@Url.Action("Requests","Admin", new { sortBy = "id", sortOrder = "asc",
+                           pageNumber = 1, pageSize = 50 })" class="admin_control_elem">
+                                <div>
+                                    <img class="admin_img" src="~/icons/time_request.svg" />
+                                    Запрошенные книги
+                                </div>
+                                <div>
+                                    <img src="~/icons/shevron_admin.svg" />
+                                </div>
+                            </a>
+                            <a href="@Url.Action("TakenBooks","Admin", new { sortBy = "id", sortOrder = "asc",
+                           pageNumber = 1, pageSize = 50 })" class="admin_control_elem">
+                                <div>
+                                    <img class="admin_img" src="~/icons/issued_books_admin.svg" />
+                                    Выданные книги
+                                </div>
+                                <div>
+                                    <img src="~/icons/shevron_admin.svg" />
+                                </div>
+                            </a>
+                            <a href="@Url.Action("Manage","Admin", new { sortBy = "title", sortOrder = "asc",
+                           pageNumber = 1, pageSize = 50 })" class="admin_control_elem">
+                                <div>
+                                    <img class="admin_img" src="~/icons/book_management_admin.svg" />
+                                    Управление книгами
+                                </div>
+                                <div>
+                                    <img src="~/icons/shevron_admin.svg" />
+                                </div>
+                            </a>
+                            <a href="@Url.Action("Authors","Admin", new { sortBy = "title", sortOrder = "asc",
+                           pageNumber = 1, pageSize = 50 })" class="admin_control_elem">
+                                <div>
+                                    <img class="admin_img" src="~/icons/autors_admin.svg" />
+                                    Авторы
+                                </div>
+                                <div>
+                                    <img src="~/icons/shevron_admin.svg" />
+                                </div>
+                            </a>
+                            <a href="@Url.Action("Categories", "Admin", new { sortBy = "id", sortOrder = "asc",
+                           pageNumber = 1, pageSize = 50 })" class="admin_control_elem">
+                                <div>
+                                    <img class="admin_img" src="~/icons/categories_admin.svg" />
+                                    Категории
+                                </div>
+                                <div>
+                                    <img src="~/icons/shevron_admin.svg" />
+                                </div>
+                            </a>
+                            <a href="@Url.Action("Reviews","Admin", new { sortBy = "id", sortOrder = "asc",
+                           pageNumber = 1, pageSize = 50 })" class="admin_control_elem">
+                                <div>
+                                    <img class="admin_img" src="~/icons/review_admin.svg" />
+                                    Отзывы
+                                </div>
+                                <div>
+                                    <img src="~/icons/shevron_admin.svg" />
+                                </div>
+                            </a>
+                            <a href="@Url.Action("Users","Admin", new { sortBy = "title", sortOrder = "asc",
+                           pageNumber = 1, pageSize = 50 })" class="admin_control_elem">
+                                <div>
+                                    <img class="admin_img" src="~/icons/users_admin.svg" />
+                                    Пользователи
+                                </div>
+                                <div>
+                                    <img src="~/icons/shevron_admin.svg" />
+                                </div>
+                            </a>
+                        </div>
+                    }
+                    <div class="requests my-requests-card">
+                        <div class="my-requests-title">
+                            <div class="cards-list__title_text">Мои запросы</div>
+                            <div class="cards-list__title_text_link">
+                                @if (Model.RequestBooksByUser.Count > 0 || Model.ReadBooksByUser.Count > 0)
+                                {
+                                    <a href="@Url.Action("MyRequest", "Account", new { sortBy = "id", sortOrder = "asc",
+                                                pageNumber = 1, pageSize = 50, selectedRequest = "Все" })">
+                                        @if (Model.RequestAndReadBooksCount > 0)
+                                        {
+                                            <text>Все (@Model.RequestAndReadBooksCount)</text>
+                                        }
+                                        else
+                                        {
+                                            <text>Все</text>
+                                        }
+                                    </a>
+                                }
+                            </div>
+                        </div>
+                        @if (Model.RequestBooksByUser.Count > 0 || Model.ReadBooksByUser.Count > 0)
+                        {
+                            @if (Model.RequestBooksByUser.Count > 0)
+                            {
+                                <div class="requests-block">
+                                    <p class="requests-block__title">Запросил</p>
+                                    @foreach (var request in Model.RequestBooksByUser.Take(2))
+                                    {
+                                        <div class="requests-block__item">
+                                            @* <img src="~/icons/no_img_book.svg" class="requests-block__item-img"> *@
+                                            @if (string.IsNullOrEmpty(request.Book.CoverImage))
+                                            {
+                                                <img class="requests-block__item-img" src=@Url.Content("~/icons/no_img_book.svg") alt="defult-cover">
+                                            }
+                                            else
+                                            {
+                                                <img class="requests-block__item-img" onerror="this.onerror=null;this.src='@Url.Content("~/icons/no_img_book.svg")'" src='@Url.Content("~"+request.Book.CoverImage)' alt="cover">
+                                            }
+                                            <div class="tooltip__underline" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                                 data-bs-custom-class="custom-tooltip" data-html="true"
+                                                 data-bs-title="@($"{request.Book.Title}: {string.Join(", ", request.Book.Authors.Where(a => a.BookId == request.Book.BiaId).Select(a => a.Author.FullName()))}")">
+                                                <div class="requests-block__item-text">
+                                                    <span class="requests-block__item-title text-truncate-two-line" onclick="redirectToBook(@request.BookId)">
+                                                        @request.Book.Title
+                                                    </span>
+                                                    <p class="requests-block__item-description text-truncate-one-line" onclick="redirectToBook(@request.BookId)">
+                                                        @string.Join(", ", request.Book.Authors.Where(a => a.BookId == request.Book.BiaId).Select(a => a.Author.FullName()))
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            }
+                            @if (Model.ReadBooksByUser.Count > 0)
+                            {
+                                <div class="reads-block">
+                                    <p class="reads-block__title">Читаю</p>
+                                    @foreach (var read in Model.ReadBooksByUser.Take(2))
+                                    {
+                                        <div class="reads-block__item">
+                                            @* <img src="~/icons/no_img_book.svg" class="reads-block__item-img"> *@
+                                            @if (string.IsNullOrEmpty(read.TakenBook.CoverImage))
+                                            {
+                                                <img class="reads-block__item-img" src=@Url.Content("~/icons/no_img_book.svg") alt="defult-cover">
+                                            }
+                                            else
+                                            {
+                                                <img class="reads-block__item-img" onerror="this.onerror=null;this.src='@Url.Content("~/icons/no_img_book.svg")'" src='@Url.Content("~"+read.TakenBook.CoverImage)' alt="cover">
+                                            }
+                                            <div class="tooltip__underline" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                                 data-bs-custom-class="custom-tooltip" data-html="true"
+                                                 data-bs-title="@($"{read.TakenBook.Title}: {string.Join(", ", read.TakenBook.Authors.Where(a => a.BookId == read.TakenBook.BiaId).Select(a => a.Author.FullName()))}")">
+                                                <div class="reads-block__item-text">
+                                                    <span class="reads-block__item-title text-truncate-two-line" onclick="redirectToBook(@read.TakenBook.BiaId)">
+                                                        @* @(read.TakenBook.Title.Length > 20 ? read.TakenBook.Title.Substring(0, 20) + "..." : read.TakenBook.Title) *@
+                                                        @read.TakenBook.Title
+                                                    </span>
+                                                    <p class="reads-block__item-description" onclick="redirectToBook(@read.TakenBook.BiaId)">
+                                                        До @read.ExtendedDueDate.Date.ToString("dd.MM.yyyy")
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            }
+                        }
+                        else
+                        {
+                            <img class="empty-request-img" src="~/icons/emptyRequest.svg" />
+                        }
+                    </div>
+                    @* <div class="alpina">
+                    <a class="nav-link aplina_link" href="https://dellin.alpinadigital.ru/" role="button" aria-expanded="false">
+                    <img class="alpina-img" src="~/icons/headphones.svg" />
+                    </a>
+                    </div> *@
+                    <partial name="~/Views/Home/faq.cshtml" />
+                    @* <div class="faq-content">
+                    <div class="faq">
+                    <details class="faq-card">
+                    <summary class="faq-card-title">Как взять книгу</summary>
+                    <ul>
+                    <li>
+                    из подборки на <a class="faq-a" href="@Url.Action("Index", "Home")">главной странице</a>
+                    или через переход в карточку книги;
+                    </li>
+                    <li>из каталога.</li>
+                    </ul>
+                    Книга выдается на 1 месяц
+                    с возможностью продления (через раздел <a class="faq-a" href="@Url.Action("MyRequest", "Account", new { sortBy = "id", sortOrder = "asc",
+                    pageNumber = 1, pageSize = 50, selectedRequest = "Все" })">Мои запросы</a>).
+                    </details>
+                    <details class="faq-card">
+                    <summary class="faq-card-title">Как отменить заявку</summary>
+                    Если вы еще не получили книгу, отменить заявку можно в разделе <br />
+                    <a class="faq-a" href="@Url.Action("MyRequest", "Account", new { sortBy = "id", sortOrder = "asc",
+                    pageNumber = 1, pageSize = 50, selectedRequest = "Все" })">Мои запросы</a>.
+                    </details>
+                    <details class="faq-card">
+                    <summary class="faq-card-title">Какие книги числятся за мной</summary>
+                    Книги которые вы получили в библиотеке, можно найти в разделе <br />
+                    <a class="faq-a" href="@Url.Action("MyRequest", "Account", new { sortBy = "id", sortOrder = "asc",
+                    pageNumber = 1, pageSize = 50, selectedRequest = "Все" })">Мои запросы</a>.
+                    </details>
+                    <details class="faq-card">
+                    <summary class="faq-card-title">Как вернуть книгу</summary>
+                    Сдайте книгу на ресепшен и в разделе  <a class="faq-a" href="@Url.Action("MyRequest", "Account", new { sortBy = "id", sortOrder = "asc",
+                    pageNumber = 1, pageSize = 50, selectedRequest = "Все" })">Мои запросы</a> нажмите на ✔️, чтобы сообщить администратору о сдаче книги.
+                    <br />
+                    <br />
+                    Незабудьте оценить книгу и оставить отзыв.
+                    </details>
+                    <details class="faq-card">
+                    <summary class="faq-card-title">Хочу оставить отзыв</summary>
+                    Отзыв можно оставить в любой момент из разделов:
+                    <ul>
+                    <li>
+                    <a class="faq-a" href="@Url.Action("MyRequest", "Account", new { sortBy = "id", sortOrder = "asc",
+                    pageNumber = 1, pageSize = 50, selectedRequest = "Все" })">Мои запросы</a>, нажав на 💬;
+                    </li>
+                    <li>
+                    из карточки книги в блоке
+                    с комментариями;
+                    </li>
+                    <li>из письма после возврата книги.</li>
+                    </ul>
+                    </details>
+                    <details class="faq-card">
+                    <summary class="faq-card-title">Что, если книга уже занята</summary>
+                    Книга будет находиться в статусе «Недоступна до (дата возврата книги в библиотеку)».
+                    Дождитесь, пока книга вернется в библиотеку. Срок выдачи книги – 1 месяц.
+                    </details>
+                    <details class="faq-card">
+                    <summary class="faq-card-title">Хочу передать свою книгу в библиотеку</summary>
+                    В библиотеку можно передать книгу, если она подходит под условия:
+                    <ul>
+                    <li>
+                    профессиональная литература (например, информационные технологии, личная эффективность и пр.);
+                    </li>
+                    <li>
+                    нехудожественная литература (не подходят романы, пьесы, поэзия и тд.);
+                    </li>
+                    <li>
+                    в отличном состоянии (нет порванных страниц, загрязнений, разрисованных страниц, следов взаимодействия с водой и тд.);
+                    </li>
+                    <li>
+                    содержат актуальную информацию (например, современные, используемые методологии программирования);
+                    </li>
+                    <li>
+                    на русском или английском языке.
+                    </li>
+                    </ul>
+                    Заполните форму заявки:
+                    <ul>
+                    <li>
+                    в поле «Я хочу» выберите «принести книгу в библиотеку»;
+                    </li>
+                    <li>
+                    в поле «Описание» укажите основные сведения о книге, например, название, автор, год издания, номер издания (если есть) и язык.
+                    </li>
+                    </ul>
+                    Когда запрос будет обработан, на почту придет письмо. Передайте книгу в Отдел обучения и развития персонала.
+                    </details>
+                    </div>
+                    </div> *@
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <form class="needs-validation-addAuthor" novalidate>
+        <div class="modal fade" id="addAuthor" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content modal-sm boks_modal_content_details">
+                    <div>
+                        <div class="modal-header books_modal_details">
+                            <p class="modal-title books_modal_header_details" id="staticBackdropLabel">Добавление автора</p>
+                            <button id="btnClose" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="mb-3 position-relative">
+                                <input autocomplete="off" type="text" class="form-control" id="lastNameAuth" placeholder="Фамилия" maxlength="255" required>
+                                <div id="lastNameAuthLabel" class="floatingLabel">Фамилия</div>
+                                <div class="invalid-feedback">
+                                    Заполните фамилию
+                                </div>
+                            </div>
+                            <div class="mb-3 position-relative">
+                                <input autocomplete="off" type="text" class="form-control" id="firstNameAuth" placeholder="Имя" maxlength="255" required>
+                                <div id="firstNameAuthLabel" class="floatingLabel">Имя</div>
+                                <div class="invalid-feedback">
+                                    Заполните имя
+                                </div>
+                            </div>
+                            <div class="mb-3 position-relative">
+                                <input autocomplete="off" type="text" class="form-control" id="surnameNameAuth" placeholder="Отчество" maxlength="255">
+                                <div id="surnameNameAuthLabel" class="floatingLabel">Отчество</div>
+                                <div class="invalid-feedback">
+                                    Заполните отчество
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer books_modal_details boks_modal_futer_btn_details col-6 mx-auto">
+                            <button id="btnAddAuthor" type="button" class="btn btn-bia-request_details" onclick="autoCompleteAuthors.addAuthor(@("'#addAuthor'"))">
+                                Добавить
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <form class="needs-validation-addCategory" novalidate>
+        <div class="modal fade" id="addCategory" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content modal-sm boks_modal_content_details">
+                    <div class="form-books">
+                        <div class="modal-header books_modal_details">
+                            <p class="modal-title books_modal_header_details" id="staticBackdropLabel">Добавление категории</p>
+                            <button id="btnClose" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="mb-3 position-relative">
+                                <input autocomplete="off" type="text" class="form-control" id="categoryName" placeholder="Категория" maxlength="255" required>
+                                <div id="lblCategoryName" class="floatingLabel">Категория</div>
+                                <div class="invalid-feedback">
+                                    Заполните категорию
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer books_modal_details boks_modal_futer_btn_details col-6 mx-auto">
+                            <button id="btnAddCategory" type="button" class="btn btn-bia-request_details" onclick="autoCompleteCategory.addCategory(@("'#addCategory'"))">
+                                Добавить
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <div class="toast-container position-fixed top-0 end-0">
+        <div id="toastSuccesAdd" class="toast toas_content_details" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex toast_succec_details">
+                <div class="toast-body">
+                    Книга добавлена
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="toast-container position-fixed top-0 end-0">
+        <div id="toastSuccessCategory" class="toast toas_content_details" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex toast_succec_details">
+                <div class="toast-body">
+                    Категория добавлена
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="toast-container position-fixed top-0 end-0">
+        <div id="toastSuccesEdit" class="toast toas_content_details" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex toast_succec_details">
+                <div class="toast-body">
+                    Книга изменена
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="toast-container position-fixed top-0 end-0">
+        <div id="toastFailAddCategory" class="toast toas_content_details" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex toast_fail_details">
+                <div class="toast-body">
+                    Категория уже добавлена
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="toast-container position-fixed top-0 end-0">
+        <div id="toastFail" class="toast toas_content_details" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex toast_fail_details">
+                <div class="toast-body">
+                    Что-то пошло не так, попробуйте еще раз
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="toast-container position-fixed top-0 end-0">
+        <div id="toastSuccessAddAuthor" class="toast toas_content_details" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex toast_succec_details">
+                <div class="toast-body">
+                    Автор добавлен
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="toast-container position-fixed top-0 end-0">
+        <div id="toastFailAddAithor" class="toast toas_content_details" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex toast_fail_details">
+                <div class="toast-body">
+                    Автор уже добавлен
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="toast-container position-fixed top-0 end-0">
+        <div id="toastFailAddFiles" class="toast toas_content_details" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex toast_fail_details">
+                <div class="toast-body">
+                    Возможна загрузка только файла формата png или jpeg
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            //
+            $('#txtBoxBookPages').on('input', function () {
+                let value = $(this).val();
+                value = value.replace(/[^0-9]/g, '');
+                $(this).val(value);
+            });
+            //
+            $('#btnAddCategory').on('click', function () {
+                autoCompleteCategory.addCustomItem('#addCategory');
+            });
+            $('#btnAddAuthor').on('click', function () {
+                autoCompleteAuthors.addCustomItem('#addAuthor');
+            });
+            //
+            // $('#customSelectInput').on('click', function () {
+            //     $('#customSelectInput').parent().find('.invalid').hide();
+            // });
+            // $('.custom-select-input-year').on('click', function () {
+            //     $('.custom-select-input-year').parent().find('.invalid').hide();
+        });
+        //
+        var lastNameAuth = $('#lastNameAuth');
+        var firstNameAuth = $('#firstNameAuth');
+        var surnameNameAuth = $('#surnameNameAuth');
+        var lastNameAuthLabel = $('#lastNameAuthLabel');
+        var firstNameAuthLabel = $('#firstNameAuthLabel');
+        var surnameNameAuthLabel = $('#surnameNameAuthLabel');
+
+        lastNameAuth.on('focus', function () {
+            lastNameAuth.removeClass('is-invalid');
+            lastNameAuth.attr('placeholder', '');
+            lastNameAuthLabel.css('display', 'block');
+            lastNameAuthLabel.css('color', '#2A74DA');
+            lastNameAuth.attr('style', 'border-color: #2A74DA !important');
+        });
+
+        lastNameAuth.on('blur', function () {
+            lastNameAuth.attr('placeholder', lastNameAuthLabel.text());
+            if (lastNameAuth.val()) {
+                lastNameAuthLabel.css('color', '#7D7D7D');
+                lastNameAuth.attr('style', 'border-color: #CACACA !important');
+            } else {
+                lastNameAuthLabel.css('display', 'none');
+                lastNameAuth.attr('style', 'border-color: #CACACA !important');
+            }
+        });
+
+        firstNameAuth.on('focus', function () {
+            firstNameAuth.removeClass('is-invalid');
+            firstNameAuth.attr('placeholder', '');
+            firstNameAuthLabel.css('display', 'block');
+            firstNameAuthLabel.css('color', '#2A74DA');
+            firstNameAuth.attr('style', 'border-color: #2A74DA !important');
+        });
+
+        firstNameAuth.on('blur', function () {
+            firstNameAuth.attr('placeholder', firstNameAuthLabel.text());
+            if (firstNameAuth.val()) {
+                firstNameAuthLabel.css('color', '#7D7D7D');
+                firstNameAuth.attr('style', 'border-color: #CACACA !important');
+            } else {
+                firstNameAuthLabel.css('display', 'none');
+                firstNameAuth.attr('style', 'border-color: #CACACA !important');
+            }
+        });
+
+        surnameNameAuth.on('focus', function () {
+            surnameNameAuth.removeClass('is-invalid');
+            surnameNameAuth.attr('placeholder', '');
+            surnameNameAuthLabel.css('display', 'block');
+            surnameNameAuthLabel.css('color', '#2A74DA');
+            surnameNameAuth.attr('style', 'border-color: #2A74DA !important');
+        });
+
+        surnameNameAuth.on('blur', function () {
+            surnameNameAuth.attr('placeholder', surnameNameAuthLabel.text());
+            if (surnameNameAuth.val()) {
+                surnameNameAuthLabel.css('color', '#7D7D7D');
+                surnameNameAuth.attr('style', 'border-color: #CACACA !important');
+            } else {
+                surnameNameAuthLabel.css('display', 'none');
+                surnameNameAuth.attr('style', 'border-color: #CACACA !important');
+            }
+        });
+        //
+        var txtBoxCategoryName = $('#categoryName');
+        var lblCategoryName = $('#lblCategoryName');
+
+        txtBoxCategoryName.on('focus', function () {
+            txtBoxCategoryName.removeClass('is-invalid');
+            txtBoxCategoryName.attr('placeholder', '');
+            lblCategoryName.css('display', 'block');
+            lblCategoryName.css('color', '#2A74DA');
+            txtBoxCategoryName.attr('style', 'border-color: #2A74DA !important');
+        });
+
+        txtBoxCategoryName.on('blur', function () {
+            txtBoxCategoryName.attr('placeholder', lblCategoryName.text());
+            if (txtBoxCategoryName.val()) {
+                lblCategoryName.css('color', '#7D7D7D');
+                txtBoxCategoryName.attr('style', 'border-color: #CACACA !important');
+            } else {
+                lblCategoryName.css('display', 'none');
+                txtBoxCategoryName.attr('style', 'border-color: #CACACA !important');
+            }
+        });
+        //
+        var txtBoxBookName = $('#txtBoxBookName');
+        var lblBookName = $('#lblBookName');
+
+        if (txtBoxBookName.val()) {
+            txtBoxBookName.attr('placeholder', '');
+            lblBookName.css('display', 'block');
+        }
+
+        txtBoxBookName.on('input', function () {
+            if (txtBoxBookName.val().length != 0) {
+                txtBoxBookName.parent().find('.invalid').hide();
+            }
+        });
+
+        txtBoxBookName.on('focus', function () {
+            txtBoxBookName.attr('placeholder', '');
+            lblBookName.css('display', 'block');
+            lblBookName.css('color', '#2A74DA');
+            txtBoxBookName.css('border-color', '#2A74DA')
+        });
+
+        txtBoxBookName.on('blur', function () {
+            txtBoxBookName.attr('placeholder', lblBookName.text());
+            if (txtBoxBookName.val()) {
+                lblBookName.css('color', '#7D7D7D');
+                txtBoxBookName.css('border-color', '#CACACA')
+            } else {
+                lblBookName.css('display', 'none');
+                txtBoxBookName.css('border-color', '#CACACA')
+            }
+        });
+        //
+        var txtBoxBookSubtitle = $('#txtBoxBookSubtitle');
+        var lblBookSubtitle = $('#lblBookSubtitle');
+
+        if (txtBoxBookSubtitle.val()) {
+            txtBoxBookSubtitle.attr('placeholder', '');
+            lblBookSubtitle.css('display', 'block');
+        }
+
+        txtBoxBookSubtitle.on('input', function () {
+            if (txtBoxBookSubtitle.val().length != 0) {
+                txtBoxBookSubtitle.parent().find('.invalid').hide();
+            }
+        });
+
+        txtBoxBookSubtitle.on('focus', function () {
+            txtBoxBookSubtitle.attr('placeholder', '');
+            lblBookSubtitle.css('display', 'block');
+            lblBookSubtitle.css('color', '#2A74DA');
+            txtBoxBookSubtitle.css('border-color', '#2A74DA')
+        });
+
+        txtBoxBookSubtitle.on('blur', function () {
+            txtBoxBookSubtitle.attr('placeholder', lblBookSubtitle.text());
+            if (txtBoxBookSubtitle.val()) {
+                lblBookSubtitle.css('color', '#7D7D7D');
+                txtBoxBookSubtitle.css('border-color', '#CACACA')
+            } else {
+                lblBookSubtitle.css('display', 'none');
+                txtBoxBookSubtitle.css('border-color', '#CACACA')
+            }
+        });
+        //
+        var txtBoxDescription = $('#txtBoxDescription');
+        var lblDescription = $('#lblDescription');
+
+
+        txtBoxDescription.on('input', function () {
+            if (txtBoxDescription.val().length != 0) {
+                txtBoxDescription.parent().find('.invalid').hide();
+            }
+            $(this).css('height', 'auto');
+            $(this).css('height', this.scrollHeight + 'px');
+        });
+
+        txtBoxDescription.css('height', $('#txtBoxDescription')[0].scrollHeight + 'px');
+
+        if (txtBoxDescription.val()) {
+            txtBoxDescription.attr('placeholder', '');
+            lblDescription.css('display', 'block');
+        }
+
+        txtBoxDescription.on('focus', function () {
+            txtBoxDescription.attr('placeholder', '');
+            lblDescription.css('display', 'block');
+            lblDescription.css('color', '#2A74DA');
+            txtBoxDescription.css('border-color', '#2A74DA')
+        });
+
+        txtBoxDescription.on('blur', function () {
+            txtBoxDescription.attr('placeholder', lblDescription.text());
+            if (txtBoxDescription.val()) {
+                lblDescription.css('color', '#7D7D7D');
+                txtBoxDescription.css('border-color', '#CACACA')
+            } else {
+                lblDescription.css('display', 'none');
+                txtBoxDescription.css('border-color', '#CACACA')
+            }
+        });
+        //
+        var txtBoxBookPages = $('#txtBoxBookPages');
+        var lblBookPages = $('#lblBookPages');
+
+        if (txtBoxBookPages.val()) {
+            txtBoxBookPages.attr('placeholder', '');
+            lblBookPages.css('display', 'block');
+        }
+
+        txtBoxBookPages.on('input', function () {
+            if (txtBoxBookPages.val().length != 0) {
+                txtBoxBookPages.parent().find('.invalid').hide();
+            }
+        });
+
+        txtBoxBookPages.on('focus', function () {
+            txtBoxBookPages.attr('placeholder', '');
+            lblBookPages.css('display', 'block');
+            lblBookPages.css('color', '#2A74DA');
+            txtBoxBookPages.css('border-color', '#2A74DA')
+        });
+
+        txtBoxBookPages.on('blur', function () {
+            txtBoxBookPages.attr('placeholder', lblBookPages.text());
+            if (txtBoxBookPages.val()) {
+                lblBookPages.css('color', '#7D7D7D');
+                txtBoxBookPages.css('border-color', '#CACACA')
+            } else {
+                lblBookPages.css('display', 'none');
+                txtBoxBookPages.css('border-color', '#CACACA')
+            }
+        });
+        //
+        // var customSelectInput = $('#customSelectInput');
+
+        // customSelectInput.on('focus', function () {
+        //     if ($('.was-validated').length) {
+        //         $('.needs-validation-add').removeClass('was-validated')
+        //     }
+        //     customSelectInput.css('border-color', '#2A74DA')
+        // });
+
+        // customSelectInput.on('blur', function () {
+        //     if (txtBoxBookName.val()) {
+        //         customSelectInput.css('border-color', '#CACACA')
+        //     } else {
+        //         customSelectInput.css('border-color', '#CACACA')
+        //     }
+        // });
+        //
+        //     function AddBook(title, subtitle, annotation, /*language,*/ year,
+        //         pages, authors, cathegories, coverImage) {
+        //         //
+        //         // txtBoxBookName
+        //         // txtBoxBookSubtitle
+        //         // txtBoxDescription
+        //         var year = $('#customSelectInput');
+        //         // txtBoxBookPages
+        //         //
+        //         $.ajax({
+        //             url: 'GetBookCategoryById',
+        //             method: 'POST',
+        //             async: false,
+        //             contentType: 'application/json',
+        //             data: JSON.stringify({}),
+        //             success: function (response) {
+        //                 if (response.status === 'Success') {
+        //                     var categories = response.data;
+        //                     var selectedCategory = response.otherDate;
+        //                     //console.log(categories);
+        //                     categories.forEach(function (category) {
+        //                         list2.push({ chapter: category.categoryName });
+        //                     });
+        //                     selectedCategory.forEach(function (category) {
+        //                         listSelectedCategory.push(category.categoryName);
+        //                     });
+        //                     //console.log(listSelectedCategory);
+        //                 } else {
+        //                     console.error('Error:', response.Message);
+        //                 }
+        //             },
+        //             error: function (error) {
+        //                 console.error('Error:', error);
+        //             }
+        //         });
+        //     }
+        // });
+
+        document.addEventListener('DOMContentLoaded', (event) => {
+            'use strict';
+
+            //const formControls = document.querySelector('.needs-validation-controls');
+            const formAuthor = document.querySelector('.needs-validation-addAuthor');
+            const formCategory = document.querySelector('.needs-validation-addCategory');
+            const addAuthor = document.getElementById('btnAddAuthor');
+            const addCategory = document.getElementById('btnAddCategory');
+            //const addOrEditBtn = document.getElementById('addOrEditBtn');
+
+            addAuthor.addEventListener('click', function (event) {
+                if (!formAuthor.checkValidity()) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                formAuthor.classList.add('was-validated');
+            }, false);
+
+            addCategory.addEventListener('click', function (event) {
+                if (!formCategory.checkValidity()) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                formCategory.classList.add('was-validated');
+            }, false);
+
+            // addOrEditBtn.addEventListener('click', function (event) {
+            //     if (!formControls.checkValidity()) {
+            //         event.preventDefault();
+            //         event.stopPropagation();
+            //     }
+            //     else
+            //     {
+            //         uploadFile();
+            //     }
+            //     formControls.classList.add('was-validated');
+            // }, false);
+        });
+    </script>
+}

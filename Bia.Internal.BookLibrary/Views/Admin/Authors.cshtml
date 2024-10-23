@@ -1,0 +1,810 @@
+﻿@model AuthorsViewModel
+
+@{
+    ViewData["Title"] = "Авторы";
+    string sortBy = ViewBag.SortBy;
+    string sortOrder = ViewBag.SortOrder;
+    int pageNumber = ViewBag.PageNumber;
+    int pageSize = ViewBag.PageSize;
+    int totalPages = ViewBag.TotalPages;
+}
+
+<link href="~/css/table_books.css" rel="stylesheet" />
+<link href="~/css/overlay.css" rel="stylesheet" />
+<link href="~/css/authors.css" rel="stylesheet" />
+
+<section class="main_section">
+    <section class="container">
+        <div class="row">
+            <div class="breadcrumb_control">
+                <nav>
+                    <ol class="breadcrumb breadcrumb_conteiner">
+                        <li class="breadcrumb-item breadcrumb_link"><a class="" href="@Url.Action("Index","Home")">Главная</a></li>
+                        <li class="breadcrumb-item breadcrumb_text" aria-current="page">Хранитель библиотеки</li>
+                    </ol>
+                </nav>
+                <div class="books_title_btn_control_book">
+                    <a class="books_title_btn_control_book_a" data-bs-toggle="modal" data-bs-target="#addNewAuthor">
+                        Добавить автора
+                        <img src="~/icons/add_book.svg" />
+                    </a>
+                    <a href="@Url.Action("ExportAuthorsToExcel", "Admin")" class="books_title_btn_control_book_a">
+                        Выгрузить таблицу
+                        <img src="~/icons/download_book_table.svg" />
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div>
+                    <div class="books_switching_admin btn-group d-flex">
+                        <a href="@Url.Action("Requests","Admin", new { sortBy = "id", sortOrder = "asc",
+                           pageNumber = 1, pageSize = 50 })" class="btn btn-bia-admin_switching">Запрошенные книги</a>
+                        <a href="@Url.Action("TakenBooks","Admin", new { sortBy = "id", sortOrder = "asc",
+                           pageNumber = 1, pageSize = 50 })" class="btn btn-bia-admin_switching">Выданные книги</a>
+                        <a href="@Url.Action("Manage","Admin", new { sortBy = "title", sortOrder = "asc",
+                           pageNumber = 1, pageSize = 50 })" class="btn btn-bia-admin_switching">Управление книгами</a>
+                        <a href="@Url.Action("Authors","Admin", new { sortBy = "title", sortOrder = "asc",
+                           pageNumber = 1, pageSize = 50 })" class="btn btn-bia-admin_switching active">Авторы</a>
+                        <a href="@Url.Action("Categories", "Admin", new { sortBy = "id", sortOrder = "asc",
+                           pageNumber = 1, pageSize = 50 })" class="btn btn-bia-admin_switching">Категории</a>
+                        <a href="@Url.Action("Reviews","Admin", new { sortBy = "id", sortOrder = "asc",
+                           pageNumber = 1, pageSize = 50 })" class="btn btn-bia-admin_switching">Отзывы</a>
+                        <a href="@Url.Action("Users","Admin", new { sortBy = "title", sortOrder = "asc",
+                           pageNumber = 1, pageSize = 50 })" class="btn btn-bia-admin_switching">Пользователи</a>
+                    </div>
+                </div>
+                <div>
+                    <div class="table_conteiner table-responsive">
+                        @*Table Load*@
+                        @*!!!*@
+                        @*Table Data*@
+                        <table class="table table-borderless @(Model.Authors.Count == 0 ? "" : "table-striped table-hover") table-books">
+                            <thead>
+                                <tr>
+                                    <th scope="col" class="sortable table_book_th" data-column="title">
+                                        <div class="table_book_th_div">
+                                            Автор
+                                            <img src="~/icons/sort.svg" />
+                                        </div>
+                                    </th>
+                                    <th scope="col" class="sortable table_book_th" data-column="countBook">
+                                        <div class="table_book_th_div">
+                                            Книг в системе
+                                            <img src="~/icons/sort.svg" />
+                                        </div>
+                                    </th>
+                                    <th scope="col" class="sortable table_book_th" data-column="action">
+                                        <div class="table_book_th_div">
+                                            Действия
+                                            <img src="~/icons/sort.svg" />
+                                        </div>
+                                    </th>
+                                </tr>
+                            </thead>
+                            @if (Model.Authors.Count > 0)
+                            {
+                                <tbody>
+                                    @foreach (var author in Model.Authors)
+                                    {
+                                        <tr>
+                                            <td class="col-9">
+                                                @author.Key.FullName()
+                                            </td>
+                                            <td class="col-2">
+                                                @author.Value
+                                            </td>
+                                            <td class="col-1">
+                                                <div class="request_div_action">
+                                                    <div data-bs-toggle="modal" data-bs-target="#editAuthor"
+                                                         data-author-id="@author.Key.AuthorUid" data-author-firstname="@author.Key.FirstName"
+                                                         data-author-lastname="@author.Key.LastName" data-author-surname="@author.Key.MiddleName">
+                                                        <img class="tooltip_hover deleteRequestBtn" data-bs-toggle="tooltip"
+                                                             data-bs-placement="bottom" data-bs-title="Редактировать"
+                                                             src="~/icons/edit_book.svg"
+                                                             onmouseenter="this.src='/icons/edit_book_blue.svg'"
+                                                             onmouseleave="this.src='/icons/edit_book.svg'">
+                                                    </div>
+                                                    <div>
+                                                        <img class="tooltip_hover deleteRequestBtn" data-bs-toggle="tooltip"
+                                                             data-bs-placement="bottom" data-bs-title="Удалить"
+                                                             src="~/icons/trash_basket.svg"
+                                                             onmouseenter="this.src='/icons/trash_basket_blue.svg'"
+                                                             onmouseleave="this.src='/icons/trash_basket.svg'"
+                                                             data-author-fio="@author.Key.FullName()"
+                                                             data-author-id="@author.Key.AuthorUid"
+                                                             onclick="openModalDelAuthor(this)">
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            }
+                            else
+                            {
+                                <tbody>
+                                    <tr>
+                                        <td class="table_not_book_td" colspan="3">
+                                            <div class="table_not_book">
+                                                Ничего не найдено
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            }
+                        </table>
+                    </div>
+                </div>
+            </div>
+            @if (Model.TotalCount >= 50)
+            {
+                <div class="row paper_pagination">
+                    <nav>
+                        <ul class="pagination justify-content-center paper_pagination_ul">
+                            <li class="page-item @(pageNumber == 1 ? "disabled paper_pagination_btn_down_up_op" : "") paper_pagination_item">
+                                <a class="page-link paper_pagination_btn_down_up" asp-action="Authors" asp-route-sortBy="@sortBy"
+                                   asp-route-sortOrder="@sortOrder" asp-route-pageNumber="@(pageNumber - 1)" asp-route-pageSize="@pageSize">
+                                    <img class="paper_pagination_img_left" src="~/icons/left.svg" /> Назад
+                                </a>
+                            </li>
+                            @if (pageNumber > 4)
+                            {
+                                <li class="page-item paper_pagination_item">
+                                    <a class="page-link paper_pagination_a" asp-action="Authors" asp-route-sortBy="@sortBy" asp-route-sortOrder="@sortOrder"
+                                       asp-route-pageNumber="1" asp-route-pageSize="@pageSize">1</a>
+                                </li>
+                                <li class="page-item disabled paper_pagination_item">
+                                    <span class="page-link paper_pagination_a">...</span>
+                                </li>
+                            }
+                            @for (int i = pageNumber - 3; i < pageNumber; i++)
+                            {
+                                if (i > 0)
+                                {
+                                    <li class="page-item paper_pagination_item">
+                                        <a class="page-link paper_pagination_a" asp-action="Authors" asp-route-sortBy="@sortBy" asp-route-sortOrder="@sortOrder"
+                                           asp-route-pageNumber="@i" asp-route-pageSize="@pageSize">@i</a>
+                                    </li>
+                                }
+                            }
+                            <li class="page-item active paper_pagination_item">
+                                <span class="page-link paper_pagination_a">@pageNumber</span>
+                            </li>
+                            @for (int i = pageNumber + 1; i <= pageNumber + 3; i++)
+                            {
+                                if (i <= totalPages)
+                                {
+                                    <li class="page-item paper_pagination_item">
+                                        <a class="page-link paper_pagination_a" asp-action="Authors" asp-route-sortBy="@sortBy" asp-route-sortOrder="@sortOrder"
+                                           asp-route-pageNumber="@i" asp-route-pageSize="@pageSize">@i</a>
+                                    </li>
+                                }
+                            }
+                            @if (pageNumber + 3 < totalPages)
+                            {
+                                <li class="page-item disabled paper_pagination_item">
+                                    <span class="page-link paper_pagination_a">...</span>
+                                </li>
+                            }
+                            @if (pageNumber + 3 < totalPages)
+                            {
+                                <li class="page-item paper_pagination_item">
+                                    <a class="page-link paper_pagination_a" asp-action="Authors" asp-route-sortBy="@sortBy" asp-route-sortOrder="@sortOrder"
+                                       asp-route-pageNumber="@totalPages" asp-route-pageSize="@pageSize">@totalPages</a>
+                                </li>
+                            }
+                            <li class="page-item @(pageNumber == totalPages ? "disabled paper_pagination_btn_down_up_op" : "") paper_pagination_item">
+                                <a class="page-link paper_pagination_btn_down_up" asp-action="Authors" asp-route-sortBy="@sortBy" asp-route-sortOrder="@sortOrder"
+                                   asp-route-pageNumber="@(pageNumber + 1)" asp-route-pageSize="@pageSize">
+                                    Далее <img class="paper_pagination_img_rigth" src="~/icons/right.svg" />
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            }
+        </div>
+
+        <div id="overlay" style="display: none;"></div>
+        <div class="toast-container position-fixed top-0 end-0">
+            <div id="toastSuccesDel" class="toast toas_content_details" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="d-flex toast_succec_details">
+                    <div class="toast-body">
+                        Автор удален
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="toast-container position-fixed top-0 end-0">
+            <div id="toastFail" class="toast toas_content_details" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="d-flex toast_fail_details">
+                    <div class="toast-body">
+                        Что-то пошло не так, попробуйте еще раз
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="toast-container position-fixed top-0 end-0">
+            <div id="toastSuccessAdd" class="toast toas_content_details" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="d-flex toast_succec_details">
+                    <div class="toast-body">
+                        Автор добавлен
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="toast-container position-fixed top-0 end-0">
+            <div id="toastFailAdd" class="toast toas_content_details" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="d-flex toast_fail_details">
+                    <div class="toast-body">
+                        Автор уже добавлен
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="toast-container position-fixed top-0 end-0">
+            <div id="toastSuccessEdit" class="toast toas_content_details" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="d-flex toast_succec_details">
+                    <div class="toast-body">
+                        Автор изменен
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="toast-container position-fixed top-0 end-0">
+            <div id="toastFailEdit" class="toast toas_content_details" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="d-flex toast_fail_details">
+                    <div class="toast-body">
+                        Введенные данные совпадают с текущими
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="toast-container position-fixed top-0 end-0">
+            <div id="toastFailEditExisting" class="toast toas_content_details" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="d-flex toast_fail_details">
+                    <div class="toast-body">
+                        Такой автор уже существует
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>
+
+<form class="needs-validation-add" novalidate>
+    <div class="modal fade" id="addNewAuthor" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content modal-sm boks_modal_content_details">
+                <div>
+                    <div class="modal-header books_modal_details">
+                        <p class="modal-title books_modal_header_details" id="staticBackdropLabel">Добавление автора</p>
+                        <button id="btnClose" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3 position-relative">
+                            <input autocomplete="off" type="text" class="form-control" id="lastNameAddAuth" placeholder="Фамилия" maxlength="255" required>
+                            <div id="lastNameAddAuthLabel" class="floatingLabel">Фамилия</div>
+                            <div class="invalid-feedback">
+                                Заполните фамилию
+                            </div>
+                        </div>
+                        <div class="mb-3 position-relative">
+                            <input autocomplete="off" type="text" class="form-control" id="firstNameAddAuth" placeholder="Имя" maxlength="255" required>
+                            <div id="firstNameAddAuthLabel" class="floatingLabel">Имя</div>
+                            <div class="invalid-feedback">
+                                Заполните имя
+                            </div>
+                        </div>
+                        <div class="mb-3 position-relative">
+                            <input autocomplete="off" type="text" class="form-control" id="surnameNameAddAuth" placeholder="Отчество" maxlength="255">
+                            <div id="surnameNameAddAuthLabel" class="floatingLabel">Отчество</div>
+                            <div class="invalid-feedback">
+                                Заполните отчество
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer books_modal_details boks_modal_futer_btn_details col-6 mx-auto">
+                        <button id="btnAddAuthor" type="button" class="btn btn-bia-request_details" onclick="">
+                            Добавить
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<form class="needs-validation-edit" novalidate>
+    <div class="modal fade" id="editAuthor" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content modal-sm boks_modal_content_details">
+                <div>
+                    <div class="modal-header books_modal_details">
+                        <p class="modal-title books_modal_header_details" id="editAuthorLabel">Редактирование автора</p>
+                        <button id="btnClose" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3 position-relative">
+                            <input id="editAuthorId" type="hidden">
+                            <input autocomplete="off" type="text" class="form-control" id="lastNameEditAuth" placeholder="Фамилия" maxlength="255" required>
+                            <div id="lastNameEditAuthLabel" class="floatingLabel">Фамилия</div>
+                            <div class="invalid-feedback">
+                                Заполните фамилию
+                            </div>
+                        </div>
+                        <div class="mb-3 position-relative">
+                            <input autocomplete="off" type="text" class="form-control" id="firstNameEditAuth" placeholder="Имя" maxlength="255" required>
+                            <div id="firstNameEditAuthLabel" class="floatingLabel">Имя</div>
+                            <div class="invalid-feedback">
+                                Заполните имя
+                            </div>
+                        </div>
+                        <div class="mb-3 position-relative">
+                            <input autocomplete="off" type="text" class="form-control" id="surnameNameEditAuth" placeholder="Отчество" maxlength="255">
+                            <div id="surnameNameEditAuthLabel" class="floatingLabel">Отчество</div>
+                            <div class="invalid-feedback">
+                                Заполните отчество
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer books_modal_details boks_modal_futer_btn_details col-6 mx-auto">
+                        <button id="btnEditAuthor" type="button" class="btn btn-bia-request_details" onclick="">
+                            Изменить
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<div class="modal fade" id="downloadAuthor" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content modal-sm boks_modal_content_details">
+            <div>
+                <div class="modal-header books_modal_details">
+                    <p class="modal-title books_modal_header_details" id="editAuthorLabel">Выгрузка таблицы Авторы</p>
+                    <button id="btnClose" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <div class="form-check containerChkAll">
+                            <input class="form-check-input" type="checkbox" value="" id="chkAllIndeterminate" checked>
+                            <label class="form-check-label" for="chkAll">
+                                Все
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="chkAuthor">
+                            <label class="form-check-label" for="chkAuthor">
+                                Автор
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="chkBookCount">
+                            <label class="form-check-label" for="chkBookCount">
+                                Книг в системе
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer books_modal_details boks_modal_futer_btn_details col-6 mx-auto">
+                    <button id="btnEditAuthor" type="button" class="btn btn-bia-request_details" onclick="">
+                        Выгрузить
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="delAuthor" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content modal-sm boks_modal_content_details">
+            <div>
+                <div class="modal-header books_modal_details">
+                    <p class="modal-title books_modal_header_details" id="staticBackdropLabel">Вы уверены, что хотите удалить автора?</p>
+                    <button id="btnClose" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+                </div>
+                <div class="modal-body books_modal_body_details">
+                    <div class="modal-img-container">
+                        <div class="modal-del-container position-relative">
+                            <input autocomplete="off" type="text" class="form-control" id="authorFio" placeholder="ФИО" maxlength="255" disabled style="background-color: #FFF; cursor: text;">
+                            <div id="firstNameAuthorFioLabel" class="floatingLabel" style="display: block;">ФИО</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer books_modal_details boks_modal_futer_btn_details col-6 mx-auto">
+                    <input type="hidden" id="modalDelAurhorId" />
+                    <button id="btnDelAuthor" type="button" class="btn btn-bia-request_details" onclick="DeleteAuthor()">
+                        Удалить
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            //
+            var lastNameAddAuth = $('#lastNameAddAuth');
+            var firstNameAddAuth = $('#firstNameAddAuth');
+            var surnameNameAddAuth = $('#surnameNameAddAuth');
+            var lastNameAddAuthLabel = $('#lastNameAddAuthLabel');
+            var firstNameAddAuthLabel = $('#firstNameAddAuthLabel');
+            var surnameNameAddAuthLabel = $('#surnameNameAddAuthLabel');
+
+            lastNameAddAuth.on('focus', function () {
+                if ($('.was-validated').length) {
+                    $('.needs-validation-add').removeClass('was-validated')
+                    lastNameAddAuth.removeClass('is-invalid');
+                }
+                lastNameAddAuth.attr('placeholder', '');
+                lastNameAddAuthLabel.css('display', 'block');
+                lastNameAddAuthLabel.css('color', '#2A74DA');
+            });
+
+            lastNameAddAuth.on('blur', function () {
+                lastNameAddAuth.attr('placeholder', lastNameAddAuthLabel.text());
+                if (lastNameAddAuth.val()) {
+                    lastNameAddAuthLabel.css('color', '#7D7D7D');
+                } else {
+                    lastNameAddAuthLabel.css('display', 'none');
+                }
+            });
+
+            firstNameAddAuth.on('focus', function () {
+                if ($('.was-validated').length) {
+                    $('.needs-validation-add').removeClass('was-validated')
+                    firstNameAddAuth.removeClass('is-invalid');
+                }
+                firstNameAddAuth.attr('placeholder', '');
+                firstNameAddAuthLabel.css('display', 'block');
+                firstNameAddAuthLabel.css('color', '#2A74DA');
+            });
+
+            firstNameAddAuth.on('blur', function () {
+                firstNameAddAuth.attr('placeholder', firstNameAddAuthLabel.text());
+                if (firstNameAddAuth.val()) {
+                    firstNameAddAuthLabel.css('color', '#7D7D7D');
+                } else {
+                    firstNameAddAuthLabel.css('display', 'none');
+                }
+            });
+
+            surnameNameAddAuth.on('focus', function () {
+                if ($('.was-validated').length) {
+                    $('.needs-validation-add').removeClass('was-validated')
+                    surnameNameAddAuth.removeClass('is-invalid');
+                }
+                surnameNameAddAuth.attr('placeholder', '');
+                surnameNameAddAuthLabel.css('display', 'block');
+                surnameNameAddAuthLabel.css('color', '#2A74DA');
+            });
+
+            surnameNameAddAuth.on('blur', function () {
+                surnameNameAddAuth.attr('placeholder', surnameNameAddAuthLabel.text());
+                if (surnameNameAddAuth.val()) {
+                    surnameNameAddAuthLabel.css('color', '#7D7D7D');
+                } else {
+                    surnameNameAddAuthLabel.css('display', 'none');
+                }
+            });
+            //
+            var lastNameEditAuth = $('#lastNameEditAuth');
+            var firstNameEditAuth = $('#firstNameEditAuth');
+            var surnameNameEditAuth = $('#surnameNameEditAuth');
+            var lastNameEditAuthLabel = $('#lastNameEditAuthLabel');
+            var firstNameEditAuthLabel = $('#firstNameEditAuthLabel');
+            var surnameNameEditAuthLabel = $('#surnameNameEditAuthLabel');
+
+            lastNameEditAuth.on('focus', function () {
+                if ($('.was-validated').length) {
+                    $('.needs-validation-edit').removeClass('was-validated')
+                    lastNameEditAuth.removeClass('is-invalid');
+                }
+                lastNameEditAuth.attr('placeholder', '');
+                lastNameEditAuthLabel.css('display', 'block');
+                lastNameEditAuthLabel.css('color', '#2A74DA');
+            });
+
+            lastNameEditAuth.on('blur', function () {
+                lastNameEditAuth.attr('placeholder', lastNameEditAuthLabel.text());
+                if (lastNameEditAuth.val()) {
+                    lastNameEditAuthLabel.css('color', '#7D7D7D');
+                } else {
+                    lastNameEditAuthLabel.css('display', 'none');
+                }
+            });
+
+            firstNameEditAuth.on('focus', function () {
+                if ($('.was-validated').length) {
+                    $('.needs-validation-edit').removeClass('was-validated')
+                    firstNameEditAuth.removeClass('is-invalid');
+                }
+                firstNameEditAuth.attr('placeholder', '');
+                firstNameEditAuthLabel.css('display', 'block');
+                firstNameEditAuthLabel.css('color', '#2A74DA');
+            });
+
+            firstNameEditAuth.on('blur', function () {
+                firstNameEditAuth.attr('placeholder', firstNameEditAuthLabel.text());
+                if (firstNameEditAuth.val()) {
+                    firstNameEditAuthLabel.css('color', '#7D7D7D');
+                } else {
+                    firstNameEditAuthLabel.css('display', 'none');
+                }
+            });
+
+            surnameNameEditAuth.on('focus', function () {
+                if ($('.was-validated').length) {
+                    $('.needs-validation-edit').removeClass('was-validated')
+                    surnameNameEditAuth.removeClass('is-invalid');
+                }
+                surnameNameEditAuth.attr('placeholder', '');
+                surnameNameEditAuthLabel.css('display', 'block');
+                surnameNameEditAuthLabel.css('color', '#2A74DA');
+            });
+
+            surnameNameEditAuth.on('blur', function () {
+                surnameNameEditAuth.attr('placeholder', surnameNameEditAuthLabel.text());
+                if (surnameNameEditAuth.val()) {
+                    surnameNameEditAuthLabel.css('color', '#7D7D7D');
+                } else {
+                    surnameNameEditAuthLabel.css('display', 'none');
+                }
+            });
+            //
+
+            $('.sortable').click(function () {
+                var sortBy = $(this).data('column');
+                changeSortOrder(sortBy);
+            });
+
+            function changeSortOrder(sortBy, request) {
+                var currentSortOrder = '@ViewBag.SortOrder';
+                var currentSortOrder1 = '@ViewBag.PageSize';
+                var newSortOrder = (sortBy === '@ViewBag.SortBy' && currentSortOrder === 'asc') ? 'desc' : 'asc';
+                var url = '@Url.Action("Authors", "Admin")' + '?sortBy=' + sortBy + '&sortOrder=' + newSortOrder +
+                    '&pageNumber=' + '1' + '&pageSize=' + '@ViewBag.PageSize';
+                window.location.href = url;
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', (event) => {
+            'use strict';
+
+            const formAdd = document.querySelector('.needs-validation-add');
+            const formEdit = document.querySelector('.needs-validation-edit');
+            const addButton = document.getElementById('btnAddAuthor');
+            const editButton = document.getElementById('btnEditAuthor');
+
+            addButton.addEventListener('click', function (event) {
+                if (!formAdd.checkValidity()) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                } else {
+                    AddAuthor();
+                }
+
+                formAdd.classList.add('was-validated');
+            }, false);
+
+            editButton.addEventListener('click', function (event) {
+                if (!formEdit.checkValidity()) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                } else {
+                    EditAuthor();
+                }
+
+                formEdit.classList.add('was-validated');
+            }, false);
+        });
+
+        $('#editAuthor').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget);
+            var authorId = button.data('author-id');
+            var authorFirstName = button.data('author-firstname');
+            var authorLastName = button.data('author-lastname');
+            var authorSurname = button.data('author-surname');
+
+            var modal = $(this);
+            modal.find('#editAuthorId').val(authorId);
+            modal.find('#firstNameEditAuth').val(authorFirstName);
+            if ($('#firstNameEditAuth').val()) {
+                $('#firstNameEditAuth').attr('placeholder', '');
+                $('#firstNameEditAuthLabel').css('display', 'block');
+                $('#firstNameEditAuthLabel').css('color', '#7D7D7D');
+            }
+            modal.find('#lastNameEditAuth').val(authorLastName);
+            if ($('#lastNameEditAuth').val()) {
+                $('#lastNameEditAuth').attr('placeholder', '');
+                $('#lastNameEditAuthLabel').css('display', 'block');
+                $('#lastNameEditAuthLabel').css('color', '#7D7D7D');
+            }
+            modal.find('#surnameNameEditAuth').val(authorSurname);
+            if ($('#surnameNameEditAuth').val()) {
+                $('#surnameNameEditAuth').attr('placeholder', '');
+                $('#surnameNameEditAuthLabel').css('display', 'block');
+                $('#surnameNameEditAuthLabel').css('color', '#7D7D7D');
+            }
+        });
+
+        function AddAuthor() {
+            var lastNameAuth = $('#lastNameAddAuth').val().replace(/\s+/g, ' ').trim();
+            var firstNameAuth = $('#firstNameAddAuth').val().replace(/\s+/g, ' ').trim();
+            var surnameNameAuth = $('#surnameNameAddAuth').val().replace(/\s+/g, ' ').trim();
+            //
+            var isLastNameValid = lastNameAuth.length > 0;
+            var isFirstNameValid = firstNameAuth.length > 0;
+            var isSurnameNameValid = surnameNameAuth.length > 0;
+            //
+            if (isLastNameValid && isFirstNameValid) {
+                $('#btnAddAuthor').addClass('disabled');
+                $.ajax({
+                    url: '@Url.Action("AddAuthor", "Admin")',
+                    method: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify({ FirstName: firstNameAuth, LastName: lastNameAuth, SurnameName: surnameNameAuth }),
+                    success: function (data) {
+                        if (data.status === 'Success') {
+                            $('#toastSuccessAdd').toast('show');
+                            setTimeout(function () {
+                                window.location.reload();
+                            }, 2000);
+                        } else {
+                            if (data.details === 'Уже существует') {
+                                $('#toastFailAdd').toast('show');
+                            }
+                            else {
+                                $('#toastFail').toast('show');
+                            }
+                            $('#btnAddAuthor').removeClass('disabled');
+                        }
+                    },
+                    error: function (xhr, textStatus, errorThrown) {
+                        console.error('Ошибка при выполнении запроса: ' + textStatus);
+                    }
+                });
+            }
+            else {
+                if (!isLastNameValid) {
+                    $('#lastNameAddAuth').removeClass('is-valid').addClass('is-invalid');
+                } else {
+                    $('#lastNameAddAuth').removeClass('is-invalid').addClass('is-valid');
+                }
+
+                if (!isFirstNameValid) {
+                    $('#firstNameAddAuth').removeClass('is-valid').addClass('is-invalid');
+                } else {
+                    $('#firstNameAddAuth').removeClass('is-invalid').addClass('is-valid');
+                }
+
+                // if (!isSurnameNameValid) {
+                //     $('#surnameNameAddAuth').removeClass('is-valid').addClass('is-invalid');
+                // } else {
+                //     $('#surnameNameAddAuth').removeClass('is-invalid').addClass('is-valid');
+                // }
+                //
+                $('#toastFail').toast('show');
+            }
+        }
+
+        function EditAuthor() {
+            var authorId = $('#editAuthorId').val();
+            var lastNameAuth = $('#lastNameEditAuth').val().replace(/\s+/g, ' ').trim();
+            var firstNameAuth = $('#firstNameEditAuth').val().replace(/\s+/g, ' ').trim();
+            var surnameNameAuth = $('#surnameNameEditAuth').val().replace(/\s+/g, ' ').trim();
+            //
+            var isLastNameValid = lastNameAuth.length > 0;
+            var isFirstNameValid = firstNameAuth.length > 0;
+            var isSurnameNameValid = surnameNameAuth.length > 0;
+            //
+            if (authorId.length > 0 && isLastNameValid && isFirstNameValid) {
+                $('#btnEditAuthor').addClass('disabled');
+                $.ajax({
+                    url: '@Url.Action("EditAuthor", "Admin")',
+                    method: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify({
+                        AuthorGuid: authorId,
+                        FirstName: firstNameAuth,
+                        LastName: lastNameAuth,
+                        SurnameName: surnameNameAuth
+                    }),
+                    success: function (data) {
+                        if (data.status === 'Success') {
+                            $('#toastSuccessEdit').toast('show');
+                            setTimeout(function () {
+                                window.location.reload();
+                            }, 200);
+                        } else {
+                            if (data.details === 'Уже существует') {
+                                $('#toastFailEditExisting').toast('show');
+                            }
+                            else if (data.details === 'Введенные данные совпадают с текущими') {
+                                $('#toastFailEdit').toast('show');
+                            }
+                            else {
+                                $('#toastFail').toast('show');
+                            }
+                            $('#btnEditAuthor').removeClass('disabled');
+                        }
+                    },
+                    error: function (xhr, textStatus, errorThrown) {
+                        console.error('Ошибка при выполнении запроса: ' + textStatus);
+                    }
+                });
+            }
+            else {
+                if (!isLastNameValid) {
+                    $('#lastNameEditAuth').removeClass('is-valid').addClass('is-invalid');
+                } else {
+                    $('#lastNameEditAuth').removeClass('is-invalid').addClass('is-valid');
+                }
+
+                if (!isFirstNameValid) {
+                    $('#firstNameEditAuth').removeClass('is-valid').addClass('is-invalid');
+                } else {
+                    $('#firstNameEditAuth').removeClass('is-invalid').addClass('is-valid');
+                }
+
+                // if (!isSurnameNameValid) {
+                //     $('#surnameNameEditAuth').removeClass('is-valid').addClass('is-invalid');
+                // } else {
+                //     $('#surnameNameEditAuth').removeClass('is-invalid').addClass('is-valid');
+                // }
+                //
+                $('#toastFail').toast('show');
+            }
+        }
+
+        function DeleteAuthor() {
+            var authorId = $('#modalDelAurhorId').val();
+            if (authorId.length > 0) {
+                $('#btnDelAuthor').prop('disabled', true);
+                //
+                $.ajax({
+                    url: '@Url.Action("DeleteAuthor", "Admin")',
+                    method: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify(authorId),
+                    success: function (data) {
+                        if (data.status === 'Success') {
+                            $('#overlay').show();
+                            $('#toastSuccesDel').toast('show');
+                            setTimeout(function () {
+                                window.location.reload();
+                            }, 1500);
+                        } else {
+                            $('#toastFail').toast('show');
+                        }
+                    },
+                    error: function (xhr, textStatus, errorThrown) {
+                        console.error('Ошибка при выполнении запроса: ' + textStatus);
+                    }
+                });
+            }
+            $('#btnDelAuthor').prop('disabled', false);
+        }
+
+        function openModalDelAuthor(element) {
+            var authorFio = $(element).attr('data-author-fio');
+            var authorId = $(element).attr('data-author-id');
+            //
+            $('#authorFio').val(authorFio);
+            $('#modalDelAurhorId').val(authorId);
+            //
+            $('#delAuthor').modal('show');
+        }
+
+    </script>
+}

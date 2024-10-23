@@ -1,0 +1,479 @@
+﻿@using Bia.Internal.BookLibrary.Data;
+@using Bia.Internal.BookLibrary.Data.Enum
+@model UsersViewModel
+@{
+    ViewData["Title"] = "Пользователи";
+    string sortBy = ViewBag.SortBy;
+    string sortOrder = ViewBag.SortOrder;
+    int pageNumber = ViewBag.PageNumber;
+    int pageSize = ViewBag.PageSize;
+    int totalPages = ViewBag.TotalPages;
+}
+
+<link href="~/css/table_books.css" rel="stylesheet" />
+<link href="~/css/switcherControl.css" rel="stylesheet" />
+<link href="~/css/overlay.css" rel="stylesheet" />
+
+<section class="main_section">
+    <section class="container">
+        <div class="row">
+            <div class="breadcrumb_control">
+                <nav>
+                    <ol class="breadcrumb breadcrumb_conteiner">
+                        <li class="breadcrumb-item breadcrumb_link"><a class="" href="@Url.Action("Index","Home")">Главная</a></li>
+                        <li class="breadcrumb-item breadcrumb_text" aria-current="page">Хранитель библиотеки</li>
+                    </ol>
+                </nav>
+                <div class="books_title_btn_control_book">
+                    <a href="@Url.Action("ExportUsersToExcel", "Admin")" class="books_title_btn_control_book_a">
+                        Выгрузить таблицу
+                        <img src="~/icons/download_book_table.svg" />
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div>
+                    <div class="books_switching_admin btn-group d-flex">
+                        <a href="@Url.Action("Requests","Admin", new { sortBy = "id", sortOrder = "asc",
+                           pageNumber = 1, pageSize = 50 })" class="btn btn-bia-admin_switching">Запрошенные книги</a>
+                        <a href="@Url.Action("TakenBooks","Admin", new { sortBy = "id", sortOrder = "asc",
+                           pageNumber = 1, pageSize = 50 })" class="btn btn-bia-admin_switching">Выданные книги</a>
+                        <a href="@Url.Action("Manage","Admin", new { sortBy = "title", sortOrder = "asc",
+                           pageNumber = 1, pageSize = 50 })" class="btn btn-bia-admin_switching">Управление книгами</a>
+                        <a href="@Url.Action("Authors","Admin", new { sortBy = "title", sortOrder = "asc",
+                           pageNumber = 1, pageSize = 50 })" class="btn btn-bia-admin_switching">Авторы</a>
+                        <a href="@Url.Action("Categories", "Admin", new { sortBy = "id", sortOrder = "asc",
+                           pageNumber = 1, pageSize = 50 })" class="btn btn-bia-admin_switching">Категории</a>
+                        <a href="@Url.Action("Reviews","Admin", new { sortBy = "id", sortOrder = "asc",
+                           pageNumber = 1, pageSize = 50 })" class="btn btn-bia-admin_switching">Отзывы</a>
+                        <a href="@Url.Action("Users","Admin", new { sortBy = "title", sortOrder = "asc",
+                           pageNumber = 1, pageSize = 50 })" class="btn btn-bia-admin_switching active">Пользователи</a>
+                    </div>
+                </div>
+                <div>
+                    <div class="table_conteiner table-responsive">
+                        @*Table Load*@
+                        @*!!!*@
+                        @*Table Data*@
+                        <table class="table table-borderless @(Model.Users.Count() == 0 ? "" : "table-striped table-hover") table-books">
+                            <thead>
+                                <tr>
+                                    <th scope="col" class="sortable table_book_th" data-column="title">
+                                        <div class="table_book_th_div">
+                                            ФИО
+                                            <img src="~/icons/sort.svg" />
+                                        </div>
+                                    </th>
+                                    <th scope="col" class="sortable table_book_th" data-column="email">
+                                        <div class="table_book_th_div tooltip__underline" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                             data-bs-custom-class="custom-tooltip"
+                                             data-bs-title="Электронная почта">
+                                            Эл. почта
+                                            <img src="~/icons/sort.svg" />
+                                        </div>
+                                    </th>
+                                    <th scope="col" class="sortable table_book_th" data-column="isadmin">
+                                        <div class="table_book_th_div tooltip__underline" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                             data-bs-custom-class="custom-tooltip"
+                                             data-bs-title="Администратор">
+                                            Админ.
+                                            <img src="~/icons/sort.svg" />
+                                        </div>
+                                    </th>
+                                    <th scope="col" class="sortable table_book_th" data-column="isnotification">
+                                        <div class="table_book_th_div tooltip__underline" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                             data-bs-custom-class="custom-tooltip"
+                                             data-bs-title="Уведомления">
+                                            Уведом.
+                                            <img src="~/icons/sort.svg" />
+                                        </div>
+                                    </th>
+                                    <th scope="col" class="sortable table_book_th" data-column="isignored">
+                                        <div class="table_book_th_div tooltip__underline" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                             data-bs-custom-class="custom-tooltip"
+                                             data-bs-title="Игнорировать">
+                                            Игнор.
+                                            <img src="~/icons/sort.svg" />
+                                        </div>
+                                    </th>
+                                    @* <th scope="col" class="sortable table_book_th" data-column="actions">
+                                        <div class="table_book_th_div">
+                                            Действия
+                                            <img src="~/icons/sort.svg" />
+                                        </div>
+                                    </th> *@
+                                </tr>
+                            </thead>
+                            @if (Model.Users.Count() > 0)
+                            {
+                                <tbody>
+                                    @foreach (var user in Model.Users)
+                                    {
+                                        <tr>
+                                            <td class="col-5">
+                                                <div class="table_books_img_td">
+                                                    @user.FullName
+                                                </div>
+                                            </td>
+                                            <td class="col-4">
+                                                @user.Email
+                                            </td>
+                                            <td class="col-1">
+                                                @* @user.AccessGroup *@
+                                                @if (user.AccessGroup == AccessGroupId.Admin)
+                                                {
+                                                    <div class="form-check form-switch form-switch-custom">
+                                                        <input class="form-check-input" type="checkbox" checked onclick="ChangeRole('@user.Uid', '@true')">
+                                                    </div>
+                                                }
+                                                else
+                                                {
+                                                    <div class="form-check form-switch form-switch-custom">
+                                                        <input class="form-check-input" type="checkbox" onclick="ChangeRole('@user.Uid', '@false')">
+                                                    </div>
+                                                }
+                                            </td>
+                                            <td class="col-1">
+                                                @* @user.AdminNotifies *@
+                                                @if (user is Admin)
+                                                {
+                                                    var admin = user as Admin;
+                                                    if (admin.AdminNotifies.Any(q => q.NotifyId == AdminNotifyTypes.General))
+                                                    {
+                                                        <div class="form-check form-switch form-switch-custom">
+                                                            <input class="form-check-input" type="checkbox" checked onclick="ChangeNotify('@user.Uid')">
+                                                        </div>
+                                                    }
+                                                    else
+                                                    {
+                                                        <div class="form-check form-switch form-switch-custom">
+                                                            <input class="form-check-input" type="checkbox" onclick="ChangeNotify('@user.Uid')">
+                                                        </div>
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    <div class="form-check form-switch form-switch-custom">
+                                                        <input class="form-check-input" type="checkbox" onclick="ErrNotify('@user.FullName')">
+                                                    </div>
+                                                }
+                                            </td>
+                                            <td class="col-1">
+                                                @* @user.Ignored *@
+                                                @if (user.Ignored == null)
+                                                {
+                                                    <div class="form-check form-switch form-switch-custom">
+                                                        <input class="form-check-input" type="checkbox" onclick="ChangeIgnoredUsder('@user.Uid')">
+                                                    </div>
+                                                }
+                                                else
+                                                {
+                                                    <div class="form-check form-switch form-switch-custom">
+                                                        <input class="form-check-input" type="checkbox" checked onclick="ChangeIgnoredUsder('@user.Uid')">
+                                                    </div>
+                                                }
+                                            </td>
+                                            @* <td class="col-1">
+                                                <div class="request_div_action">
+                                                    <div data-bs-toggle="modal" data-bs-target="#editUser">
+                                                        <img class="tooltip_hover deleteRequestBtn" data-bs-toggle="tooltip"
+                                                             data-bs-placement="bottom" data-bs-title="Редактировать"
+                                                             src="~/icons/edit_book.svg"
+                                                             onmouseenter="this.src='/icons/edit_book_blue.svg'"
+                                                             onmouseleave="this.src='/icons/edit_book.svg'"
+                                                             onclick="">
+                                                    </div>
+                                                    <div>
+                                                        <img class="tooltip_hover deleteRequestBtn" data-bs-toggle="tooltip"
+                                                             data-bs-placement="bottom" data-bs-title="Удалить"
+                                                             src="~/icons/trash_basket.svg"
+                                                             onmouseenter="this.src='/icons/trash_basket_blue.svg'"
+                                                             onmouseleave="this.src='/icons/trash_basket.svg'"
+                                                             onclick="DeleteUser('@user.Uid')">
+                                                    </div>
+                                                </div>
+                                            </td> *@
+                                        </tr>
+                                    }
+                                </tbody>
+                            }
+                            else
+                            {
+                                <tbody>
+                                    <tr>
+                                        <td class="table_not_book_td" colspan="5">
+                                            <div class="table_not_book">
+                                                Ничего не найдено
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            }
+                        </table>
+                    </div>
+                </div>
+            </div>
+            @if (Model.TotalCount >= 1)
+            {
+                <div class="row paper_pagination">
+                    <nav>
+                        <ul class="pagination justify-content-center paper_pagination_ul">
+                            <li class="page-item @(pageNumber == 1 ? "disabled paper_pagination_btn_down_up_op" : "") paper_pagination_item">
+                                <a class="page-link paper_pagination_btn_down_up" asp-action="Users" asp-route-sortBy="@sortBy"
+                                   asp-route-sortOrder="@sortOrder" asp-route-pageNumber="@(pageNumber - 1)" asp-route-pageSize="@pageSize">
+                                    <img class="paper_pagination_img_left" src="~/icons/left.svg" /> Назад
+                                </a>
+                            </li>
+                            @if (pageNumber > 4)
+                            {
+                                <li class="page-item paper_pagination_item">
+                                    <a class="page-link paper_pagination_a" asp-action="Users" asp-route-sortBy="@sortBy" asp-route-sortOrder="@sortOrder"
+                                       asp-route-pageNumber="1" asp-route-pageSize="@pageSize">1</a>
+                                </li>
+                                <li class="page-item disabled paper_pagination_item">
+                                    <span class="page-link paper_pagination_a">...</span>
+                                </li>
+                            }
+                            @for (int i = pageNumber - 3; i < pageNumber; i++)
+                            {
+                                if (i > 0)
+                                {
+                                    <li class="page-item paper_pagination_item">
+                                        <a class="page-link paper_pagination_a" asp-action="Users" asp-route-sortBy="@sortBy" asp-route-sortOrder="@sortOrder"
+                                           asp-route-pageNumber="@i" asp-route-pageSize="@pageSize">@i</a>
+                                    </li>
+                                }
+                            }
+                            <li class="page-item active paper_pagination_item">
+                                <span class="page-link paper_pagination_a">@pageNumber</span>
+                            </li>
+                            @for (int i = pageNumber + 1; i <= pageNumber + 3; i++)
+                            {
+                                if (i <= totalPages)
+                                {
+                                    <li class="page-item paper_pagination_item">
+                                        <a class="page-link paper_pagination_a" asp-action="Users" asp-route-sortBy="@sortBy" asp-route-sortOrder="@sortOrder"
+                                           asp-route-pageNumber="@i" asp-route-pageSize="@pageSize">@i</a>
+                                    </li>
+                                }
+                            }
+                            @if (pageNumber + 3 < totalPages)
+                            {
+                                <li class="page-item disabled paper_pagination_item">
+                                    <span class="page-link paper_pagination_a">...</span>
+                                </li>
+                            }
+                            @if (pageNumber + 3 < totalPages)
+                            {
+                                <li class="page-item paper_pagination_item">
+                                    <a class="page-link paper_pagination_a" asp-action="Users" asp-route-sortBy="@sortBy" asp-route-sortOrder="@sortOrder"
+                                       asp-route-pageNumber="@totalPages" asp-route-pageSize="@pageSize">@totalPages</a>
+                                </li>
+                            }
+                            <li class="page-item @(pageNumber == totalPages ? "disabled paper_pagination_btn_down_up_op" : "") paper_pagination_item">
+                                <a class="page-link paper_pagination_btn_down_up" asp-action="Users" asp-route-sortBy="@sortBy" asp-route-sortOrder="@sortOrder"
+                                   asp-route-pageNumber="@(pageNumber + 1)" asp-route-pageSize="@pageSize">
+                                    Далее <img class="paper_pagination_img_rigth" src="~/icons/right.svg" />
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            }
+        </div>
+        <div id="overlay" style="display: none;">
+            <div class="spinner-border text-light" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+        @* <div class="toast-container position-fixed top-0 end-0">
+            <div id="toastSuccesDeleteUser" class="toast toas_content_details" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="d-flex toast_succec_details">
+                    <div class="toast-body">
+                    </div>
+                </div>
+            </div>
+        </div> *@
+        <div class="toast-container position-fixed top-0 end-0">
+            <div id="toastSuccesChangeNotify" class="toast toas_content_details" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="d-flex toast_succec_details">
+                    <div class="toast-body">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="toast-container position-fixed top-0 end-0">
+            <div id="toastFailNotify" class="toast toas_content_details" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="d-flex toast_fail_details">
+                    <div class="toast-body">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="toast-container position-fixed top-0 end-0">
+            <div id="toastSuccesChangeIgnoredUser" class="toast toas_content_details" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="d-flex toast_succec_details">
+                    <div class="toast-body">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="toast-container position-fixed top-0 end-0">
+            <div id="toastSuccesChangeRole" class="toast toas_content_details" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="d-flex toast_succec_details">
+                    <div class="toast-body">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="toast-container position-fixed top-0 end-0">
+            <div id="toastFail" class="toast toas_content_details" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="d-flex toast_fail_details">
+                    <div class="toast-body">
+                        Что-то пошло не так, попробуйте еще раз
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>
+
+<script>
+    $(document).ready(function () {
+        $('.toast').toast({
+            delay: 3000
+        });
+
+        $('.sortable').click(function () {
+            var sortBy = $(this).data('column');
+            changeSortOrder(sortBy);
+        });
+
+        function changeSortOrder(sortBy, request) {
+            var currentSortOrder = '@ViewBag.SortOrder';
+            var newSortOrder = (sortBy === '@ViewBag.SortBy' && currentSortOrder === 'asc') ? 'desc' : 'asc';
+            var url = '@Url.Action("Users", "Admin")' + '?sortBy=' + sortBy + '&sortOrder=' + newSortOrder +
+                '&pageNumber=' + '1' + '&pageSize=' + '@ViewBag.PageSize';
+            window.location.href = url;
+        }
+    });
+
+    function ChangeRole(userUid, isChecked) {
+        $('#overlay').show();
+        $.ajax({
+            url: '@Url.Action("AddOrDelToAdminList", "Admin")',
+            method: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify({ UserUid: userUid, IsAdmin: isChecked }),
+            success: function (data) {
+                if (data.status === 'Success') {
+                    $('#toastSuccesChangeRole .toast-body').text('Права доступа для пользователя ' + data.fio + ' изменены');
+                    $('#toastSuccesChangeRole').toast('show');
+                    //window.location.reload();
+                } else {
+                    $('#toastFail').toast('show');
+                    //window.location.reload();
+                }
+            },
+            error: function (xhr, textStatus, errorThrown) {
+                console.error('Ошибка при выполнении запроса: ' + textStatus);
+            }
+        });
+        setTimeout(function () {
+            window.location.reload();
+        }, 1500);
+    }
+
+    function ChangeIgnoredUsder(userUid) {
+        $('#overlay').show();
+        $.ajax({
+            url: '@Url.Action("AddOrDelToIgnoreList", "Admin")',
+            method: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(userUid),
+            success: function (data) {
+                if (data.status === 'Success') {
+                    $('#toastSuccesChangeIgnoredUser .toast-body').text('Пользователь ' + data.fio + ' ' + data.action);
+                    $('#toastSuccesChangeIgnoredUser').toast('show');
+                    // window.location.reload();
+                } else {
+                    $('#toastFail').toast('show');
+                    //window.location.reload();
+                }
+            },
+            error: function (xhr, textStatus, errorThrown) {
+                console.error('Ошибка при выполнении запроса: ' + textStatus);
+            }
+        });
+        setTimeout(function () {
+            window.location.reload();
+        }, 1500);
+    }
+
+    function ChangeNotify(userUid) {
+        $('#overlay').show();
+        $.ajax({
+            url: '@Url.Action("AddOrDelNotify", "Admin")',
+            method: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(userUid),
+            success: function (data) {
+                if (data.status === 'Success') {
+                    $('#toastSuccesChangeNotify .toast-body').text('Оповещения для администратора ' + data.fio + ' ' + data.action);
+                    $('#toastSuccesChangeNotify').toast('show');
+                    //window.location.reload();
+                } else {
+                    $('#toastFail').toast('show');
+                    //window.location.reload();
+                }
+            },
+            error: function (xhr, textStatus, errorThrown) {
+                console.error('Ошибка при выполнении запроса: ' + textStatus);
+            }
+        });
+        setTimeout(function () {
+            window.location.reload();
+        }, 1500);
+    }
+    
+    function ErrNotify(userName){
+        $('#overlay').show();
+        $('#toastFailNotify .toast-body').text('Пользователь ' + userName + ' не является администратором');
+        $('#toastFailNotify').toast('show');
+        setTimeout(function () {
+            window.location.reload();
+        }, 1500);
+    }
+
+    // function DeleteUser(userUid) {
+    //     $.ajax({
+    //         url: '@Url.Action("DeleteUser", "Admin")',
+    //         method: 'POST',
+    //         contentType: 'application/json',
+    //         data: JSON.stringify(userUid),
+    //         success: function (data) {
+    //             if (data.status === 'Success') {
+    //                 $('#overlay').show();
+    //                 $('#toastSuccesDeleteUser .toast-body').text('Пользователь ' + data.fio + ' удален');
+    //                 $('#toastSuccesDeleteUser').toast('show');
+    //                 setTimeout(function () {
+    //                     window.location.reload();
+    //                 }, 1500);
+    //             } else {
+    //                 $('#toastFail').toast('show');
+    //                 window.location.reload();
+    //             }
+    //         },
+    //         error: function (xhr, textStatus, errorThrown) {
+    //             console.error('Ошибка при выполнении запроса: ' + textStatus);
+    //         }
+    //     });
+    // }
+    
+</script>

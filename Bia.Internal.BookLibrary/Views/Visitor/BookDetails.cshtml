@@ -1,0 +1,794 @@
+﻿@using Remotion.Linq.Parsing.Structure.IntermediateModel
+@model BookDetailsViewModel;
+@{
+    ViewData["Title"] = Model.Book.Title;
+}
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-avatar@latest/dist/avatar.min.css" rel="stylesheet">
+<link href="~/css/reviews.css" rel="stylesheet" />
+<link href="~/css/avatars.css" rel="stylesheet" />
+<script src="~/js/books_details.js"></script>
+
+<section class="main_section">
+    @* <section class="container-fluid"> *@
+    <section class="container">
+        <div class="row">
+            <div class="breadcrumb_control">
+                <nav>
+                    <ol class="breadcrumb breadcrumb_conteiner">
+                        <li class="breadcrumb-item breadcrumb_link"><a class="" href="@Url.Action("Index","Home")">Главная</a></li>
+                        <li class="breadcrumb-item breadcrumb_text" aria-current="page">Взять книгу</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-8 card_pad">
+                <div class="col-12">
+                    <div>
+                        <div class="books_details_card">
+                            @if (string.IsNullOrEmpty(Model.Book.CoverImage))
+                            {
+                                <img class="img_books_details" src=@Url.Content("~/icons/no_img_book.svg") alt="defult-cover">
+                            }
+                            else
+                            {
+                                <img class="img_books_details" onerror="this.onerror=null;this.src='@Url.Content("~/icons/no_img_book.svg")'" src='@Url.Content("~"+Model.Book.CoverImage)' alt="cover">
+                            }
+                            @* <img class="img_books_details" src="~/icons/no_img_book.svg" /> *@
+                            <div class="books-info-book-container">
+                                <p class="books_details_title">@Model.Book.Title</p>
+                                <p class="books_details_subtutle">
+                                    @string.Join(", ", Model.Book.Authors.Where(a =>
+                                    a.BookId == Model.Book.BiaId).Select(a => a.Author.FullName()))
+                                </p>
+                                <div>
+                                    @switch (Model.Book.AverageRating)
+                                    {
+                                        case (0):
+                                            {
+                                                <div class="star_conteiner_details">
+                                                    <img class="star_img_details" src="~/icons/clear-star.svg" />
+                                                    <img class="star_img_details" src="~/icons/clear-star.svg" />
+                                                    <img class="star_img_details" src="~/icons/clear-star.svg" />
+                                                    <img class="star_img_details" src="~/icons/clear-star.svg" />
+                                                    <img class="star_img_details" src="~/icons/clear-star.svg" />
+                                                </div>
+                                                break;
+
+                                            }
+                                        case (1):
+                                            {
+                                                <div class="star_conteiner_details">
+                                                    <img class="star_img_details" src="~/icons/star.svg" />
+                                                    <img class="star_img_details" src="~/icons/clear-star.svg" />
+                                                    <img class="star_img_details" src="~/icons/clear-star.svg" />
+                                                    <img class="star_img_details" src="~/icons/clear-star.svg" />
+                                                    <img class="star_img_details" src="~/icons/clear-star.svg" />
+                                                </div>
+                                                break;
+                                            }
+                                        case (2):
+                                            {
+                                                <div class="star_conteiner_details">
+                                                    <img class="star_img_details" src="~/icons/star.svg" />
+                                                    <img class="star_img_details" src="~/icons/star.svg" />
+                                                    <img class="star_img_details" src="~/icons/clear-star.svg" />
+                                                    <img class="star_img_details" src="~/icons/clear-star.svg" />
+                                                    <img class="star_img_details" src="~/icons/clear-star.svg" />
+                                                </div>
+                                                break;
+                                            }
+                                        case (3):
+                                            {
+                                                <div class="star_conteiner_details">
+                                                    <img class="star_img_details" src="~/icons/star.svg" />
+                                                    <img class="star_img_details" src="~/icons/star.svg" />
+                                                    <img class="star_img_details" src="~/icons/star.svg" />
+                                                    <img class="star_img_details" src="~/icons/clear-star.svg" />
+                                                    <img class="star_img_details" src="~/icons/clear-star.svg" />
+                                                </div>
+                                                break;
+                                            }
+                                        case (4):
+                                            {
+                                                <div class="star_conteiner_details">
+                                                    <img class="star_img_details" src="~/icons/star.svg" />
+                                                    <img class="star_img_details" src="~/icons/star.svg" />
+                                                    <img class="star_img_details" src="~/icons/star.svg" />
+                                                    <img class="star_img_details" src="~/icons/star.svg" />
+                                                    <img class="star_img_details" src="~/icons/clear-star.svg" />
+                                                </div>
+                                                break;
+                                            }
+                                        case (5):
+                                            {
+                                                <div class="star_conteiner_details">
+                                                    <img class="star_img_details" src="~/icons/star.svg" />
+                                                    <img class="star_img_details" src="~/icons/star.svg" />
+                                                    <img class="star_img_details" src="~/icons/star.svg" />
+                                                    <img class="star_img_details" src="~/icons/star.svg" />
+                                                    <img class="star_img_details" src="~/icons/star.svg" />
+                                                </div>
+                                                break;
+                                            }
+                                    }
+                                </div>
+                                <div>
+                                    <div class="books_info_details">
+                                        <p class="books_info_text_main_details">Категории</p>
+                                        <p class="books_info_text_details">
+                                            @string.Join(", ", Model.Book.Cathegories
+                                            .Where(a => a.BookId == Model.Book.BiaId)
+                                            .Select(a => char.ToUpper(a.Category.CategoryName[0]) + a.Category.CategoryName.Substring(1).ToLower()))
+
+                                        </p>
+                                    </div>
+                                    <div class="books_info_details">
+                                        <p class="books_info_text_main_details">Подзаголовок</p>
+                                        <p class="books_info_text_details">@Model.Book.Subtitle</p>
+                                    </div>
+                                    <div class="books_info_details">
+                                        <p class="books_info_text_main_details">Год</p>
+                                        <p class="books_info_text_details">@Model.Book.Year</p>
+                                    </div>
+                                    <div class="books_info_details">
+                                        <p class="books_info_text_main_details">Язык</p>
+                                        <p class="books_info_text_details">@(Model.Book.Language == Bia.Internal.BookLibrary.Data.LanguageId.Eng ? "Английский" : "Русский") </p>
+                                    </div>
+                                    <div class="books_info_details">
+                                        <p class="books_info_text_main_details">Стр.</p>
+                                        <p class="books_info_text_details">@Model.Book.Pages</p>
+                                    </div>
+                                    @* <div class="books_info_details">
+                                    <p class="books_info_text_main_details">Isbn</p>
+                                    <p class="books_info_text_details">@Model.Book.Isbn</p>
+                                    </div> *@
+                                </div>
+                                <div class="btn_conteiner">
+                                    @if (Model.Book.TakenByUser != null || Model.Book.ReqestBooks.Any())
+                                    {
+
+                                        @* <button type="button" class="btn btn-bia-access_details">Недоступна до @Model.ReturnDate.Value.ToString("dd.MM.yyyy")</button> *@
+                                        <button type="button" class="btn btn-bia-access_details">
+                                            Недоступна
+                                            @(Model.ReturnDate == null ? string.Empty : "до " + Model.ReturnDate.Value.ToString("dd.MM.yyyy"))
+                                        </button>
+                                        @* <button type="button" class="btn btn-bia-find_details">Узнать о поступлении</button> *@
+                                    }
+                                    else
+                                    {
+                                        <button id="requestBtn" type="button" class="btn btn-bia-request_details" data-bs-toggle="modal"
+                                                data-bs-target="#requestBookModal">
+                                            Запросить книгу
+                                        </button>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="reviews-card">
+                            <ul class="nav nav-underline nav-tabs-custom" id="tab" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link active" id="home-tab" data-bs-toggle="tab"
+                                       data-bs-target="#home-tab-pane" role="tab"
+                                       aria-controls="home-tab-pane" aria-selected="true">Описание</a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    @if (Model.Book.Reviews.Where(r => r.BookId == Model.Book.BiaId).ToList().Count > 0)
+                                    {
+                                        <a class="nav-link" id="profile-tab" data-bs-toggle="tab"
+                                           data-bs-target="#profile-tab-pane" role="tab"
+                                           aria-controls="profile-tab-pane"
+                                           aria-selected="false">Отзывы (@Model.Book.Reviews.Where(r => r.BookId == Model.Book.BiaId).ToList().Count)</a>
+                                    }
+                                    else
+                                    {
+                                        <a class="nav-link" id="profile-tab" data-bs-toggle="tab"
+                                           data-bs-target="#profile-tab-pane" role="tab"
+                                           aria-controls="profile-tab-pane"
+                                           aria-selected="false">Отзывы (0)</a>
+                                    }
+                                </li>
+                            </ul>
+                            <div class="tab-content" id="tabContent">
+                                <div class="tab-pane fade show active book_descriptions_details" id="home-tab-pane" role="tabpanel"
+                                     aria-labelledby="home-tab" tabindex="0">
+                                    @Model.Book.Annotation
+                                </div>
+                                <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="1">
+                                    <div>
+                                        @if (Model.Book.Reviews.Where(r => r.BookId == Model.Book.BiaId).ToList().Count > 0)
+                                        {
+                                            @foreach (var rev in Model.Book.Reviews.Where(r => r.BookId == Model.Book.BiaId).ToList())
+                                            {
+                                                <div class="revies-header-container">
+                                                    <div class="avatar-container">
+                                                        @* bg-secondary *@
+                                                        <span class="avatar avatar-38 text-white rounded-circle text-vatar bg-random">@rev.RatedBy.FirstName[0]@rev.RatedBy.LastName[0]</span>
+                                                        <p class="fulName">@rev.RatedBy.FullName</p>
+                                                    </div>
+                                                    @switch (rev.Rating)
+                                                    {
+                                                        case (0):
+                                                            {
+                                                                <div class="star_conteiner_details">
+                                                                    <img class="star_img_details" src="~/icons/clear-star.svg" />
+                                                                    <img class="star_img_details" src="~/icons/clear-star.svg" />
+                                                                    <img class="star_img_details" src="~/icons/clear-star.svg" />
+                                                                    <img class="star_img_details" src="~/icons/clear-star.svg" />
+                                                                    <img class="star_img_details" src="~/icons/clear-star.svg" />
+                                                                </div>
+                                                                break;
+
+                                                            }
+                                                        case (1):
+                                                            {
+                                                                <div class="star_conteiner_details">
+                                                                    <img class="star_img_details" src="~/icons/star.svg" />
+                                                                    <img class="star_img_details" src="~/icons/clear-star.svg" />
+                                                                    <img class="star_img_details" src="~/icons/clear-star.svg" />
+                                                                    <img class="star_img_details" src="~/icons/clear-star.svg" />
+                                                                    <img class="star_img_details" src="~/icons/clear-star.svg" />
+                                                                </div>
+                                                                break;
+                                                            }
+                                                        case (2):
+                                                            {
+                                                                <div class="star_conteiner_details">
+                                                                    <img class="star_img_details" src="~/icons/star.svg" />
+                                                                    <img class="star_img_details" src="~/icons/star.svg" />
+                                                                    <img class="star_img_details" src="~/icons/clear-star.svg" />
+                                                                    <img class="star_img_details" src="~/icons/clear-star.svg" />
+                                                                    <img class="star_img_details" src="~/icons/clear-star.svg" />
+                                                                </div>
+                                                                break;
+                                                            }
+                                                        case (3):
+                                                            {
+                                                                <div class="star_conteiner_details">
+                                                                    <img class="star_img_details" src="~/icons/star.svg" />
+                                                                    <img class="star_img_details" src="~/icons/star.svg" />
+                                                                    <img class="star_img_details" src="~/icons/star.svg" />
+                                                                    <img class="star_img_details" src="~/icons/clear-star.svg" />
+                                                                    <img class="star_img_details" src="~/icons/clear-star.svg" />
+                                                                </div>
+                                                                break;
+                                                            }
+                                                        case (4):
+                                                            {
+                                                                <div class="star_conteiner_details">
+                                                                    <img class="star_img_details" src="~/icons/star.svg" />
+                                                                    <img class="star_img_details" src="~/icons/star.svg" />
+                                                                    <img class="star_img_details" src="~/icons/star.svg" />
+                                                                    <img class="star_img_details" src="~/icons/star.svg" />
+                                                                    <img class="star_img_details" src="~/icons/clear-star.svg" />
+                                                                </div>
+                                                                break;
+                                                            }
+                                                        case (5):
+                                                            {
+                                                                <div class="star_conteiner_details">
+                                                                    <img class="star_img_details" src="~/icons/star.svg" />
+                                                                    <img class="star_img_details" src="~/icons/star.svg" />
+                                                                    <img class="star_img_details" src="~/icons/star.svg" />
+                                                                    <img class="star_img_details" src="~/icons/star.svg" />
+                                                                    <img class="star_img_details" src="~/icons/star.svg" />
+                                                                </div>
+                                                                break;
+                                                            }
+                                                    }
+                                                </div>
+                                                <div>
+                                                    <p class="reviews-text">@rev.Text</p>
+                                                </div>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <div class="highlighted-text">
+                                                <span class="main-text">Здесь пока ничего нет</span>
+                                                <span class="sub-text">Будьте первым</span>
+                                            </div>
+                                        }
+                                        <div class="review-container-add">
+                                            <div class="recall-container">
+                                                <div class="recall-text">
+                                                    Ваш отзыв
+                                                </div>
+                                                <div id="star_container_details" class="star_conteiner_details">
+                                                    <img class="star_img_details reviews-star" src="~/icons/clear-star.svg" data-value="1" />
+                                                    <img class="star_img_details reviews-star" src="~/icons/clear-star.svg" data-value="2" />
+                                                    <img class="star_img_details reviews-star" src="~/icons/clear-star.svg" data-value="3" />
+                                                    <img class="star_img_details reviews-star" src="~/icons/clear-star.svg" data-value="4" />
+                                                    <img class="star_img_details reviews-star" src="~/icons/clear-star.svg" data-value="5" />
+                                                    <input type="hidden" id="reviewRating" />
+                                                </div>
+                                            </div>
+                                            <div class="position-relative">
+                                                <textarea class="form-control" placeholder="Комментарий" id="txtBoxReviews"></textarea>
+                                                <div id="lblReviews" class="floatingLabel">Комментарий</div>
+                                            </div>
+                                        </div>
+                                        <button id="btnAddReview" class="btn btn-bia-add-review" disabled onclick="addReview(@Model.Book.BiaId, '@User.Identity.Name.Replace("DELLIN\\", "")')">Отправить</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="request-main col-4">
+                <div class="col-12">
+                    @if (Model.UserRole != null && Model.UserRole == "Admin")
+                    {
+                        <div class="admin-card">
+                            <div class="admin-header">
+                                Хранитель библиотеки
+                            </div>
+                            <a href="@Url.Action("Requests","Admin", new { sortBy = "id", sortOrder = "asc",
+                           pageNumber = 1, pageSize = 50 })" class="admin_control_elem">
+                                <div>
+                                    <img class="admin_img" src="~/icons/time_request.svg" />
+                                    Запрошенные книги
+                                </div>
+                                <div>
+                                    <img src="~/icons/shevron_admin.svg" />
+                                </div>
+                            </a>
+                            <a href="@Url.Action("TakenBooks","Admin", new { sortBy = "id", sortOrder = "asc",
+                           pageNumber = 1, pageSize = 50 })" class="admin_control_elem">
+                                <div>
+                                    <img class="admin_img" src="~/icons/issued_books_admin.svg" />
+                                    Выданные книги
+                                </div>
+                                <div>
+                                    <img src="~/icons/shevron_admin.svg" />
+                                </div>
+                            </a>
+                            <a href="@Url.Action("Manage","Admin", new { sortBy = "title", sortOrder = "asc",
+                           pageNumber = 1, pageSize = 50 })" class="admin_control_elem">
+                                <div>
+                                    <img class="admin_img" src="~/icons/book_management_admin.svg" />
+                                    Управление книгами
+                                </div>
+                                <div>
+                                    <img src="~/icons/shevron_admin.svg" />
+                                </div>
+                            </a>
+                            <a href="@Url.Action("Authors","Admin", new { sortBy = "title", sortOrder = "asc",
+                           pageNumber = 1, pageSize = 50 })" class="admin_control_elem">
+                                <div>
+                                    <img class="admin_img" src="~/icons/autors_admin.svg" />
+                                    Авторы
+                                </div>
+                                <div>
+                                    <img src="~/icons/shevron_admin.svg" />
+                                </div>
+                            </a>
+                            <a href="@Url.Action("Categories", "Admin", new { sortBy = "id", sortOrder = "asc",
+                           pageNumber = 1, pageSize = 50 })" class="admin_control_elem">
+                                <div>
+                                    <img class="admin_img" src="~/icons/categories_admin.svg" />
+                                    Категории
+                                </div>
+                                <div>
+                                    <img src="~/icons/shevron_admin.svg" />
+                                </div>
+                            </a>
+                            <a href="@Url.Action("Reviews","Admin", new { sortBy = "id", sortOrder = "asc",
+                           pageNumber = 1, pageSize = 50 })" class="admin_control_elem">
+                                <div>
+                                    <img class="admin_img" src="~/icons/review_admin.svg" />
+                                    Отзывы
+                                </div>
+                                <div>
+                                    <img src="~/icons/shevron_admin.svg" />
+                                </div>
+                            </a>
+                            <a href="@Url.Action("Users","Admin", new { sortBy = "title", sortOrder = "asc",
+                           pageNumber = 1, pageSize = 50 })" class="admin_control_elem">
+                                <div>
+                                    <img class="admin_img" src="~/icons/users_admin.svg" />
+                                    Пользователи
+                                </div>
+                                <div>
+                                    <img src="~/icons/shevron_admin.svg" />
+                                </div>
+                            </a>
+                        </div>
+                    }
+                    <div class="requests my-requests-card">
+                        <div class="my-requests-title">
+                            <div class="cards-list__title_text">Мои запросы</div>
+                            <div class="cards-list__title_text_link">
+                                @if (Model.RequestBooksByUser.Count > 0 || Model.ReadBooksByUser.Count > 0)
+                                {
+                                    <a href="@Url.Action("MyRequest", "Account", new { sortBy = "id", sortOrder = "asc",
+                                                pageNumber = 1, pageSize = 50, selectedRequest = "Все" })">
+                                        @if (Model.RequestAndReadBooksCount > 0)
+                                        {
+                                            <text>Все (@Model.RequestAndReadBooksCount)</text>
+                                        }
+                                        else
+                                        {
+                                            <text>Все</text>
+                                        }
+                                    </a>
+                                }
+                            </div>
+                        </div>
+                        @if (Model.RequestBooksByUser.Count > 0 || Model.ReadBooksByUser.Count > 0)
+                        {
+                            @if (Model.RequestBooksByUser.Count > 0)
+                            {
+                                <div class="requests-block">
+                                    <p class="requests-block__title">Запросил</p>
+                                    @foreach (var request in Model.RequestBooksByUser.Take(2))
+                                    {
+                                        <div class="requests-block__item">
+                                            @if (string.IsNullOrEmpty(request.Book.CoverImage))
+                                            {
+                                                <img class="requests-block__item-img" src=@Url.Content("~/icons/no_img_book.svg") alt="defult-cover">
+                                            }
+                                            else
+                                            {
+                                                <img class="requests-block__item-img" onerror="this.onerror=null;this.src='@Url.Content("~/icons/no_img_book.svg")'" src='@Url.Content("~"+request.Book.CoverImage)' alt="cover">
+                                            }
+                                            @* <img src="~/icons/no_img_book.svg" class="requests-block__item-img"> *@
+                                            <div class="tooltip__underline" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                                 data-bs-custom-class="custom-tooltip" data-html="true"
+                                                 data-bs-title="@($"{request.Book.Title}: {string.Join(", ", request.Book.Authors.Where(a => a.BookId == request.Book.BiaId).Select(a => a.Author.FullName()))}")">
+                                                <div class="requests-block__item-text">
+                                                    <span class="requests-block__item-title text-truncate-two-line" onclick="redirectToBook(@request.BookId)">
+                                                        @* @(request.Book.Title.Length > 20 ? request.Book.Title.Substring(0, 20) + "..." : request.Book.Title) *@
+                                                        @request.Book.Title
+                                                    </span>
+                                                    <p class="requests-block__item-description text-truncate-one-line" onclick="redirectToBook(@request.BookId)">
+                                                        @string.Join(", ", request.Book.Authors.Where(a => a.BookId == request.Book.BiaId).Select(a => a.Author.FullName()))
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            }
+                            @if (Model.ReadBooksByUser.Count > 0)
+                            {
+                                <div class="reads-block">
+                                    <p class="reads-block__title">Читаю</p>
+                                    @foreach (var read in Model.ReadBooksByUser.Take(2))
+                                    {
+                                        <div class="reads-block__item">
+                                            @if (string.IsNullOrEmpty(read.TakenBook.CoverImage))
+                                            {
+                                                <img class="reads-block__item-img" src=@Url.Content("~/icons/no_img_book.svg") alt="defult-cover">
+                                            }
+                                            else
+                                            {
+                                                <img class="reads-block__item-img" onerror="this.onerror=null;this.src='@Url.Content("~/icons/no_img_book.svg")'" src='@Url.Content("~"+read.TakenBook.CoverImage)' alt="cover">
+                                            }
+                                            @* <img src="~/icons/no_img_book.svg" class="reads-block__item-img"> *@
+                                            <div class="tooltip__underline" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                                 data-bs-custom-class="custom-tooltip" data-html="true"
+                                                 data-bs-title="@($"{read.TakenBook.Title}: {string.Join(", ", read.TakenBook.Authors.Where(a => a.BookId == read.TakenBook.BiaId).Select(a => a.Author.FullName()))}")">
+                                                <div class="reads-block__item-text">
+                                                    <span class="reads-block__item-title text-truncate-two-line" onclick="redirectToBook(@read.TakenBook.BiaId)">
+                                                        @* @(read.TakenBook.Title.Length > 20 ? read.TakenBook.Title.Substring(0, 20) + "..." : read.TakenBook.Title) *@
+                                                        @read.TakenBook.Title
+                                                    </span>
+                                                    <p class="reads-block__item-description" onclick="redirectToBook(@read.TakenBook.BiaId)">
+                                                        До @read.ExtendedDueDate.Date.ToString("dd.MM.yyyy")
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            }
+                        }
+                        else
+                        {
+                            <img class="empty-request-img" src="~/icons/emptyRequest.svg" />
+                        }
+                    </div>
+                    @* <div class="alpina">
+                    <a class="nav-link aplina_link" href="https://dellin.alpinadigital.ru/" role="button" aria-expanded="false">
+                    <img class="alpina-img" src="~/icons/headphones.svg" />
+                    </a>
+                    </div> *@
+                    <partial name="~/Views/Home/faq.cshtml" />
+                    @* <div class="faq-content">
+                    <div class="faq">
+                    <details class="faq-card">
+                    <summary class="faq-card-title">Как взять книгу</summary>
+                    <ul>
+                    <li>
+                    из подборки на <a class="faq-a" href="@Url.Action("Index", "Home")">главной странице</a>
+                    или через переход в карточку книги;
+                    </li>
+                    <li>из каталога.</li>
+                    </ul>
+                    Книга выдается на 1 месяц
+                    с возможностью продления (через раздел <a class="faq-a" href="@Url.Action("MyRequest", "Account", new { sortBy = "id", sortOrder = "asc",
+                    pageNumber = 1, pageSize = 50, selectedRequest = "Все" })">Мои запросы</a>).
+                    </details>
+                    <details class="faq-card">
+                    <summary class="faq-card-title">Как отменить заявку</summary>
+                    Если вы еще не получили книгу, отменить заявку можно в разделе <br />
+                    <a class="faq-a" href="@Url.Action("MyRequest", "Account", new { sortBy = "id", sortOrder = "asc",
+                    pageNumber = 1, pageSize = 50, selectedRequest = "Все" })">Мои запросы</a>.
+                    </details>
+                    <details class="faq-card">
+                    <summary class="faq-card-title">Какие книги числятся за мной</summary>
+                    Книги которые вы получили в библиотеке, можно найти в разделе <br />
+                    <a class="faq-a" href="@Url.Action("MyRequest", "Account", new { sortBy = "id", sortOrder = "asc",
+                    pageNumber = 1, pageSize = 50, selectedRequest = "Все" })">Мои запросы</a>.
+                    </details>
+                    <details class="faq-card">
+                    <summary class="faq-card-title">Как вернуть книгу</summary>
+                    Сдайте книгу на ресепшен и в разделе  <a class="faq-a" href="@Url.Action("MyRequest", "Account", new { sortBy = "id", sortOrder = "asc",
+                    pageNumber = 1, pageSize = 50, selectedRequest = "Все" })">Мои запросы</a> нажмите на ✔️, чтобы сообщить администратору о сдаче книги.
+                    <br />
+                    <br />
+                    Незабудьте оценить книгу и оставить отзыв.
+                    </details>
+                    <details class="faq-card">
+                    <summary class="faq-card-title">Хочу оставить отзыв</summary>
+                    Отзыв можно оставить в любой момент из разделов:
+                    <ul>
+                    <li>
+                    <a class="faq-a" href="@Url.Action("MyRequest", "Account", new { sortBy = "id", sortOrder = "asc",
+                    pageNumber = 1, pageSize = 50, selectedRequest = "Все" })">Мои запросы</a>, нажав на 💬;
+                    </li>
+                    <li>
+                    из карточки книги в блоке
+                    с комментариями;
+                    </li>
+                    <li>из письма после возврата книги.</li>
+                    </ul>
+                    </details>
+                    <details class="faq-card">
+                    <summary class="faq-card-title">Что, если книга уже занята</summary>
+                    Книга будет находиться в статусе «Недоступна до (дата возврата книги в библиотеку)».
+                    Дождитесь, пока книга вернется в библиотеку. Срок выдачи книги – 1 месяц.
+                    </details>
+                    <details class="faq-card">
+                    <summary class="faq-card-title">Хочу передать свою книгу в библиотеку</summary>
+                    В библиотеку можно передать книгу, если она подходит под условия:
+                    <ul>
+                    <li>
+                    профессиональная литература (например, информационные технологии, личная эффективность и пр.);
+                    </li>
+                    <li>
+                    нехудожественная литература (не подходят романы, пьесы, поэзия и тд.);
+                    </li>
+                    <li>
+                    в отличном состоянии (нет порванных страниц, загрязнений, разрисованных страниц, следов взаимодействия с водой и тд.);
+                    </li>
+                    <li>
+                    содержат актуальную информацию (например, современные, используемые методологии программирования);
+                    </li>
+                    <li>
+                    на русском или английском языке.
+                    </li>
+                    </ul>
+                    Заполните форму заявки:
+                    <ul>
+                    <li>
+                    в поле «Я хочу» выберите «принести книгу в библиотеку»;
+                    </li>
+                    <li>
+                    в поле «Описание» укажите основные сведения о книге, например, название, автор, год издания, номер издания (если есть) и язык.
+                    </li>
+                    </ul>
+                    Когда запрос будет обработан, на почту придет письмо. Передайте книгу в Отдел обучения и развития персонала.
+                    </details>
+                    </div>
+                    </div> *@
+                </div>
+            </div>
+        </div>
+        <div class="toast-container position-fixed top-0 end-0">
+            <div id="toastSucces" class="toast toas_content_details" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="d-flex toast_succec_details">
+                    <div class="toast-body">
+                        Запрос отправлен
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="toast-container position-fixed top-0 end-0">
+            <div id="toastFail" class="toast toas_content_details" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="d-flex toast_fail_details">
+                    <div class="toast-body">
+                        Что-то пошло не так, попробуйте еще раз
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="toast-container position-fixed top-0 end-0">
+            <div id="toastSuccesAddReview" class="toast toas_content_details" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="d-flex toast_succec_details">
+                    <div class="toast-body">
+                        Ваш отзыв опубликован
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>
+
+<div class="modal fade" id="requestBookModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content boks_modal_content_details">
+            <div>
+                <div class="modal-header books_modal_details">
+                    <p class="modal-title books_modal_header_details" id="staticBackdropLabel">Подтвердите бронь книги</p>
+                    <button id="btnClose" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+                </div>
+                <div class="modal-body books_modal_body_details">
+                    @if (string.IsNullOrEmpty(Model.Book.CoverImage))
+                    {
+                        <img class="img_books_modal_details" src=@Url.Content("~/icons/no_img_book.svg") alt="defult-cover">
+                    }
+                    else
+                    {
+                        <img class="img_books_modal_details" onerror="this.onerror=null;this.src='@Url.Content("~/icons/no_img_book.svg")'" src='@Url.Content("~"+Model.Book.CoverImage)' alt="cover">
+                    }
+                    @* <img class="img_books_modal_details" src="~/icons/no_img_book.svg" /> *@
+                    <div>
+                        <p class="books_details_title books_modal_text_details text-truncate-two-line">@Model.Book.Title</p>
+                        <p class="books_details_subtutle text-truncate-two-line">
+                            @(string.Join(", ", Model.Book.Authors.Where(a =>
+                                a.BookId == Model.Book.BiaId).Select(a => a.Author.FullName())))
+                        </p>
+                    </div>
+                </div>
+                <div class="modal-footer books_modal_details boks_modal_futer_btn_details col-6 mx-auto">
+                    <button id="requestBookBtn" type="button" class="btn btn-bia-request_details"
+                            data-content="@Model.Book.BiaId" data-name="@Model.Book.Title">
+                        Запросить книгу
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            let permanentRating = 0;
+            //
+            var activeTab = localStorage.getItem('activeTab');
+            if (activeTab) {
+                $('.nav-link').removeClass('active');
+                $('.tab-pane').removeClass('show active');
+
+                // Активируем таб
+                $('[data-bs-target="' + activeTab + '"]').addClass('active');
+                $(activeTab).addClass('show active');
+
+                // Удаляем значение из localStorage
+                localStorage.removeItem('activeTab');
+            }
+            //
+            function getRandomColor() {
+                const letters = '0123456789ABCDEF';
+                let color = '#';
+                for (let i = 0; i < 6; i++) {
+                    color += letters[Math.floor(Math.random() * 16)];
+                }
+                return color;
+            }
+
+            $('.bg-random').each(function () {
+                $(this).css('background-color', getRandomColor());
+            });
+            //
+
+            $('#star_container_details .star_img_details').click(function () {
+                var rating = $(this).data('value');
+                if (permanentRating === rating) {
+                    permanentRating = 0;
+                    $('#reviewRating').val('');
+                    highlightStars(0);
+                } else {
+                    // Устанавливаем новый рейтинг
+                    permanentRating = rating;
+                    $('#reviewRating').val(rating);
+                    highlightStars(rating);
+                }
+            });
+
+            $('#star_container_details .star_img_details').mouseover(function () {
+                var rating = $(this).data('value');
+                highlightStars(rating);
+            });
+
+            $('#star_container_details .star_img_details').mouseout(function () {
+                highlightStars(permanentRating);
+            });
+
+            function highlightStars(rating) {
+                $('#star_container_details .star_img_details').each(function () {
+                    var starValue = $(this).data('value');
+                    if (starValue <= rating) {
+                        $(this).attr('src', '/icons/star.svg');
+                    } else {
+                        $(this).attr('src', '/icons/clear-star.svg');
+                    }
+                });
+            }
+            //
+            var txtBoxReviews = $('#txtBoxReviews');
+            var lblReviews = $('#lblReviews');
+
+            txtBoxReviews.on('input', function () {
+                $(this).css('height', 'auto');
+                $(this).css('height', this.scrollHeight + 'px');
+            });
+
+            txtBoxReviews.css('height', $('#txtBoxReviews')[0].scrollHeight + 'px');
+
+            txtBoxReviews.on('focus', function () {
+                if ($('.was-validated').length) {
+                    $('.needs-validation-add').removeClass('was-validated')
+                }
+                txtBoxReviews.attr('placeholder', '');
+                lblReviews.css('display', 'block');
+                lblReviews.css('color', '#2A74DA');
+                txtBoxReviews.css('border-color', '#2A74DA')
+            });
+
+            txtBoxReviews.on('blur', function () {
+                txtBoxReviews.attr('placeholder', lblReviews.text());
+                if (txtBoxReviews.val()) {
+                    lblReviews.css('color', '#7D7D7D');
+                    txtBoxReviews.css('border-color', '#CACACA')
+                } else {
+                    lblReviews.css('display', 'none');
+                    txtBoxReviews.css('border-color', '#CACACA')
+                }
+            });
+
+            txtBoxReviews.on('input', function () {
+                var commentText = $(this).val().trim();
+                if (commentText.length > 0) {
+                    $('#btnAddReview').prop('disabled', false);
+                } else {
+                    $('#btnAddReview').prop('disabled', true);
+                }
+            });
+        });
+
+        function addReview(bookId, login) {
+            $('#btnAddReview').prop('disabled', true);
+            localStorage.setItem('activeTab', '#profile-tab-pane');
+            var comment = $('#txtBoxReviews').val();
+            var rating = $('#reviewRating').val();
+            $.ajax({
+                url: '@Url.Action("AddReview", "Visitor")',
+                method: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify({ BookId: bookId, Review: comment, Rating: rating, Login: login }),
+                success: function (response) {
+                    if (response.status === 'Success') {
+                        $('#toastSuccesAddReview').toast('show');
+                        setTimeout(function () {
+                            window.location.reload();
+                        }, 700);
+                    } else {
+                        $('#toastFail').toast('show');
+                    }
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    console.error('Ошибка при выполнении запроса: ' + textStatus);
+                }
+            });
+        }
+    </script>
+}

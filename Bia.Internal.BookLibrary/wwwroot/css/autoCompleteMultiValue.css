@@ -1,0 +1,394 @@
+﻿/*:root {
+    --input-focus-border-color: rgba(0, 0, 0, 0);
+    --input-focus-width: 0.2rem;
+    --input-focus-box-shadow: 0 0 0 var(--input-focus-width) var(--input-focus-border-color);
+    --component-active-bg: #D22630;
+    --form-check-input-checked-bg-color: var(--component-active-bg);
+}*/
+
+/*.autocomplete-container {
+    height: 42px;
+}*/
+
+/*.form-check-input:checked {
+    border-color: var(--component-active-bg);
+}
+
+.autocomplete-main {
+    width: 100%;
+}
+
+#autocomplete {
+    border: 1px solid;
+    border-radius: 8px;
+    border-color: #BDBDBD;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;*/
+    /*padding: 10px 16px;*/
+    /*padding: 2px 0.75rem;
+    min-height: 42px;*/
+    /*height: 42px;*/
+/*}
+
+#autocomplete-input {
+    border: none;
+    outline: none;
+    width: 100px;*/
+    /*min-height: 40px;*/
+    /*height: 40px;*/
+    /*padding: 10px 16px;*/
+    /*flex-grow: 1;
+    min-height: 36px;
+    height: 36px;
+    padding: 0px;
+}*/
+
+/*.form-floating{
+    height: 42px;
+}*/
+
+/*.form-floating > .form-control-plaintext:focus,
+.form-floating > .form-control-plaintext:not(:placeholder-shown),
+.form-floating > .form-control:focus,
+.form-floating > .form-control:not(:placeholder-shown) {
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+    .form-floating > .form-control:focus ~ label,
+    .form-floating > .form-control:not(:placeholder-shown) ~ label,
+    .form-floating > .form-select ~ label {
+        transform: scale(.85) translateY(-1.95rem) translateX(0.15rem);
+        color: #7D7D7D;
+    }*/
+
+/*.form-books-floating ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.form-books-floating li {
+    padding: 8px 25px;
+    font-weight: 100;
+}
+
+#autocomplete-suggestions div {
+    padding: 8px;
+    border-radius: 8px;
+    padding: 12px 0px 12px 0px;
+}
+
+.suggestion:hover {
+    background: rgba(234, 238, 245, 0.3);
+    cursor: pointer;
+}
+
+.form-books-floating li.hl {
+    background: rgba(234, 238, 245, 0.3);
+}
+
+.suggestion b {
+    font-weight: 600;
+    color: rgb(255, 0, 0);
+}
+
+.group {
+    padding: 11px;
+    color: #ccc;
+    font-weight: 900;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;*/
+    /*padding: 10px 16px;*/
+/*}
+
+.ac-tag {
+    display: inline-flex;
+    background-color: #F6F6F6;
+    padding: 4px 12px 4px 12px;
+    gap: 8px;
+    border-radius: 4px;
+}*/
+
+/*.form-control:focus {
+    box-shadow: var(--input-focus-box-shadow);
+}*/
+
+/*.lbl-text {
+    color: #7D7D7D;
+    margin-right: 10px;
+}
+
+.form-check-input:checked {
+    background-color: var(--form-check-input-checked-bg-color);
+}
+
+.form-check-input:hover {
+    cursor: pointer;
+}
+
+.nothing-data {
+    display: flex;
+    justify-content: space-between;
+    font-family: Open Sans;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 21.79px;
+    text-align: left;
+    color: #2D2D2D;
+}
+
+.btn-bia-author-categories {
+    font-family: Open Sans;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    text-align: center;
+    border-radius: 8px;
+    padding: 0px 24px;
+    --bs-btn-color: #2D2D2D;
+    --bs-btn-bg: #FFF;
+    --bs-btn-border-color: #2D2D2D;
+    --bs-btn-hover-color: #2D2D2D;
+    --bs-btn-hover-bg: #FFF;
+    --bs-btn-hover-border-color: #2D2D2D;
+}*/
+
+/*:root {
+    --input-focus-border-color: rgba(0, 0, 0, 0);
+    --input-focus-width: 0.2rem;
+    --input-focus-box-shadow: 0 0 0 var(--input-focus-width) var(--input-focus-border-color);
+    --component-active-bg: #D22630;
+    --form-check-input-checked-bg-color: var(--component-active-bg);
+}*/
+
+/*.autocomplete-container {
+    height: 42px;
+}*/
+
+.form-check-input:checked {
+    border-color: var(--component-active-bg);
+}
+
+.autocomplete-main {
+    width: 100%;
+}
+
+/*#autocomplete {
+    border: 1px solid;
+    border-radius: 8px;
+    border-color: #BDBDBD;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    --padding: 10px 16px;
+    padding: 2px 0.75rem;
+    min-height: 42px;
+    --height: 42px;
+}*/
+
+.autocomplete {
+    border: 1px solid;
+    border-radius: 8px;
+    border-color: #BDBDBD;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    /*padding: 10px 16px;*/
+    padding: 2px 0.75rem;
+    min-height: 42px;
+    /*height: 42px;*/
+}
+
+/*#autocomplete-input {
+    border: none;
+    outline: none;
+    width: 100px;
+    --min-height: 40px;
+    --height: 40px;
+    --padding: 10px 16px;
+    flex-grow: 1;
+    min-height: 36px;
+    height: 36px;
+    padding: 0px;
+}*/
+
+.autocomplete-input {
+    border: none;
+    outline: none;
+    width: 100px;
+    /*min-height: 40px;*/
+    /*height: 40px;*/
+    /*padding: 10px 16px;*/
+    flex-grow: 1;
+    min-height: 36px;
+    height: 36px;
+    padding: 0px;
+    /*background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 16px 12px;*/
+}
+
+/*.form-floating{
+    height: 42px;
+}*/
+
+/*.form-floating > .form-control-plaintext:focus,
+.form-floating > .form-control-plaintext:not(:placeholder-shown),
+.form-floating > .form-control:focus,
+.form-floating > .form-control:not(:placeholder-shown) {
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+    .form-floating > .form-control:focus ~ label,
+    .form-floating > .form-control:not(:placeholder-shown) ~ label,
+    .form-floating > .form-select ~ label {
+        transform: scale(.85) translateY(-1.95rem) translateX(0.15rem);
+        color: #7D7D7D;
+    }*/
+
+.form-books-floating ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.form-books-floating li {
+    padding: 8px 25px;
+    font-weight: 100;
+}
+
+/*#autocomplete-suggestions div {
+    padding: 8px;
+    border-radius: 8px;
+    padding: 12px 0px 12px 0px;
+}*/
+
+div .autocomplete-suggestions {
+    /*padding: 8px;*/
+    border-radius: 8px;
+    padding: 12px 0px 12px 0px;
+    box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.25);
+    background-color: #FFF;
+    position: absolute;
+    width: 100%;
+    border: none;
+    max-height: 150px;
+    overflow-y: auto;
+    background: white;
+    z-index: 1000;
+}
+
+div .nothing-data-container {
+    border-radius: 8px;
+    padding: 12px 12px;
+    box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.25);
+    background-color: #FFF;
+    position: absolute;
+    width: 100%;
+    border: none;
+    max-height: 150px;
+    overflow-y: auto;
+    background: white;
+    z-index: 1001;
+}
+
+.autocomplete-suggestions::-webkit-scrollbar {
+    width: 3px;
+    background-color: #FFF;
+}
+
+    .autocomplete-suggestions::-webkit-scrollbar-thumb {
+        background-color: #CACACA;
+        border-radius: 12px;
+    }
+
+.suggestion:hover {
+    background: rgba(234, 238, 245, 0.3);
+    cursor: pointer;
+}
+
+.form-books-floating li.hl {
+    background: rgba(234, 238, 245, 0.3);
+}
+
+.suggestion b {
+    font-weight: 600;
+    /*color: rgb(255, 0, 0);*/
+    color: #414141;
+}
+
+.group {
+    padding: 11px;
+    color: #ccc;
+    font-weight: 900;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    /*padding: 10px 16px;*/
+    padding: 10px 0px;
+}
+
+.ac-tag {
+    display: inline-flex;
+    background-color: #F6F6F6;
+    padding: 4px 12px 4px 12px;
+    gap: 8px;
+    border-radius: 4px;
+    z-index: 5; 
+}
+
+/*.form-control:focus {
+    box-shadow: var(--input-focus-box-shadow);
+}*/
+
+.lbl-text {
+    color: #7D7D7D;
+    margin-right: 10px;
+}
+
+.form-check-input:checked {
+    background-color: var(--form-check-input-checked-bg-color);
+}
+
+.form-check-input:hover {
+    cursor: pointer;
+}
+
+.nothing-data {
+    display: flex;
+    justify-content: space-between;
+    font-family: Open Sans;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 21.79px;
+    text-align: left;
+    color: #2D2D2D;
+}
+
+.btn-bia-author-categories {
+    height: 32px !important;
+    font-family: Open Sans;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    text-align: center;
+    border-radius: 8px;
+    padding: 0px 24px;
+    --bs-btn-color: #2D2D2D;
+    --bs-btn-bg: #FFF;
+    --bs-btn-border-color: #2D2D2D;
+    --bs-btn-hover-color: #2D2D2D;
+    --bs-btn-hover-bg: #FFF;
+    --bs-btn-hover-border-color: #2D2D2D;
+}

@@ -1,0 +1,351 @@
+﻿@using Bia.Internal.BookLibrary.Data;
+@model ReviewsViewModel
+@{
+    ViewData["Title"] = "Отзывы";
+    string sortBy = ViewBag.SortBy;
+    string sortOrder = ViewBag.SortOrder;
+    int pageNumber = ViewBag.PageNumber;
+    int pageSize = ViewBag.PageSize;
+    int totalPages = ViewBag.TotalPages;
+}
+
+<link href="~/css/table_books.css" rel="stylesheet" />
+<link href="~/css/reviews.css" rel="stylesheet" />
+
+<section class="main_section">
+    <section class="container">
+        <div class="row">
+            <div class="breadcrumb_control">
+                <nav>
+                    <ol class="breadcrumb breadcrumb_conteiner">
+                        <li class="breadcrumb-item breadcrumb_link"><a class="" href="@Url.Action("Index","Home")">Главная</a></li>
+                        <li class="breadcrumb-item breadcrumb_text" aria-current="page">Хранитель библиотеки</li>
+                    </ol>
+                </nav>
+                <div class="books_title_btn_control_book">
+                    <a href="@Url.Action("ExportReviewsToExcel", "Admin")" class="books_title_btn_control_book_a">
+                        Выгрузить таблицу
+                        <img src="~/icons/download_book_table.svg" />
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div>
+                    <div class="books_switching_admin btn-group d-flex">
+                        <a href="@Url.Action("Requests","Admin", new { sortBy = "id", sortOrder = "asc",
+                           pageNumber = 1, pageSize = 50 })" class="btn btn-bia-admin_switching">Запрошенные книги</a>
+                        <a href="@Url.Action("TakenBooks","Admin", new { sortBy = "id", sortOrder = "asc",
+                           pageNumber = 1, pageSize = 50 })" class="btn btn-bia-admin_switching">Выданные книги</a>
+                        <a href="@Url.Action("Manage","Admin", new { sortBy = "title", sortOrder = "asc",
+                           pageNumber = 1, pageSize = 50 })" class="btn btn-bia-admin_switching">Управление книгами</a>
+                        <a href="@Url.Action("Authors","Admin", new { sortBy = "title", sortOrder = "asc",
+                           pageNumber = 1, pageSize = 50 })" class="btn btn-bia-admin_switching">Авторы</a>
+                        <a href="@Url.Action("Categories", "Admin", new { sortBy = "id", sortOrder = "asc",
+                           pageNumber = 1, pageSize = 50 })" class="btn btn-bia-admin_switching">Категории</a>
+                        <a href="@Url.Action("Reviews","Admin", new { sortBy = "id", sortOrder = "asc",
+                           pageNumber = 1, pageSize = 50 })" class="btn btn-bia-admin_switching active">Отзывы</a>
+                        <a href="@Url.Action("Users","Admin", new { sortBy = "title", sortOrder = "asc",
+                           pageNumber = 1, pageSize = 50 })" class="btn btn-bia-admin_switching">Пользователи</a>
+                    </div>
+                </div>
+                <div>
+                    <div class="table_conteiner table-responsive">
+                        @*Table Load*@
+                        @*!!!*@
+                        @*Table Data*@
+                        <table class="table table-borderless @(Model.Reviews.Count() == 0 ? "" : "table-striped table-hover") table-books">
+                            <thead>
+                                <tr>
+                                    <th scope="col" class="sortable table_book_th" data-column="title">
+                                        <div class="table_book_th_div">
+                                            Название
+                                            <img src="~/icons/sort.svg" />
+                                        </div>
+                                    </th>
+                                    <th scope="col" class="sortable table_book_th" data-column="authors">
+                                        <div class="table_book_th_div">
+                                            Авторы
+                                            <img src="~/icons/sort.svg" />
+                                        </div>
+                                    </th>
+                                    <th scope="col" class="sortable table_book_th" data-column="review">
+                                        <div class="table_book_th_div">
+                                            Отзыв
+                                            <img src="~/icons/sort.svg" />
+                                        </div>
+                                    </th>
+                                    <th scope="col" class="sortable table_book_th" data-column="rating">
+                                        <div class="table_book_th_div">
+                                            Рейт.
+                                            <img src="~/icons/sort.svg" />
+                                        </div>
+                                    </th>
+                                    <th scope="col" class="sortable table_book_th" data-column="actions">
+                                        <div class="table_book_th_div">
+                                            Действия
+                                            <img src="~/icons/sort.svg" />
+                                        </div>
+                                    </th>
+                                </tr>
+                            </thead>
+                            @if (Model.Reviews.Count() > 0)
+                            {
+                                <tbody>
+                                    @foreach (var review in Model.Reviews)
+                                    {
+                                        <tr>
+                                            <td class="col-3">
+                                                <div class="table_books_img_td">
+                                                    <div class="table_books_img_div">
+                                                        @if (string.IsNullOrEmpty(review.Book.CoverImage))
+                                                        {
+                                                            <img class="table_books_img" src=@Url.Content("~/icons/no_img_book.svg") alt="defult-cover">
+                                                        }
+                                                        else
+                                                        {
+                                                            <img class="table_books_img" onerror="this.onerror=null;this.src='@Url.Content("~/icons/no_img_book.svg")'" src='@Url.Content("~"+review.Book.CoverImage)' alt="cover">
+                                                        }
+                                                    </div>
+                                                    <div class="tooltip__underline">
+                                                        <p onclick="redirectToBook(@review.Book.BiaId)">@review.Book.Title</p>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="col-3">
+                                                @string.Join(", ", @review.Book.Authors.Where(a => a.BookId == review.Book.BiaId).Select(a => a.Author.FullName()))
+                                            </td>
+                                            <td class="col-4">
+                                                @review.Text
+                                            </td>
+                                            <td class="col-1">
+                                                @review.Rating
+                                            </td>
+                                            <td class="col-1">
+                                                <div class="request_div_action">
+                                                    <div>
+                                                        <img class="tooltip_hover deleteRequestBtn" data-bs-toggle="tooltip"
+                                                             data-bs-placement="bottom" data-bs-title="Удалить"
+                                                             src="~/icons/CrossExit.svg"
+                                                             onmouseenter="this.src='/icons/trash_basket_blue.svg'"
+                                                             onmouseleave="this.src='/icons/CrossExit.svg'"
+                                                             data-book-review-id="@review.Uid"
+                                                             data-book-title="@review.Book.Title"
+                                                             data-book-cover="@Url.Content("~" + review.Book.CoverImage)"
+                                                             data-book-review-text="@review.Text"
+                                                             onclick="openModalDelReview(this)">
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            }
+                            else
+                            {
+                                <tbody>
+                                    <tr>
+                                        <td class="table_not_book_td" colspan="5">
+                                            <div class="table_not_book">
+                                                Ничего не найдено
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            }
+                        </table>
+                    </div>
+                </div>
+            </div>
+            @if (Model.TotalCount >= 50)
+            {
+                <div class="row paper_pagination">
+                    <nav>
+                        <ul class="pagination justify-content-center paper_pagination_ul">
+                            <li class="page-item @(pageNumber == 1 ? "disabled paper_pagination_btn_down_up_op" : "") paper_pagination_item">
+                                <a class="page-link paper_pagination_btn_down_up" asp-action="Reviews" asp-route-sortBy="@sortBy"
+                                   asp-route-sortOrder="@sortOrder" asp-route-pageNumber="@(pageNumber - 1)" asp-route-pageSize="@pageSize">
+                                    <img class="paper_pagination_img_left" src="~/icons/left.svg" /> Назад
+                                </a>
+                            </li>
+                            @if (pageNumber > 4)
+                            {
+                                <li class="page-item paper_pagination_item">
+                                    <a class="page-link paper_pagination_a" asp-action="Reviews" asp-route-sortBy="@sortBy" asp-route-sortOrder="@sortOrder"
+                                       asp-route-pageNumber="1" asp-route-pageSize="@pageSize">1</a>
+                                </li>
+                                <li class="page-item disabled paper_pagination_item">
+                                    <span class="page-link paper_pagination_a">...</span>
+                                </li>
+                            }
+                            @for (int i = pageNumber - 3; i < pageNumber; i++)
+                            {
+                                if (i > 0)
+                                {
+                                    <li class="page-item paper_pagination_item">
+                                        <a class="page-link paper_pagination_a" asp-action="Reviews" asp-route-sortBy="@sortBy" asp-route-sortOrder="@sortOrder"
+                                           asp-route-pageNumber="@i" asp-route-pageSize="@pageSize">@i</a>
+                                    </li>
+                                }
+                            }
+                            <li class="page-item active paper_pagination_item">
+                                <span class="page-link paper_pagination_a">@pageNumber</span>
+                            </li>
+                            @for (int i = pageNumber + 1; i <= pageNumber + 3; i++)
+                            {
+                                if (i <= totalPages)
+                                {
+                                    <li class="page-item paper_pagination_item">
+                                        <a class="page-link paper_pagination_a" asp-action="Reviews" asp-route-sortBy="@sortBy" asp-route-sortOrder="@sortOrder"
+                                           asp-route-pageNumber="@i" asp-route-pageSize="@pageSize">@i</a>
+                                    </li>
+                                }
+                            }
+                            @if (pageNumber + 3 < totalPages)
+                            {
+                                <li class="page-item disabled paper_pagination_item">
+                                    <span class="page-link paper_pagination_a">...</span>
+                                </li>
+                            }
+                            @if (pageNumber + 3 < totalPages)
+                            {
+                                <li class="page-item paper_pagination_item">
+                                    <a class="page-link paper_pagination_a" asp-action="Reviews" asp-route-sortBy="@sortBy" asp-route-sortOrder="@sortOrder"
+                                       asp-route-pageNumber="@totalPages" asp-route-pageSize="@pageSize">@totalPages</a>
+                                </li>
+                            }
+                            <li class="page-item @(pageNumber == totalPages ? "disabled paper_pagination_btn_down_up_op" : "") paper_pagination_item">
+                                <a class="page-link paper_pagination_btn_down_up" asp-action="Reviews" asp-route-sortBy="@sortBy" asp-route-sortOrder="@sortOrder"
+                                   asp-route-pageNumber="@(pageNumber + 1)" asp-route-pageSize="@pageSize">
+                                    Далее <img class="paper_pagination_img_rigth" src="~/icons/right.svg" />
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            }
+        </div>
+        <div class="toast-container position-fixed top-0 end-0">
+            <div id="toastSuccesDel" class="toast toas_content_details" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="d-flex toast_succec_details">
+                    <div class="toast-body">
+                        Отзыв удален
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="toast-container position-fixed top-0 end-0">
+            <div id="toastFail" class="toast toas_content_details" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="d-flex toast_fail_details">
+                    <div class="toast-body">
+                        Что-то пошло не так, попробуйте еще раз
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="modal fade" id="delReview" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content modal-sm boks_modal_content_details">
+                <div>
+                    <div class="modal-header books_modal_details">
+                        <p class="modal-title books_modal_header_details" id="staticBackdropLabel">Вы уверены, что хотите удалить отзыв?</p>
+                        <button id="btnClose" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+                    </div>
+                    <div class="modal-body books_modal_body_details">
+                        <div class="modal-img-container">
+                            <img id="modalDelCoverImage" class="img_books_modal_details" src="" />
+                            <div>
+                                <p class="books_details_title books_modal_text_details" id="modalDelBookTitle"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-del-container position-relative">
+                        <div class="position-relative">
+                            <textarea class="form-control sroll-bar" placeholder="Отзыв" id="modalReviewText" disabled style="background-color: #FFF; cursor: text; height: auto; overflow-y: auto"></textarea>
+                            <div id="firstReviewLabel" class="floatingLabel" style="display: block;">Отзыв</div>
+                        </div>
+                    </div>
+                    <div class="modal-footer books_modal_details boks_modal_futer_btn_details col-6 mx-auto">
+                        <input type="hidden" id="modalDelReviewId" />
+                        <button id="btnDelReview" type="button" class="btn btn-bia-request_details" onclick="DeleteReview()">
+                            Удалить
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('.sortable').click(function () {
+                var sortBy = $(this).data('column');
+                changeSortOrder(sortBy);
+            });
+
+            function changeSortOrder(sortBy, request) {
+                var currentSortOrder = '@ViewBag.SortOrder';
+                var newSortOrder = (sortBy === '@ViewBag.SortBy' && currentSortOrder === 'asc') ? 'desc' : 'asc';
+                var url = '@Url.Action("Reviews", "Admin")' + '?sortBy=' + sortBy + '&sortOrder=' + newSortOrder +
+                    '&pageNumber=' + '1' + '&pageSize=' + '@ViewBag.PageSize';
+                window.location.href = url;
+            }
+        });
+
+        function DeleteReview() {
+            var reviewId = $('#modalDelReviewId').val();
+            $('#btnDelReview').prop('disabled', true);
+            $.ajax({
+                url: '@Url.Action("DeleteReview", "Admin")',
+                method: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(reviewId),
+                success: function (data) {
+                    if (data.status === 'Success') {
+                        $('#toastSuccesDel').toast('show');
+                        setTimeout(function () {
+                            window.location.reload();
+                        }, 500);
+                    } else {
+                        $('#toastFail').toast('show');
+                    }
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    console.error('Ошибка при выполнении запроса: ' + textStatus);
+                }
+            });
+            $('#btnDelReview').prop('disabled', false);
+        }
+
+        function openModalDelReview(element) {
+            var bookTitle = $(element).attr('data-book-title');
+            var delReviewId = $(element).attr('data-book-review-id');
+            var coverBook = $(element).attr('data-book-cover');
+            var reviewText = $(element).attr('data-book-review-text');
+            //
+            var modalCoverImage = document.getElementById('modalDelCoverImage');
+            //
+            if (!coverBook || coverBook.trim() === "") {
+                coverBook = '@Url.Content("~/icons/no_img_book.svg")';
+            }
+
+            modalCoverImage.src = coverBook;
+
+            modalCoverImage.onerror = function () {
+                this.onerror = null;
+                this.src = '@Url.Content("~/icons/no_img_book.svg")';
+            };
+            //
+            $('#modalDelBookTitle').text(bookTitle);
+            $('#modalDelReviewId').val(delReviewId)
+            $('#modalReviewText').val(reviewText)
+
+            $('#delReview').modal('show');
+        }
+
+    </script>
+}

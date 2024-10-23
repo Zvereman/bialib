@@ -1,0 +1,326 @@
+﻿@{
+    ViewData["Title"] = "Создание пользователя";
+}
+
+<link href="~/css/autoCompleteMultiValue.css" rel="stylesheet" />
+<link href="~/css/fromBooks.css" rel="stylesheet" />
+<link href="~/css/dragAndDrop.css" rel="stylesheet" />
+<script src="~/js/autoCompleteMultiValue.js"> </script>
+<script src="~/js/dragAndDrop.js"></script>
+
+<section class="main_section">
+    <section class="container-fluid">
+        <div class="row">
+            <div class="breadcrumb_control">
+                <nav>
+                    <ol class="breadcrumb breadcrumb_conteiner">
+                        <li class="breadcrumb-item breadcrumb_link"><a class="" href="@Url.Action("Index","Home")">Главная</a></li>
+                        <li class="breadcrumb-item breadcrumb_link">
+                            <a class="" href="@Url.Action("Users","Admin", new { sortBy = "title", sortOrder = "asc",
+                           pageNumber = 1, pageSize = 50 })">
+                                Хранитель библиотеки
+                            </a>
+                        </li>
+                        <li class="breadcrumb-item breadcrumb_text" aria-current="page">Новый пользователь</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-8 card_pad">
+                <div class="col-12">
+                    <div class="form-books">
+                        <div class="books-card">
+                            <div class="cards-list">
+                                <div class="cards-list__title">
+                                    <div class="cards-list__title_text">Новый пользователь</div>
+                                </div>
+                                <div class="controls_new_or_edit_book">
+
+                                </div>
+                            </div>
+                            <div>
+                                <button id="requestBtn" type="button" class="btn btn-bia-request_details" data-bs-toggle="modal"
+                                        data-bs-target="#requestBookModal">
+                                    Добавить пользователя
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="request-main col-4">
+                <div class="col-12">
+                    @if (true)
+                    {
+                        <div class="admin-card">
+                            <div class="admin-header">
+                                Хранитель библиотеки
+                            </div>
+                            <a href="@Url.Action("Requests","Admin")" class="admin_control_elem">
+                                <div>
+                                    <img class="admin_img" src="~/icons/time_request.svg" />
+                                    Запрошенные книги
+                                </div>
+                                <div>
+                                    <img src="~/icons/shevron_admin.svg" />
+                                </div>
+                            </a>
+                            <a href="@Url.Action("TakenBooks", "Admin")" class="admin_control_elem">
+                                <div>
+                                    <img class="admin_img" src="~/icons/issued_books_admin.svg" />
+                                    Выданные книги
+                                </div>
+                                <div>
+                                    <img src="~/icons/shevron_admin.svg" />
+                                </div>
+                            </a>
+                            <a href="@Url.Action("Manage", "Admin")" class="admin_control_elem">
+                                <div>
+                                    <img class="admin_img" src="~/icons/book_management_admin.svg" />
+                                    Управление книгами
+                                </div>
+                                <div>
+                                    <img src="~/icons/shevron_admin.svg" />
+                                </div>
+                            </a>
+                            <a href="#" class="admin_control_elem">
+                                <div>
+                                    <img class="admin_img" src="~/icons/autors_admin.svg" />
+                                    Авторы
+                                </div>
+                                <div>
+                                    <img src="~/icons/shevron_admin.svg" />
+                                </div>
+                            </a>
+                            <a href="#" class="admin_control_elem">
+                                <div>
+                                    <img class="admin_img" src="~/icons/categories_admin.svg" />
+                                    Категории
+                                </div>
+                                <div>
+                                    <img src="~/icons/shevron_admin.svg" />
+                                </div>
+                            </a>
+                            <a href="#" class="admin_control_elem">
+                                <div>
+                                    <img class="admin_img" src="~/icons/review_admin.svg" />
+                                    Отзывы
+                                </div>
+                                <div>
+                                    <img src="~/icons/shevron_admin.svg" />
+                                </div>
+                            </a>
+                            <a href="#" class="admin_control_elem">
+                                <div>
+                                    <img class="admin_img" src="~/icons/users_admin.svg" />
+                                    Пользователи
+                                </div>
+                                <div>
+                                    <img src="~/icons/shevron_admin.svg" />
+                                </div>
+                            </a>
+                        </div>
+                    }
+                    <div class="requests books-card">
+                        <div class="cards-list__title">
+                            <div class="cards-list__title_text">Мои запросы</div>
+                            <div class="cards-list__title_text_link">
+                                @if (true)
+                                {
+                                    <a href="@Url.Action("MyRequest", "Account", new { sortBy = "id", sortOrder = "asc",
+                                                    pageNumber = 1, pageSize = 50, selectedRequest = "Все" })">
+                                        @if (0 > 0)
+                                        {
+                                            <text>Все (@Model.RequestAndReadBooksCount)</text>
+                                        }
+                                        else
+                                        {
+                                            <text>Все</text>
+                                        }
+                                    </a>
+                                }
+                            </div>
+                        </div>
+                       @*  @if (false)
+                        {
+                           @if (1 > 0)
+                            {
+                                <div class="requests-block">
+                                    <p class="requests-block__title">Запросил</p> 
+                                    @foreach (var request in Model.RequestBooksByUser.Take(2))
+                            {
+                            <div class="requests-block__item">
+                            <img src="~/icons/no_img_book.svg" class="requests-block__item-img">
+                            <div class="requests-;block__item-text">
+                            <span class="requests-block__item-title">
+                            sadsad
+                            </span>
+                            <p class="requests-block__item-description">
+                            sadasd
+                            </p>
+                            </div>
+                            </div>
+                            }
+                                </div>
+                            }
+                            @if (1 > 0)
+                            {
+                                <div class="reads-block">
+                                    <p class="reads-block__title">Читаю</p>
+                                    @foreach (var read in Model.ReadBooksByUser.Take(2))
+                                    {
+                                        <div class="reads-block__item">
+                                            <img src="~/icons/no_img_book.svg" class="reads-block__item-img">
+                                            <div class="reads-block__item-text">
+                                                <span class="reads-block__item-title">
+                                                    @(read.TakenBook.Title.Length > 20 ? read.TakenBook.Title.Substring(0, 20) + "..." : read.TakenBook.Title)
+                                                </span>
+                                                <p class="reads-block__item-description">
+                                                    До @read.ExtendedDueDate.Date.ToString("dd.MM.yyyy")
+                                                </p>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            }
+                        }
+                        else
+                        {
+                            <img class="empty-request-img" src="~/icons/emptyRequest.svg" />
+                        } *@
+                    </div>
+                  @*   <div class="alpina">
+                        <a class="nav-link aplina_link" href="https://dellin.alpinadigital.ru/" role="button" aria-expanded="false">
+                            <img class="alpina-img" src="~/icons/headphones.svg" />
+                        </a>
+                    </div> *@
+                    <partial name="~/Views/Home/faq.cshtml" />
+                    @* <div class="faq-content">
+                        <div class="faq">
+                            <details class="faq-card">
+                                <summary class="faq-card-title">Как взять книгу</summary>
+                                <ul>
+                                    <li>
+                                        из подборки на главной странице
+                                        или через переход в карточку книги;
+                                    </li>
+                                    <li>из католога.</li>
+                                </ul>
+                                Книга выдается на 1 месяц,
+                                с возможностью продления (через раздел Мои запросы).
+                            </details>
+                            <details class="faq-card">
+                                <summary class="faq-card-title">Как отменить заявку</summary>
+                                Если вы еще не получили книгу, отменить заявку можно в разделе <br />
+                                Мои запросы.
+                            </details>
+                            <details class="faq-card">
+                                <summary class="faq-card-title">Какие книги числятся за мной</summary>
+                                Книги которые вы получили в библиотеке, можно найти в разделе <br />
+                                Мои запросы.
+                            </details>
+                            <details class="faq-card">
+                                <summary class="faq-card-title">Как вернуть книгу</summary>
+                                Сдайте книгу на ресепшен и в разделе Мои запросы нажмите на ✔️, чтобы сообщить администратору о сдаче книги.
+                                <br />
+                                <br />
+                                Незабудьте оценить книгу и оставить отзыв.
+                            </details>
+                            <details class="faq-card">
+                                <summary class="faq-card-title">Хочу оставить отзыв</summary>
+                                Отзыв можно оставить в любой момент, из разделов:
+                                <ul>
+                                    <li>
+                                        Мои запросы, нажав на 💬;
+                                    </li>
+                                    <li>
+                                        из карточки книги, в блоке
+                                        с комментариями;
+                                    </li>
+                                    <li>из письма, после возврата книги.</li>
+                                </ul>
+                            </details>
+                            <details class="faq-card">
+                                <summary class="faq-card-title">Что, если книга уже занята</summary>
+                                В карточке книги нажмите Сообщить, когда появится. Когда книгу вернуть,
+                                на почту придет уведомление.
+                            </details>
+                            <details class="faq-card">
+                                <summary class="faq-card-title">Хочу передать свою книгу в библиотеку</summary>
+                                В библиотеку можно передать книгу, если она подходит под условия:
+                                <ul>
+                                    <li>
+                                        нехудожественная или профессиональная литература;
+                                    </li>
+                                    <li>
+                                        русский или английский язык;
+                                    </li>
+                                    <li>не имеет пятен и других дефектов.</li>
+                                </ul>
+                                Заполните форму заявки:
+                                <ul>
+                                    <li>
+                                        в поле «Я хочу» выберите «принести книгу в библиотеку»;
+                                    </li>
+                                    <li>
+                                        в поле «Описание» укажите основные сведения о книге, например название, автор, год издания, номер издания (если есть) и язык.
+                                    </li>
+                                </ul>
+                                Когда запрос будет обработан, на почту придет письмо. Передайте книгу в Отдел обучения и развития персонала.
+                            </details>
+                        </div>
+                    </div *@>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="modal fade" id="continueBook" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content modal-sm boks_modal_content_details">
+                <div>
+                    <div class="modal-header books_modal_details">
+                        <p class="modal-title books_modal_header_details" id="staticBackdropLabel">Добавление автора</p>
+                        <button id="btnClose" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <input type="text" class="form-control" id="lastNameAuth" placeholder="Фамилия" maxlength="255">
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" class="form-control" id="firstNameAuth" placeholder="Имя" maxlength="255">
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" class="form-control" id="twoLastNameAuth" placeholder="Отчество" maxlength="255">
+                        </div>
+                    </div>
+                    <div class="modal-footer books_modal_details boks_modal_futer_btn_details col-6 mx-auto">
+                        <input type="hidden" id="modalBookId" />
+                        <button id="btnReNewBook" type="button" class="btn btn-bia-request_details">
+                            Добавить
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="toast-container position-fixed top-0 end-0">
+        <div id="toastSuccesDel" class="toast toas_content_details" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex toast_succec_details">
+                <div class="toast-body">
+                    Книга добавлена
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="toast-container position-fixed top-0 end-0">
+        <div id="toastFail" class="toast toas_content_details" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex toast_fail_details">
+                <div class="toast-body">
+                    Книга уже добавлена
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

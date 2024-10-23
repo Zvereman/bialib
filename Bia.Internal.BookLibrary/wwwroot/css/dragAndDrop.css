@@ -1,0 +1,78 @@
+﻿.file-container {
+    display: flex;
+    align-items: center;
+    margin-top: 12px;
+    gap: 12px;
+}
+
+.file-upload {
+    border: 2px dashed #ccc;
+    border-radius: 8px;
+    text-align: center;
+    cursor: pointer;
+    color: #666;
+    display: flex;
+    align-items: center;
+    padding: 0px;
+}
+
+    .file-upload.dragover {
+        border-color: #333;
+        background-color: #f7f7f7;
+    }
+
+.file-name {
+    /*margin-top: 12px;*/
+    font-family: Open Sans;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 21.79px;
+    text-align: left;
+    color: #2D2D2D;
+}
+
+.file-size {
+    font-family: Open Sans;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 21.79px;
+    text-align: left;
+    color: #7D7D7D;
+}
+
+.file-del:hover {
+    cursor: pointer;
+}
+
+.icon-wrapper {
+    background-color: #f0f0f0;
+    padding: 10px;
+    margin-right: 10px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 64px;
+    width: 64px;
+}
+
+.file-upload svg {
+    width: 20px;
+    height: 20px;
+}
+
+.file-upload p {
+    margin: 0;
+    flex: 1;
+    text-align: left;
+    font-family: Open Sans;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 21.79px;
+    text-align: left;
+    color: #2D2D2D;
+}
+
+.file-upload span {
+    color: #7D7D7D;
+}

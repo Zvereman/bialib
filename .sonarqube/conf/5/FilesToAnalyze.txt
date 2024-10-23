@@ -1,0 +1,4 @@
+﻿C:\vsproj\beck\bia.internal.booklibrary\BooksLoader\DeleteUnDefinatedBooks.cs
+C:\vsproj\beck\bia.internal.booklibrary\BooksLoader\ParseExcel.cs
+C:\vsproj\beck\bia.internal.booklibrary\BooksLoader\Program.cs
+C:\vsproj\beck\bia.internal.booklibrary\BooksLoader\appsettings.json

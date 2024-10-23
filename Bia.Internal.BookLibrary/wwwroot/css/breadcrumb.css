@@ -1,0 +1,32 @@
+﻿.breadcrumb_control {
+    display: flex;
+    justify-content: space-between;
+    /*padding: 0px 112px;*/
+    margin: 24px 0px;
+}
+
+    .breadcrumb_control a {
+        font-family: Open Sans;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 20px;
+        text-align: center;
+        text-decoration: none;
+    }
+
+.breadcrumb_conteiner {
+    font-family: Open Sans;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 21.79px;
+    text-align: left;
+    margin: 0px;
+}
+
+.breadcrumb_link a {
+    color: #2A74DA;
+}
+
+.breadcrumb_text {
+    color: #2D2D2D;
+}

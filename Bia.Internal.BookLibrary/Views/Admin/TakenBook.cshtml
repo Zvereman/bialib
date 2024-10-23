@@ -1,0 +1,645 @@
+﻿@using Bia.Internal.BookLibrary.Data;
+@model TakenBooksViewModel
+@{
+    ViewData["Title"] = "Выданные книги";
+    string sortBy = ViewBag.SortBy;
+    string sortOrder = ViewBag.SortOrder;
+    int pageNumber = ViewBag.PageNumber;
+    int pageSize = ViewBag.PageSize;
+    int totalPages = ViewBag.TotalPages;
+}
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css"
+      rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.ru.min.js"></script>
+<link href="~/css/datepicker.css" rel="stylesheet" />
+<link href="~/css/table_books.css" rel="stylesheet" />
+
+<section class="main_section">
+    <section class="container">
+        <div class="row">
+            <div class="breadcrumb_control">
+                <nav>
+                    <ol class="breadcrumb breadcrumb_conteiner">
+                        <li class="breadcrumb-item breadcrumb_link"><a class="" href="@Url.Action("Index","Home")">Главная</a></li>
+                        <li class="breadcrumb-item breadcrumb_text" aria-current="page">Хранитель библиотеки</li>
+                    </ol>
+                </nav>
+                <div class="books_title_btn_control_book">
+                    <a href="@Url.Action("ExportTakenBooksToExcel", "Admin")" class="books_title_btn_control_book_a">
+                        Выгрузить таблицу
+                        <img src="~/icons/download_book_table.svg" />
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div>
+                    <div class="books_switching_admin btn-group d-flex">
+                        <a href="@Url.Action("Requests","Admin", new { sortBy = "id", sortOrder = "asc",
+                           pageNumber = 1, pageSize = 50 })" class="btn btn-bia-admin_switching">Запрошенные книги</a>
+                        <a href="@Url.Action("TakenBooks","Admin", new { sortBy = "id", sortOrder = "asc",
+                           pageNumber = 1, pageSize = 50 })" class="btn btn-bia-admin_switching active">Выданные книги</a>
+                        <a href="@Url.Action("Manage","Admin", new { sortBy = "title", sortOrder = "asc",
+                           pageNumber = 1, pageSize = 50 })" class="btn btn-bia-admin_switching">Управление книгами</a>
+                        <a href="@Url.Action("Authors","Admin", new { sortBy = "title", sortOrder = "asc",
+                           pageNumber = 1, pageSize = 50 })" class="btn btn-bia-admin_switching">Авторы</a>
+                        <a href="@Url.Action("Categories", "Admin", new { sortBy = "id", sortOrder = "asc",
+                           pageNumber = 1, pageSize = 50 })" class="btn btn-bia-admin_switching">Категории</a>
+                        <a href="@Url.Action("Reviews","Admin", new { sortBy = "id", sortOrder = "asc",
+                           pageNumber = 1, pageSize = 50 })" class="btn btn-bia-admin_switching">Отзывы</a>
+                        <a href="@Url.Action("Users","Admin", new { sortBy = "title", sortOrder = "asc",
+                           pageNumber = 1, pageSize = 50 })" class="btn btn-bia-admin_switching">Пользователи</a>
+                    </div>
+                </div>
+                <div>
+                    <div class="table_conteiner table-responsive">
+                        @*Table Load*@
+                        @*!!!*@
+                        @*Table Data*@
+                        <table class="table table-borderless @(Model.RentHistories.Count() == 0 ? "" : "table-striped table-hover") table-books">
+                            <thead>
+                                <tr>
+                                    <th scope="col" class="sortable table_book_th" data-column="id">
+                                        <div class="table_book_th_div">
+                                            ID
+                                            <img src="~/icons/sort.svg" />
+                                        </div>
+                                    </th>
+                                    <th scope="col" class="sortable table_book_th" data-column="bookName">
+                                        <div class="table_book_th_div">
+                                            Название
+                                            <img src="~/icons/sort.svg" />
+                                        </div>
+                                    </th>
+                                    <th scope="col" class="sortable table_book_th" data-column="request">
+                                        <div class="table_book_th_div">
+                                            Запросил
+                                            <img src="~/icons/sort.svg" />
+                                        </div>
+                                    </th>
+                                    <th scope="col" class="sortable table_book_th" data-column="issued">
+                                        <div class="table_book_th_div">
+                                            Выдана
+                                            <img src="~/icons/sort.svg" />
+                                        </div>
+                                    </th>
+                                    <th scope="col" class="sortable table_book_th" data-column="returnBook">
+                                        <div class="table_book_th_div">
+                                            Вернуть
+                                            <img src="~/icons/sort.svg" />
+                                        </div>
+                                    </th>
+                                    <th scope="col" class="sortable table_book_th" data-column="action">
+                                        <div class="table_book_th_div">
+                                            Действия
+                                            <img src="~/icons/sort.svg" />
+                                        </div>
+                                    </th>
+                                </tr>
+                            </thead>
+                            @if (Model.RentHistories.Count() > 0)
+                            {
+                                <tbody>
+                                    @foreach (var book in Model.RentHistories)
+                                    {
+                                        <tr>
+                                            <td class="col-1">
+                                                @book.TakenBook.BiaId
+                                            </td>
+                                            <td class="col-5">
+                                                <div class="table_books_img_td">
+                                                    <div class="table_books_img_div">
+                                                        @if (string.IsNullOrEmpty(book.TakenBook.CoverImage))
+                                                        {
+                                                            <img class="table_books_img" src=@Url.Content("~/icons/no_img_book.svg") alt="defult-cover">
+                                                        }
+                                                        else
+                                                        {
+                                                            <img class="table_books_img" onerror="this.onerror=null;this.src='@Url.Content("~/icons/no_img_book.svg")'" src='@Url.Content("~"+book.TakenBook.CoverImage)' alt="cover">
+                                                        }
+                                                    </div>
+                                                    <div class="tooltip__underline" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                                         data-bs-custom-class="custom-tooltip"
+                                                         data-bs-title="@book.TakenBook.Title">
+                                                        <p class="text-truncate-one-line" onclick="redirectToBook(@book.TakenBook.BiaId)">
+                                                             @book.TakenBook.Title
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="col-3">
+                                                <div>
+                                                    @book.User.FullName
+                                                </div>
+                                                <div class="table_emailUser">
+                                                    @book.User.Email
+                                                </div>
+                                            </td>
+                                            <td class="col-1">
+                                                @book.TakenDate.ToString("dd/MM/yyyy")
+                                            </td>
+                                            <td class="col-1">
+                                                @{
+                                                    DateTime dueDate = book.ExtendedDueDate;
+                                                    bool isDueSoon = dueDate.Date <= DateTime.Now.AddDays(3).Date;
+                                                }
+                                                <div style="color: @(isDueSoon ? "#D22630" : "inherit");">
+                                                    @dueDate.ToString("dd.MM.yyyy")
+                                                </div>
+                                            </td>
+                                            <td class="col-1">
+                                                <div class="request_div_action">
+                                                    <div>
+                                                        <img class="tooltip_hover" data-bs-toggle="tooltip"
+                                                             data-bs-placement="bottom" data-bs-html="true"
+                                                             data-bs-title="Продлить книгу"
+                                                             src="~/icons/myrequest_continuebook.svg"
+                                                             onmouseenter="this.src='/icons/myrequest_continuebook_blue.svg'"
+                                                             onmouseleave="this.src='/icons/myrequest_continuebook.svg'"
+                                                             data-rent-id="@book.Uid"
+                                                             data-book-title="@book.TakenBook.Title"
+                                                             data-due-date="@book.TakenDate.ToString("dd.MM.yyyy")"
+                                                             data-return-date="@book.ExtendedDueDate.ToString("dd.MM.yyyy")"
+                                                             data-book-cover="@Url.Content("~" + @book.TakenBook.CoverImage)"
+                                                             onclick="openContinueBookModal(this)">
+                                                    </div>
+                                                    <div>
+                                                        <img class="tooltip_hover" data-bs-toggle="tooltip"
+                                                             data-bs-placement="bottom" data-bs-html="true"
+                                                             data-bs-title="Подтвердить сдачу книги"
+                                                             src="~/icons/myrequest_returnbook.svg"
+                                                             onmouseenter="this.src='/icons/myrequest_returnbook_blue.svg'"
+                                                             onmouseleave="this.src='/icons/myrequest_returnbook.svg'"
+                                                             data-rent-id="@book.Uid"
+                                                             data-book-title="@book.TakenBook.Title"
+                                                             data-due-date="@book.TakenDate.ToString("dd.MM.yyyy")"
+                                                             data-current-date="@DateTime.Now.ToString("dd.MM.yyyy")"
+                                                             data-book-cover="@Url.Content("~" + @book.TakenBook.CoverImage)"
+                                                             onclick="openConfirmBookModal(this)">
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            }
+                            else
+                            {
+                                <tbody>
+                                    <tr>
+                                        <td class="table_not_book_td" colspan="6">
+                                            <div class="table_not_book">
+                                                Ничего не найдено
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            }
+                        </table>
+                    </div>
+                </div>
+            </div>
+            @if (Model.TotalCount >= 50)
+            {
+                <div class="row paper_pagination">
+                    <nav>
+                        <ul class="pagination justify-content-center paper_pagination_ul">
+                            <li class="page-item @(pageNumber == 1 ? "disabled paper_pagination_btn_down_up_op" : "") paper_pagination_item">
+                                <a class="page-link paper_pagination_btn_down_up" asp-action="TakenBooks" asp-route-sortBy="@sortBy"
+                                   asp-route-sortOrder="@sortOrder" asp-route-pageNumber="@(pageNumber - 1)" asp-route-pageSize="@pageSize">
+                                    <img class="paper_pagination_img_left" src="~/icons/left.svg" /> Назад
+                                </a>
+                            </li>
+                            @if (pageNumber > 4)
+                            {
+                                <li class="page-item paper_pagination_item">
+                                    <a class="page-link paper_pagination_a" asp-action="TakenBooks" asp-route-sortBy="@sortBy" asp-route-sortOrder="@sortOrder"
+                                       asp-route-pageNumber="1" asp-route-pageSize="@pageSize">1</a>
+                                </li>
+                                <li class="page-item disabled paper_pagination_item">
+                                    <span class="page-link paper_pagination_a">...</span>
+                                </li>
+                            }
+                            @for (int i = pageNumber - 3; i < pageNumber; i++)
+                            {
+                                if (i > 0)
+                                {
+                                    <li class="page-item paper_pagination_item">
+                                        <a class="page-link paper_pagination_a" asp-action="TakenBooks" asp-route-sortBy="@sortBy" asp-route-sortOrder="@sortOrder"
+                                           asp-route-pageNumber="@i" asp-route-pageSize="@pageSize">@i</a>
+                                    </li>
+                                }
+                            }
+                            <li class="page-item active paper_pagination_item">
+                                <span class="page-link paper_pagination_a">@pageNumber</span>
+                            </li>
+                            @for (int i = pageNumber + 1; i <= pageNumber + 3; i++)
+                            {
+                                if (i <= totalPages)
+                                {
+                                    <li class="page-item paper_pagination_item">
+                                        <a class="page-link paper_pagination_a" asp-action="TakenBooks" asp-route-sortBy="@sortBy" asp-route-sortOrder="@sortOrder"
+                                           asp-route-pageNumber="@i" asp-route-pageSize="@pageSize">@i</a>
+                                    </li>
+                                }
+                            }
+                            @if (pageNumber + 3 < totalPages)
+                            {
+                                <li class="page-item disabled paper_pagination_item">
+                                    <span class="page-link paper_pagination_a">...</span>
+                                </li>
+                            }
+                            @if (pageNumber + 3 < totalPages)
+                            {
+                                <li class="page-item paper_pagination_item">
+                                    <a class="page-link paper_pagination_a" asp-action="TakenBooks" asp-route-sortBy="@sortBy" asp-route-sortOrder="@sortOrder"
+                                       asp-route-pageNumber="@totalPages" asp-route-pageSize="@pageSize">@totalPages</a>
+                                </li>
+                            }
+                            <li class="page-item @(pageNumber == totalPages ? "disabled paper_pagination_btn_down_up_op" : "") paper_pagination_item">
+                                <a class="page-link paper_pagination_btn_down_up" asp-action="TakenBooks" asp-route-sortBy="@sortBy" asp-route-sortOrder="@sortOrder"
+                                   asp-route-pageNumber="@(pageNumber + 1)" asp-route-pageSize="@pageSize">
+                                    Далее <img class="paper_pagination_img_rigth" src="~/icons/right.svg" />
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            }
+        </div>
+        <div class="toast-container position-fixed top-0 end-0">
+            <div id="toastSuccessConfirmBook" class="toast toas_content_details" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="d-flex toast_succec_details">
+                    <div class="toast-body">
+                        Книга сдана
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="toast-container position-fixed top-0 end-0">
+            <div id="toastSuccessProlongBook" class="toast toas_content_details" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="d-flex toast_succec_details">
+                    <div class="toast-body">
+                        Книга продлена
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="toast-container position-fixed top-0 end-0">
+            <div id="toastFailDateProlongBook" class="toast toas_content_details" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="d-flex toast_fail_details">
+                    <div class="toast-body">
+                        Дата указана неверно
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="toast-container position-fixed top-0 end-0">
+            <div id="toastFailProlongBook" class="toast toas_content_details" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="d-flex toast_fail_details">
+                    <div class="toast-body">
+                        Книга уже продлевалась три раза
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="toast-container position-fixed top-0 end-0">
+            <div id="toastFail" class="toast toas_content_details" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="d-flex toast_fail_details">
+                    <div class="toast-body">
+                        Что-то пошло не так, попробуйте еще раз
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>
+
+<div class="modal fade" id="continueModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content modal-sm boks_modal_content_details">
+            <div>
+                <div class="modal-header books_modal_details">
+                    <p class="modal-title books_modal_header_details" id="staticBackdropLabel">Продлить книгу</p>
+                    <button id="btnClose" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+                </div>
+                <div class="modal-body books_modal_body_details">
+                    <input type="hidden" id="bookId" />
+                    <input type="hidden" id="userGuid" />
+                    <form class="needs-validation request-form" novalidate>
+                        <div class="modal-img-container mb-3">
+                            <img id="modalCoverImage" class="img_books_modal_details" src="" />
+                            <div>
+                                <p class="books_details_title books_modal_text_details" id="continueModalBookTitle"></p>
+                                <p class="books_details_subtutle"><span id="continueModalTakenDate"></span><span id="continueModalNewDate"> &mdash; </span></p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group date mb-1 inp-group" id="datepicker">
+                                <input id="dpControl" type="text" class="form-control" placeholder="Дата возврата книги" autocomplete="off" required>
+                                <div id="dateDrop">Дата возврата книги</div>
+                                <span class="input-group-append">
+                                    <span id="dpControlImg" class="input-group-text">
+                                        <img src="~/icons/calendar.svg" />
+                                    </span>
+                                </span>
+                                <div class="invalid-feedback">
+                                    Заполните дату
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer books_modal_details boks_modal_futer_btn_details col-6 mx-auto">
+                    <input type="hidden" id="continueModalRentId" />
+                    <input type="hidden" id="continueModalOldDate" />
+                    <input type="hidden" id="continueModalInpNewDate" />
+                    <button id="btnReNewBook" type="button" class="btn btn-bia-request_details">
+                        Продлить книгу
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="confirmModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content modal-sm boks_modal_content_details">
+            <div>
+                <div class="modal-header books_modal_details">
+                    <p class="modal-title books_modal_header_details" id="staticBackdropLabel">Подтвердить сдачу книги</p>
+                    <button id="btnClose" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+                </div>
+                <div class="modal-body books_modal_body_details">
+                    <img id="confirmModalCover" class="img_books_modal_details" src="" />
+                    <div>
+                        <p class="books_details_title books_modal_text_details" id="confirmModalBookTitle"></p>
+                        <p class="books_details_subtutle"><span id="confirmModalTakenDate"></span> &mdash; <span id="confirmModalNewDate"></span></p>
+                    </div>
+                </div>
+                <div class="modal-footer books_modal_details boks_modal_futer_btn_details col-6 mx-auto">
+                    <input type="hidden" id="confirmModalRentId" />
+                    <button id="btnConfirmBook" type="button" class="btn btn-bia-request_details" onclick="ConfirmBook()">
+                        Подтвердить
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+
+            var $dateDrop = $('#dateDrop');
+            var $input = $('.inp-group input');
+            var $inputGroup = $('.inp-group');
+
+            $input.on('focus', function () {
+                $inputGroup.addClass('focused');
+                $input.attr('placeholder', '');
+                $dateDrop.css('display', 'block');
+                $dateDrop.css('color', '#2A74DA');
+            });
+
+            $input.on('blur', function () {
+                $inputGroup.removeClass('focused');
+                $input.attr('placeholder', $dateDrop.text());
+                if ($('#dpControl').val()) {
+                    $dateDrop.css('color', '#7D7D7D');
+                }
+                else {
+                    $dateDrop.css('display', 'none');
+                }
+            });
+
+
+            $('.sortable').click(function () {
+                var sortBy = $(this).data('column');
+                changeSortOrder(sortBy);
+            });
+
+            function changeSortOrder(sortBy, request) {
+                var currentSortOrder = '@ViewBag.SortOrder';
+                var newSortOrder = (sortBy === '@ViewBag.SortBy' && currentSortOrder === 'asc') ? 'desc' : 'asc';
+                var url = '@Url.Action("TakenBooks", "Admin")' + '?sortBy=' + sortBy + '&sortOrder=' + newSortOrder +
+                    '&pageNumber=' + '1' + '&pageSize=' + '@ViewBag.PageSize';
+                window.location.href = url;
+            }
+
+            function adjustDatepickerWidth() {
+                var dpWidth = $('#datepicker').width();
+                var datepickerDropdown = $(".datepicker-dropdown");
+                if (datepickerDropdown.length) {
+                    datepickerDropdown.css('width', dpWidth + 'px');
+                }
+            }
+
+            $('#datepicker').datepicker({
+                format: "dd.mm.yyyy",
+                weekStart: 1,
+                maxViewMode: 0,
+                language: "ru",
+                orientation: "bottom auto",
+                keyboardNavigation: false,
+                forceParse: false,
+                autoclose: true,
+                todayHighlight: false,
+                templates: {
+                    leftArrow: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M16 20L8 12L16 4" stroke="#2D2D2D" stroke- linecap="round" stroke - linejoin="round"/>< /svg> ',
+                    rightArrow: '<svg width="24" height = "24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" ><path d="M8 20L16 12L8 4" stroke = "#2D2D2D" stroke- linecap="round" stroke - linejoin="round"/>< /svg>',
+                }
+            }).on('show changeMonth changeYear changeDecade changeCentury', function (e) {
+                if ($('.was-validated').length) {
+                    $('.needs-validation').removeClass('was-validated')
+                }
+                adjustDatepickerWidth();
+            }).on('changeDate', function (e) {
+                if ($('#dpControl').val().length > 0) {
+                    $dateDrop.css('display', 'block');
+                    $dateDrop.css('color', '#7D7D7D');
+                    var requestdate = $('#continueModalTakenDate').text();
+                    $('#continueModalTakenDate').remove();
+                    $('#continueModalNewDate').remove();
+                    $('#continueModalInpNewDate').val('');
+                    $('.books_details_subtutle').append('<span id="continueModalTakenDate">' + requestdate + '</span>' + '<span id="continueModalNewDate" > ' + ' &mdash; ' + $('#dpControl').val() + ' </span>');
+                    $('#continueModalInpNewDate').val($('#dpControl').val());
+                }
+                else {
+                    $dateDrop.css('display', 'none');
+                    $dateDrop.css('color', '#7D7D7D');
+                }
+            });
+
+            $(window).resize(function () {
+                adjustDatepickerWidth();
+            });
+
+            $('#dpControl').on('change', function () {
+                adjustDatepickerWidth();
+            });
+
+        });
+
+        document.addEventListener('DOMContentLoaded', (event) => {
+            'use strict';
+
+            const form = document.querySelector('.needs-validation');
+            const reNewButton = document.getElementById('btnReNewBook');
+            reNewButton.addEventListener('click', function (event) {
+                if (!form.checkValidity()) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                } else {
+                    ProlongBook();
+                }
+
+                form.classList.add('was-validated');
+            }, false);
+        });
+
+        function openContinueBookModal(element) {
+            var rentId = $(element).attr('data-rent-id');
+            var bookTitle = $(element).attr('data-book-title');
+            var takenDate = $(element).attr('data-due-date');
+            var returnDateStr = $(element).attr('data-return-date');
+            var parts = returnDateStr.split('.');
+            var day = parseInt(parts[0]);
+            var month = parseInt(parts[1]) - 1;
+            var year = parseInt(parts[2]);
+            var returnDate = new Date(year, month, day);
+            returnDate.setDate(returnDate.getDate() + 30);
+            var newReturnDate = ('0' + returnDate.getDate()).slice(-2) + '.' +
+                ('0' + (returnDate.getMonth() + 1)).slice(-2) + '.' +
+                returnDate.getFullYear();
+            var coverBook = $(element).attr('data-book-cover');
+            var modalCoverImage = document.getElementById('modalCoverImage');
+            //modalCoverImage
+            if (!coverBook || coverBook.trim() === "") {
+                coverBook = '@Url.Content("~/icons/no_img_book.svg")';
+            }
+
+            modalCoverImage.src = coverBook;
+
+            modalCoverImage.onerror = function () {
+                this.onerror = null;
+                this.src = '@Url.Content("~/icons/no_img_book.svg")';
+            };
+            //
+            $('#continueModalRentId').val(rentId);
+            $('#continueModalBookTitle').text(bookTitle);
+            $('#continueModalTakenDate').text(takenDate);
+            $('#continueModalNewDate').text(newReturnDate);
+            $('#continueModalOldDate').val(takenDate);
+            $('#continueModalInpNewDate').val(newReturnDate)
+
+            $('#datepicker').datepicker('setDate', newReturnDate);
+
+            $('#continueModal').modal('show');
+        }
+
+        function openConfirmBookModal(element) {
+            var dateContainer = $('#confirmModalTakenDate').parent();
+            dateContainer.html("");
+            var rentId = $(element).attr('data-rent-id');
+            var bookTitle = $(element).attr('data-book-title');
+            var takenDate = $(element).attr('data-due-date');
+            var currentDate = $(element).attr('data-current-date');
+            var coverBook = $(element).attr('data-book-cover');
+            var modalCoverImage = document.getElementById('confirmModalCover');
+            //modalCoverImage
+            if (!coverBook || coverBook.trim() === "") {
+                coverBook = '@Url.Content("~/icons/no_img_book.svg")';
+            }
+
+            modalCoverImage.src = coverBook;
+
+            modalCoverImage.onerror = function () {
+                this.onerror = null;
+                this.src = '@Url.Content("~/icons/no_img_book.svg")';
+            };
+            //
+            $('#confirmModalRentId').val(rentId);
+            $('#confirmModalBookTitle').text(bookTitle);
+            dateContainer.html("<span id='confirmModalTakenDate'>" + takenDate + "</span> — <span id='confirmModalNewDate'>" + currentDate + "</span>")
+            //
+            $('#confirmModal').modal('show');
+        }
+
+        function ConfirmBook() {
+            var rentId = $('#confirmModalRentId').val();
+            $('#btnConfirmBook').prop('disabled', true);
+            if (rentId.length > 0) {
+                $.ajax({
+                    url: '@Url.Action("PassBook", "Admin")',
+                    method: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify(rentId),
+                    success: function (data) {
+                        if (data.status === 'Success') {
+                            $('#toastSuccessConfirmBook').toast('show');
+                            setTimeout(function () {
+                                window.location.reload();
+                            }, 2000);
+                        } else {
+                            $('#toastFail').toast('show');
+                        }
+                        $('#btnConfirmBook').removeClass('disabled');
+                    },
+                    error: function (xhr, textStatus, errorThrown) {
+                        console.error('Ошибка при выполнении запроса: ' + textStatus);
+                    }
+                });
+            }
+        }
+
+        function ProlongBook() {
+            var rentId = $('#continueModalRentId').val();
+            var takenDate = $('#continueModalOldDate').val();
+            var newDate = $('#continueModalInpNewDate').val();
+            //
+            var takenDateISO = new Date(takenDate.split('.').reverse().join('-')).toISOString();
+            var newDateISO = new Date(newDate.split('.').reverse().join('-')).toISOString();
+            //
+            $('#btnReNewBook').prop('disabled', true);
+            if (rentId.length > 0) {
+                $.ajax({    
+                    url: '@Url.Action("ProlongBook", "Admin")',
+                    method: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify({
+                        BookId: rentId,
+                        CurentDate: takenDateISO,
+                        NewDate: newDateISO
+                    }),
+                    success: function (data) {
+                        if (data.status === 'Success') {
+                            $('#toastSuccessProlongBook').toast('show');
+                            setTimeout(function () {
+                                window.location.reload();
+                            }, 2000);
+                        } else if (data.details === 'Книга уже продлевалась три раза') {
+                            $('#toastFailProlongBook').toast('show');
+                        } else if (data.details === 'Дата указанна неверно') {
+                            $('#toastFailDateProlongBook').toast('show');
+                        }
+                        else {
+                            $('#toastFail').toast('show');
+                        }
+                        $('#btnReNewBook').prop('disabled', false);
+                    },
+                    error: function (xhr, textStatus, errorThrown) {
+                        console.error('Ошибка при выполнении запроса: ' + textStatus);
+                    }
+                });
+            }
+        }
+
+    </script>
+}

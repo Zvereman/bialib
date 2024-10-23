@@ -1,0 +1,55 @@
+﻿/*#lastNameAddAuthLabel {
+    z-index: 3;
+    position: absolute;
+    top: -10px;
+    left: 10px;
+    padding: 0 .5rem;
+    background-color: white;
+    color: #7D7D7D;*/
+    /*#2A74DA*/
+    /*font-size: 14px;
+    display: none;
+}
+
+#firstNameAddAuthLabel {
+    z-index: 3;
+    position: absolute;
+    top: -10px;
+    left: 10px;
+    padding: 0 .5rem;
+    background-color: white;
+    color: #7D7D7D;*/
+    /*#2A74DA*/
+    /*font-size: 14px;
+    display: none;
+}
+
+
+#surnameNameAddAuthLabel {
+    z-index: 3;
+    position: absolute;
+    top: -10px;
+    left: 10px;
+    padding: 0 .5rem;
+    background-color: white;
+    color: #7D7D7D;*/
+    /*#2A74DA*/
+    /*font-size: 14px;
+    display: none;
+}*/
+
+.floatingLabel {
+    z-index: 3;
+    position: absolute;
+    top: -10px;
+    left: 10px;
+    padding: 0 .5rem;
+    background-color: white;
+    color: #7D7D7D;
+    font-size: 14px;
+    display: none;
+}
+
+.position-relative {
+    position: relative;
+}

@@ -1,0 +1,1217 @@
+{
+  "$schema": "http://json.schemastore.org/sarif-1.0.0",
+  "version": "1.0.0",
+  "runs": [
+    {
+      "tool": {
+        "name": "Компилятор Microsoft (R) Visual C#",
+        "version": "4.7.0.0",
+        "fileVersion": "4.7.0-3.23416.9 (43b0b05c)",
+        "semanticVersion": "4.7.0",
+        "language": "ru-RU"
+      },
+      "results": [
+        {
+          "ruleId": "CS8625",
+          "level": "warning",
+          "message": "Литерал, равный NULL, не может быть преобразован в ссылочный тип, не допускающий значение NULL.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/WebApiBookLibrary/GetBadBook.cs",
+                "region": {
+                  "startLine": 251,
+                  "startColumn": 83,
+                  "endLine": 251,
+                  "endColumn": 87
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S125",
+          "level": "warning",
+          "message": "Remove this commented out code.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/WebApiBookLibrary/Program.cs",
+                "region": {
+                  "startLine": 23,
+                  "startColumn": 1,
+                  "endLine": 23,
+                  "endColumn": 6
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S125",
+          "level": "warning",
+          "message": "Remove this commented out code.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/WebApiBookLibrary/Program.cs",
+                "region": {
+                  "startLine": 45,
+                  "startColumn": 1,
+                  "endLine": 45,
+                  "endColumn": 2
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S125",
+          "level": "warning",
+          "message": "Remove this commented out code.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/WebApiBookLibrary/Program.cs",
+                "region": {
+                  "startLine": 76,
+                  "startColumn": 1,
+                  "endLine": 76,
+                  "endColumn": 4
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S125",
+          "level": "warning",
+          "message": "Remove this commented out code.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/WebApiBookLibrary/Program.cs",
+                "region": {
+                  "startLine": 79,
+                  "startColumn": 1,
+                  "endLine": 79,
+                  "endColumn": 4
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S125",
+          "level": "warning",
+          "message": "Remove this commented out code.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/WebApiBookLibrary/Program.cs",
+                "region": {
+                  "startLine": 109,
+                  "startColumn": 9,
+                  "endLine": 109,
+                  "endColumn": 110
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S2068",
+          "level": "warning",
+          "message": "\"pwd\" detected here, make sure this is not a hard-coded credential.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/WebApiBookLibrary/appsettings.json",
+                "region": {
+                  "startLine": 8,
+                  "startColumn": 22,
+                  "endLine": 8,
+                  "endColumn": 100
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S3776",
+          "level": "warning",
+          "message": "Refactor this method to reduce its Cognitive Complexity from 48 to the 15 allowed.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/WebApiBookLibrary/GetBadBook.cs",
+                "region": {
+                  "startLine": 196,
+                  "startColumn": 25,
+                  "endLine": 196,
+                  "endColumn": 36
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/WebApiBookLibrary/GetBadBook.cs",
+                "region": {
+                  "startLine": 202,
+                  "startColumn": 13,
+                  "endLine": 202,
+                  "endColumn": 15
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/WebApiBookLibrary/GetBadBook.cs",
+                "region": {
+                  "startLine": 204,
+                  "startColumn": 13,
+                  "endLine": 204,
+                  "endColumn": 15
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/WebApiBookLibrary/GetBadBook.cs",
+                "region": {
+                  "startLine": 210,
+                  "startColumn": 17,
+                  "endLine": 210,
+                  "endColumn": 19
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/WebApiBookLibrary/GetBadBook.cs",
+                "region": {
+                  "startLine": 218,
+                  "startColumn": 29,
+                  "endLine": 218,
+                  "endColumn": 34
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/WebApiBookLibrary/GetBadBook.cs",
+                "region": {
+                  "startLine": 220,
+                  "startColumn": 33,
+                  "endLine": 220,
+                  "endColumn": 35
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/WebApiBookLibrary/GetBadBook.cs",
+                "region": {
+                  "startLine": 222,
+                  "startColumn": 33,
+                  "endLine": 222,
+                  "endColumn": 35
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/WebApiBookLibrary/GetBadBook.cs",
+                "region": {
+                  "startLine": 224,
+                  "startColumn": 33,
+                  "endLine": 224,
+                  "endColumn": 35
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/WebApiBookLibrary/GetBadBook.cs",
+                "region": {
+                  "startLine": 239,
+                  "startColumn": 29,
+                  "endLine": 239,
+                  "endColumn": 34
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/WebApiBookLibrary/GetBadBook.cs",
+                "region": {
+                  "startLine": 241,
+                  "startColumn": 33,
+                  "endLine": 241,
+                  "endColumn": 35
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/WebApiBookLibrary/GetBadBook.cs",
+                "region": {
+                  "startLine": 243,
+                  "startColumn": 33,
+                  "endLine": 243,
+                  "endColumn": 35
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/WebApiBookLibrary/GetBadBook.cs",
+                "region": {
+                  "startLine": 245,
+                  "startColumn": 33,
+                  "endLine": 245,
+                  "endColumn": 35
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/WebApiBookLibrary/GetBadBook.cs",
+                "region": {
+                  "startLine": 245,
+                  "startColumn": 64,
+                  "endLine": 245,
+                  "endColumn": 66
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/WebApiBookLibrary/GetBadBook.cs",
+                "region": {
+                  "startLine": 247,
+                  "startColumn": 33,
+                  "endLine": 247,
+                  "endColumn": 35
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/WebApiBookLibrary/GetBadBook.cs",
+                "region": {
+                  "startLine": 247,
+                  "startColumn": 64,
+                  "endLine": 247,
+                  "endColumn": 66
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/WebApiBookLibrary/GetBadBook.cs",
+                "region": {
+                  "startLine": 258,
+                  "startColumn": 21,
+                  "endLine": 258,
+                  "endColumn": 28
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/WebApiBookLibrary/GetBadBook.cs",
+                "region": {
+                  "startLine": 268,
+                  "startColumn": 33,
+                  "endLine": 268,
+                  "endColumn": 38
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/WebApiBookLibrary/GetBadBook.cs",
+                "region": {
+                  "startLine": 270,
+                  "startColumn": 37,
+                  "endLine": 270,
+                  "endColumn": 39
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/WebApiBookLibrary/GetBadBook.cs",
+                "region": {
+                  "startLine": 272,
+                  "startColumn": 37,
+                  "endLine": 272,
+                  "endColumn": 39
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/WebApiBookLibrary/GetBadBook.cs",
+                "region": {
+                  "startLine": 274,
+                  "startColumn": 37,
+                  "endLine": 274,
+                  "endColumn": 39
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/WebApiBookLibrary/GetBadBook.cs",
+                "region": {
+                  "startLine": 287,
+                  "startColumn": 17,
+                  "endLine": 287,
+                  "endColumn": 21
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "0": "+1",
+              "1": "+1",
+              "10": "+3 (incl 2 for nesting)",
+              "11": "+1",
+              "12": "+3 (incl 2 for nesting)",
+              "13": "+1",
+              "14": "+2 (incl 1 for nesting)",
+              "15": "+3 (incl 2 for nesting)",
+              "16": "+4 (incl 3 for nesting)",
+              "17": "+4 (incl 3 for nesting)",
+              "18": "+4 (incl 3 for nesting)",
+              "19": "+1",
+              "2": "+1",
+              "3": "+2 (incl 1 for nesting)",
+              "4": "+3 (incl 2 for nesting)",
+              "5": "+3 (incl 2 for nesting)",
+              "6": "+3 (incl 2 for nesting)",
+              "7": "+2 (incl 1 for nesting)",
+              "8": "+3 (incl 2 for nesting)",
+              "9": "+3 (incl 2 for nesting)"
+            }
+          }
+        },
+        {
+          "ruleId": "S3776",
+          "level": "warning",
+          "message": "Refactor this method to reduce its Cognitive Complexity from 25 to the 15 allowed.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/WebApiBookLibrary/GetBadBook.cs",
+                "region": {
+                  "startLine": 32,
+                  "startColumn": 27,
+                  "endLine": 32,
+                  "endColumn": 31
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/WebApiBookLibrary/GetBadBook.cs",
+                "region": {
+                  "startLine": 39,
+                  "startColumn": 13,
+                  "endLine": 39,
+                  "endColumn": 15
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/WebApiBookLibrary/GetBadBook.cs",
+                "region": {
+                  "startLine": 41,
+                  "startColumn": 13,
+                  "endLine": 41,
+                  "endColumn": 15
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/WebApiBookLibrary/GetBadBook.cs",
+                "region": {
+                  "startLine": 47,
+                  "startColumn": 17,
+                  "endLine": 47,
+                  "endColumn": 19
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/WebApiBookLibrary/GetBadBook.cs",
+                "region": {
+                  "startLine": 56,
+                  "startColumn": 29,
+                  "endLine": 56,
+                  "endColumn": 31
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/WebApiBookLibrary/GetBadBook.cs",
+                "region": {
+                  "startLine": 58,
+                  "startColumn": 33,
+                  "endLine": 58,
+                  "endColumn": 35
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/WebApiBookLibrary/GetBadBook.cs",
+                "region": {
+                  "startLine": 66,
+                  "startColumn": 21,
+                  "endLine": 66,
+                  "endColumn": 23
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/WebApiBookLibrary/GetBadBook.cs",
+                "region": {
+                  "startLine": 72,
+                  "startColumn": 33,
+                  "endLine": 72,
+                  "endColumn": 35
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/WebApiBookLibrary/GetBadBook.cs",
+                "region": {
+                  "startLine": 74,
+                  "startColumn": 37,
+                  "endLine": 74,
+                  "endColumn": 39
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/WebApiBookLibrary/GetBadBook.cs",
+                "region": {
+                  "startLine": 86,
+                  "startColumn": 33,
+                  "endLine": 86,
+                  "endColumn": 35
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/WebApiBookLibrary/GetBadBook.cs",
+                "region": {
+                  "startLine": 88,
+                  "startColumn": 37,
+                  "endLine": 88,
+                  "endColumn": 39
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/WebApiBookLibrary/GetBadBook.cs",
+                "region": {
+                  "startLine": 98,
+                  "startColumn": 21,
+                  "endLine": 98,
+                  "endColumn": 25
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "0": "+1",
+              "1": "+1",
+              "10": "+1",
+              "2": "+1",
+              "3": "+2 (incl 1 for nesting)",
+              "4": "+3 (incl 2 for nesting)",
+              "5": "+2 (incl 1 for nesting)",
+              "6": "+3 (incl 2 for nesting)",
+              "7": "+4 (incl 3 for nesting)",
+              "8": "+3 (incl 2 for nesting)",
+              "9": "+4 (incl 3 for nesting)"
+            }
+          }
+        },
+        {
+          "ruleId": "S1854",
+          "level": "warning",
+          "message": "Remove this useless assignment to local variable 'result'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/WebApiBookLibrary/GetBadBook.cs",
+                "region": {
+                  "startLine": 198,
+                  "startColumn": 22,
+                  "endLine": 198,
+                  "endColumn": 45
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S4201",
+          "level": "warning",
+          "message": "Remove this unnecessary null check; 'is' returns false for nulls.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/WebApiBookLibrary/GetBadBook.cs",
+                "region": {
+                  "startLine": 245,
+                  "startColumn": 37,
+                  "endLine": 245,
+                  "endColumn": 63
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S4201",
+          "level": "warning",
+          "message": "Remove this unnecessary null check; 'is' returns false for nulls.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/WebApiBookLibrary/GetBadBook.cs",
+                "region": {
+                  "startLine": 247,
+                  "startColumn": 37,
+                  "endLine": 247,
+                  "endColumn": 63
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S112",
+          "level": "warning",
+          "message": "'System.Exception' should not be thrown by user code.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/WebApiBookLibrary/GetBadBook.cs",
+                "region": {
+                  "startLine": 40,
+                  "startColumn": 23,
+                  "endLine": 40,
+                  "endColumn": 88
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S112",
+          "level": "warning",
+          "message": "'System.Exception' should not be thrown by user code.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/WebApiBookLibrary/GetBadBook.cs",
+                "region": {
+                  "startLine": 42,
+                  "startColumn": 23,
+                  "endLine": 42,
+                  "endColumn": 90
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S112",
+          "level": "warning",
+          "message": "'System.Exception' should not be thrown by user code.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/WebApiBookLibrary/GetBadBook.cs",
+                "region": {
+                  "startLine": 59,
+                  "startColumn": 43,
+                  "endLine": 59,
+                  "endColumn": 116
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S112",
+          "level": "warning",
+          "message": "'System.Exception' should not be thrown by user code.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/WebApiBookLibrary/GetBadBook.cs",
+                "region": {
+                  "startLine": 75,
+                  "startColumn": 47,
+                  "endLine": 75,
+                  "endColumn": 123
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S112",
+          "level": "warning",
+          "message": "'System.Exception' should not be thrown by user code.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/WebApiBookLibrary/GetBadBook.cs",
+                "region": {
+                  "startLine": 89,
+                  "startColumn": 47,
+                  "endLine": 89,
+                  "endColumn": 124
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S112",
+          "level": "warning",
+          "message": "'System.Exception' should not be thrown by user code.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/WebApiBookLibrary/GetBadBook.cs",
+                "region": {
+                  "startLine": 203,
+                  "startColumn": 23,
+                  "endLine": 203,
+                  "endColumn": 94
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S112",
+          "level": "warning",
+          "message": "'System.Exception' should not be thrown by user code.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/WebApiBookLibrary/GetBadBook.cs",
+                "region": {
+                  "startLine": 205,
+                  "startColumn": 23,
+                  "endLine": 205,
+                  "endColumn": 96
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S112",
+          "level": "warning",
+          "message": "'System.Exception' should not be thrown by user code.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/WebApiBookLibrary/GetBadBook.cs",
+                "region": {
+                  "startLine": 221,
+                  "startColumn": 43,
+                  "endLine": 221,
+                  "endColumn": 114
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S112",
+          "level": "warning",
+          "message": "'System.Exception' should not be thrown by user code.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/WebApiBookLibrary/GetBadBook.cs",
+                "region": {
+                  "startLine": 223,
+                  "startColumn": 43,
+                  "endLine": 223,
+                  "endColumn": 117
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S112",
+          "level": "warning",
+          "message": "'System.Exception' should not be thrown by user code.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/WebApiBookLibrary/GetBadBook.cs",
+                "region": {
+                  "startLine": 225,
+                  "startColumn": 43,
+                  "endLine": 225,
+                  "endColumn": 113
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S112",
+          "level": "warning",
+          "message": "'System.Exception' should not be thrown by user code.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/WebApiBookLibrary/GetBadBook.cs",
+                "region": {
+                  "startLine": 242,
+                  "startColumn": 43,
+                  "endLine": 242,
+                  "endColumn": 112
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S112",
+          "level": "warning",
+          "message": "'System.Exception' should not be thrown by user code.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/WebApiBookLibrary/GetBadBook.cs",
+                "region": {
+                  "startLine": 244,
+                  "startColumn": 43,
+                  "endLine": 244,
+                  "endColumn": 114
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S112",
+          "level": "warning",
+          "message": "'System.Exception' should not be thrown by user code.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/WebApiBookLibrary/GetBadBook.cs",
+                "region": {
+                  "startLine": 246,
+                  "startColumn": 43,
+                  "endLine": 246,
+                  "endColumn": 120
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S112",
+          "level": "warning",
+          "message": "'System.Exception' should not be thrown by user code.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/WebApiBookLibrary/GetBadBook.cs",
+                "region": {
+                  "startLine": 248,
+                  "startColumn": 43,
+                  "endLine": 248,
+                  "endColumn": 126
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S112",
+          "level": "warning",
+          "message": "'System.Exception' should not be thrown by user code.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/WebApiBookLibrary/GetBadBook.cs",
+                "region": {
+                  "startLine": 271,
+                  "startColumn": 47,
+                  "endLine": 271,
+                  "endColumn": 128
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S112",
+          "level": "warning",
+          "message": "'System.Exception' should not be thrown by user code.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/WebApiBookLibrary/GetBadBook.cs",
+                "region": {
+                  "startLine": 273,
+                  "startColumn": 47,
+                  "endLine": 273,
+                  "endColumn": 129
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S112",
+          "level": "warning",
+          "message": "'System.Exception' should not be thrown by user code.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/WebApiBookLibrary/GetBadBook.cs",
+                "region": {
+                  "startLine": 275,
+                  "startColumn": 47,
+                  "endLine": 275,
+                  "endColumn": 127
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S112",
+          "level": "warning",
+          "message": "'System.Exception' should not be thrown by user code.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/WebApiBookLibrary/GetBadBook.cs",
+                "region": {
+                  "startLine": 288,
+                  "startColumn": 27,
+                  "endLine": 289,
+                  "endColumn": 48
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CA1841",
+          "level": "note",
+          "message": "Предпочтительное использование \"ContainsValue\" вместо \"Vаlues.Contains\" для словаря типа \"Dictionary\"",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/WebApiBookLibrary/Program.cs",
+                "region": {
+                  "startLine": 63,
+                  "startColumn": 12,
+                  "endLine": 63,
+                  "endColumn": 89
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1481",
+          "level": "warning",
+          "message": "Remove the unused local variable 'domainName'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/WebApiBookLibrary/Program.cs",
+                "region": {
+                  "startLine": 54,
+                  "startColumn": 8,
+                  "endLine": 54,
+                  "endColumn": 18
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        }
+      ],
+      "rules": {
+        "CA1841": {
+          "id": "CA1841",
+          "shortDescription": "Предпочтительное использование методов Dictionary.Contains",
+          "fullDescription": "Многие реализации словаря не очень хорошо инициализируют коллекцию Values. Чтобы избежать ненужных выделений, используйте \"ContainsValue\" вместо \"Values.Contains\".",
+          "defaultLevel": "note",
+          "helpUri": "https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1841",
+          "properties": {
+            "category": "Performance",
+            "isEnabledByDefault": true,
+            "tags": [
+              "Telemetry",
+              "EnabledRuleInAggressiveMode"
+            ]
+          }
+        },
+        "CS8625": {
+          "id": "CS8625",
+          "shortDescription": "Литерал, равный NULL, не может быть преобразован в ссылочный тип, не допускающий значение NULL.",
+          "defaultLevel": "warning",
+          "helpUri": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn&k=k(CS8625)",
+          "properties": {
+            "category": "Compiler",
+            "isEnabledByDefault": true,
+            "tags": [
+              "Compiler",
+              "Telemetry"
+            ]
+          }
+        },
+        "S112": {
+          "id": "S112",
+          "shortDescription": "General exceptions should never be thrown",
+          "fullDescription": "Throwing such general exceptions as Exception, SystemException, ApplicationException, IndexOutOfRangeException, NullReferenceException, OutOfMemoryException and ExecutionEngineException prevents calling methods from handling true, system-generated exceptions differently than application-generated errors.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-112",
+          "properties": {
+            "category": "Major Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S125": {
+          "id": "S125",
+          "shortDescription": "Sections of code should not be commented out",
+          "fullDescription": "Programmers should not comment out code as it bloats programs and reduces readability.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-125",
+          "properties": {
+            "category": "Major Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "TestSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S1481": {
+          "id": "S1481",
+          "shortDescription": "Unused local variables should be removed",
+          "fullDescription": "If a local variable is declared but not used, it is dead code and should be removed. Doing so will improve maintainability because developers will not wonder what the variable is used for.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-1481",
+          "properties": {
+            "category": "Minor Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "TestSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S1854": {
+          "id": "S1854",
+          "shortDescription": "Unused assignments should be removed",
+          "fullDescription": "A dead store happens when a local variable is assigned a value that is not read by any subsequent instruction. Calculating or retrieving a value only to then overwrite it or throw it away, could indicate a serious error in the code. Even if it’s not an error, it is at best a waste of resources. Therefore all calculated values should be used.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-1854",
+          "properties": {
+            "category": "Major Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "TestSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S2068": {
+          "id": "S2068",
+          "shortDescription": "Hard-coded credentials are security-sensitive",
+          "fullDescription": "Because it is easy to extract strings from an application source code or binary, credentials should not be hard-coded. This is particularly true for applications that are distributed or that are open-source.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-2068",
+          "properties": {
+            "category": "Blocker Security Hotspot",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S3776": {
+          "id": "S3776",
+          "shortDescription": "Cognitive Complexity of methods should not be too high",
+          "fullDescription": "Cognitive Complexity is a measure of how hard the control flow of a method is to understand. Methods with high Cognitive Complexity will be difficult to maintain.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-3776",
+          "properties": {
+            "category": "Critical Code Smell",
+            "isEnabledByDefault": false,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "TestSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S4201": {
+          "id": "S4201",
+          "shortDescription": "Null checks should not be used with \"is\"",
+          "fullDescription": "There’s no need to null test in conjunction with an is test. null is not an instance of anything, so a null check is redundant.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-4201",
+          "properties": {
+            "category": "Minor Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "TestSourceScope",
+              "SonarWay"
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

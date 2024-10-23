@@ -1,0 +1,6 @@
+﻿C:\vsproj\beck\bia.internal.booklibrary\EmailSender\EmailService.cs
+C:\vsproj\beck\bia.internal.booklibrary\EmailSender\Extension.cs
+C:\vsproj\beck\bia.internal.booklibrary\EmailSender\Templates\AdminRequest.html
+C:\vsproj\beck\bia.internal.booklibrary\EmailSender\Templates\UserRequest.html
+C:\vsproj\beck\bia.internal.booklibrary\EmailSender\Templates\UserRequestConfirm.html
+C:\vsproj\beck\bia.internal.booklibrary\EmailSender\Templates\UserReturnBook.html

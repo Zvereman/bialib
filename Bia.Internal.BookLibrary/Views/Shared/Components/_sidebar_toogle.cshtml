@@ -1,0 +1,15 @@
+﻿ <div class="text-right">
+    <button class="navbar-toggler sidebar-toggler mr-auto" type="button" data-toggle="sidebar-show">
+        <i class="fas fa-bars"></i>
+    </button>
+</div>
+
+<script>
+    $(document).on('dblclick', '.rowlink', function () {
+        if ($(window).width() < 1000) {
+            $('sidebar-btn').show();
+        } else {
+            $('sidebar-btn').hide();
+        }
+    });
+</script>

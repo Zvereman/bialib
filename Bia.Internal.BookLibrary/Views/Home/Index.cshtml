@@ -1,0 +1,420 @@
+﻿@using Bia.Internal.BookLibrary.Data;
+@using Bia.Internal.BookLibrary;
+@model HomeBookViewModel
+@{
+    ViewData["Title"] = "Bia.Books";
+    ViewBag.accessOrder = 1;
+}
+
+<script src="~/js/books_details.js"></script>
+
+<section class="main_section">
+    @* <section class="container-fluid"> *@
+    <section class="container">
+        <div class="row">
+            <div class="title">
+                <p>Библиотека</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-8">
+            </div>
+            <div class="col-8 card_pad">
+                <div class="swiper-container">
+                    <partial name="slider" />
+                </div>
+
+                @foreach (var categorybyBooks in Model.BooksByCategory)
+                {
+                    <div class="col-auto">
+                        <div class="books-card">
+                            <div class="cards-list">
+                                <div class="cards-list__title">
+                                    <div class="cards-list__title_text">
+                                        @(char.ToUpper(@categorybyBooks.Key[0]) + @categorybyBooks.Key.Substring(1).ToLower())
+                                    </div>
+                                    <div class="cards-list__title_text_link">
+                                        <a href="@Url.Action("Books", "Visitor", new { sortBy = "title", sortOrder = "asc",
+                                                pageNumber = 1, pageSize = 100, selectedCategories = (char.ToUpper(@categorybyBooks.Key[0]) + @categorybyBooks.Key.Substring(1).ToLower()) })">Все</a>
+                                    </div>
+                                </div>
+                                <div class="cards-list__list">
+                                    @foreach (var book in categorybyBooks.Value)
+                                    {
+                                        <div class="cards-list__card-cont">
+                                            @if (string.IsNullOrEmpty(book.CoverImage))
+                                            {
+                                                <img class="cards-list__card-img" onclick="redirectToBook(@book.BiaId)" src=@Url.Content("~/icons/no_img_book.svg") alt="defult-cover">
+                                            }
+                                            else
+                                            {
+                                                <img class="cards-list__card-img" onclick="redirectToBook(@book.BiaId)" onerror="this.onerror=null;this.src='@Url.Content("~/icons/no_img_book.svg")'" src='@Url.Content("~"+book.CoverImage)' alt="cover">
+                                            }
+                                            @* <img src="~/icons/no_img_book.svg" class="cards-list__card-img"> *@
+                                            <div class="tooltip__underline" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                                 data-bs-custom-class="custom-tooltip" data-html="true"
+                                                 data-bs-title="@($"{book.Title}: {string.Join(", ", book.Authors.Where(a => a.BookId == book.BiaId).Select(a => a.Author.FullName()))}")">
+                                                <p class="cards-list__card-title text-truncate" onclick="redirectToBook(@book.BiaId)">
+                                                    @* @(book.Title.Length > 13 ? book.Title.Substring(0, 13) + "..." : book.Title) *@
+                                                    @(book.Title)
+                                                </p>
+                                                <p class="cards-list__card-text text-truncate" onclick="redirectToBook(@book.BiaId)">
+                                                    @(string.Join(", ", book.Authors.Where(a => a.BookId == book.BiaId).Select(a => a.Author.FullName())))
+                                                </p>
+                                            </div>
+                                            @switch (book.AverageRating)
+                                            {
+                                                case (0):
+                                                    {
+                                                        <div class="star_conteiner">
+                                                            <img class="star_img" src="~/icons/clear-star.svg" />
+                                                            <img class="star_img" src="~/icons/clear-star.svg" />
+                                                            <img class="star_img" src="~/icons/clear-star.svg" />
+                                                            <img class="star_img" src="~/icons/clear-star.svg" />
+                                                            <img class="star_img" src="~/icons/clear-star.svg" />
+                                                        </div>
+                                                        break;
+
+                                                    }
+                                                case (1):
+                                                    {
+                                                        <div class="star_conteiner">
+                                                            <img class="star_img" src="~/icons/star.svg" />
+                                                            <img class="star_img" src="~/icons/clear-star.svg" />
+                                                            <img class="star_img" src="~/icons/clear-star.svg" />
+                                                            <img class="star_img" src="~/icons/clear-star.svg" />
+                                                            <img class="star_img" src="~/icons/clear-star.svg" />
+                                                        </div>
+                                                        break;
+                                                    }
+                                                case (2):
+                                                    {
+                                                        <div class="star_conteiner">
+                                                            <img class="star_img" src="~/icons/star.svg" />
+                                                            <img class="star_img" src="~/icons/star.svg" />
+                                                            <img class="star_img" src="~/icons/clear-star.svg" />
+                                                            <img class="star_img" src="~/icons/clear-star.svg" />
+                                                            <img class="star_img" src="~/icons/clear-star.svg" />
+                                                        </div>
+                                                        break;
+                                                    }
+                                                case (3):
+                                                    {
+                                                        <div class="star_conteiner">
+                                                            <img class="star_img" src="~/icons/star.svg" />
+                                                            <img class="star_img" src="~/icons/star.svg" />
+                                                            <img class="star_img" src="~/icons/star.svg" />
+                                                            <img class="star_img" src="~/icons/clear-star.svg" />
+                                                            <img class="star_img" src="~/icons/clear-star.svg" />
+                                                        </div>
+                                                        break;
+                                                    }
+                                                case (4):
+                                                    {
+                                                        <div class="star_conteiner">
+                                                            <img class="star_img" src="~/icons/star.svg" />
+                                                            <img class="star_img" src="~/icons/star.svg" />
+                                                            <img class="star_img" src="~/icons/star.svg" />
+                                                            <img class="star_img" src="~/icons/star.svg" />
+                                                            <img class="star_img" src="~/icons/clear-star.svg" />
+                                                        </div>
+                                                        break;
+                                                    }
+                                                case (5):
+                                                    {
+                                                        <div class="star_conteiner">
+                                                            <img class="star_img" src="~/icons/star.svg" />
+                                                            <img class="star_img" src="~/icons/star.svg" />
+                                                            <img class="star_img" src="~/icons/star.svg" />
+                                                            <img class="star_img" src="~/icons/star.svg" />
+                                                            <img class="star_img" src="~/icons/star.svg" />
+                                                        </div>
+                                                        break;
+                                                    }
+                                            }
+                                            @if (book.TakenByUser != null || book.ReqestBooks.Any())
+                                            {
+                                                @* <button type="button" class="btn btn-bia-find" onclick="redirectToBook(@book.BiaId)">Узнать о поступлении</button> *@
+                                                <button type="button" class="btn btn-bia-find" onclick="redirectToBook(@book.BiaId)">Недоступна</button>
+                                            }
+                                            else
+                                            {
+                                                @* <button type="button" class="btn btn-bia-request" onclick="redirectToBook(@book.BiaId)">Запросить</button> *@
+                                                <button type="button" class="btn btn-bia-request" data-bs-toggle="modal" data-bs-target="#requestBookModal"
+                                                        onclick="fillModal('@book.BiaId', '@book.Title', '@(string.Join(", ", @book.Authors.Select(a => a.Author.FullName())))', '@book.CoverImage')">
+                                                    Запросить
+                                                </button>
+                                            }
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="request-main col-4">
+                @if (Model.UserRole != null && Model.UserRole == "Admin")
+                {
+                    <div class="admin-card">
+                        <div class="admin-header">
+                            Хранитель библиотеки
+                        </div>
+                        <a href="@Url.Action("Requests","Admin", new { sortBy = "id", sortOrder = "asc",
+                           pageNumber = 1, pageSize = 50 })" class="admin_control_elem">
+                            <div>
+                                <img class="admin_img" src="~/icons/time_request.svg" />
+                                Запрошенные книги
+                            </div>
+                            <div>
+                                <img src="~/icons/shevron_admin.svg" />
+                            </div>
+                        </a>
+                        <a href="@Url.Action("TakenBooks","Admin", new { sortBy = "id", sortOrder = "asc",
+                           pageNumber = 1, pageSize = 50 })" class="admin_control_elem">
+                            <div>
+                                <img class="admin_img" src="~/icons/issued_books_admin.svg" />
+                                Выданные книги
+                            </div>
+                            <div>
+                                <img src="~/icons/shevron_admin.svg" />
+                            </div>
+                        </a>
+                        <a href="@Url.Action("Manage","Admin", new { sortBy = "title", sortOrder = "asc",
+                           pageNumber = 1, pageSize = 50 })" class="admin_control_elem">
+                            <div>
+                                <img class="admin_img" src="~/icons/book_management_admin.svg" />
+                                Управление книгами
+                            </div>
+                            <div>
+                                <img src="~/icons/shevron_admin.svg" />
+                            </div>
+                        </a>
+                        <a href="@Url.Action("Authors","Admin", new { sortBy = "title", sortOrder = "asc",
+                           pageNumber = 1, pageSize = 50 })" class="admin_control_elem">
+                            <div>
+                                <img class="admin_img" src="~/icons/autors_admin.svg" />
+                                Авторы
+                            </div>
+                            <div>
+                                <img src="~/icons/shevron_admin.svg" />
+                            </div>
+                        </a>
+                        <a href="@Url.Action("Categories", "Admin", new { sortBy = "id", sortOrder = "asc",
+                           pageNumber = 1, pageSize = 50 })" class="admin_control_elem">
+                            <div>
+                                <img class="admin_img" src="~/icons/categories_admin.svg" />
+                                Категории
+                            </div>
+                            <div>
+                                <img src="~/icons/shevron_admin.svg" />
+                            </div>
+                        </a>
+                        <a href="@Url.Action("Reviews","Admin", new { sortBy = "id", sortOrder = "asc",
+                           pageNumber = 1, pageSize = 50 })" class="admin_control_elem">
+                            <div>
+                                <img class="admin_img" src="~/icons/review_admin.svg" />
+                                Отзывы
+                            </div>
+                            <div>
+                                <img src="~/icons/shevron_admin.svg" />
+                            </div>
+                        </a>
+                        <a href="@Url.Action("Users","Admin", new { sortBy = "title", sortOrder = "asc",
+                           pageNumber = 1, pageSize = 50 })" class="admin_control_elem">
+                            <div>
+                                <img class="admin_img" src="~/icons/users_admin.svg" />
+                                Пользователи
+                            </div>
+                            <div>
+                                <img src="~/icons/shevron_admin.svg" />
+                            </div>
+                        </a>
+                    </div>
+                }
+                <div class="requests my-requests-card">
+                    @* books-card *@
+                    <div class="my-requests-title">
+                        @* cards-list__title *@
+                        <div class="cards-list__title_text">Мои запросы</div>
+                        <div class="cards-list__title_text_link">
+                            @if (Model.RequestBooksByUser.Count > 0 || Model.ReadBooksByUser.Count > 0)
+                            {
+                                <a href="@Url.Action("MyRequest", "Account", new { sortBy = "id", sortOrder = "asc",
+                                                pageNumber = 1, pageSize = 50, selectedRequest = "Все" })">
+                                    @if (Model.RequestAndReadBooksCount > 0)
+                                    {
+                                        <text>Все (@Model.RequestAndReadBooksCount)</text>
+                                    }
+                                    else
+                                    {
+                                        <text>Все</text>
+                                    }
+                                </a>
+                            }
+                        </div>
+                    </div>
+                    @if (Model.RequestBooksByUser.Count > 0 || Model.ReadBooksByUser.Count > 0)
+                    {
+                        @if (Model.RequestBooksByUser.Count > 0)
+                        {
+                            <div class="requests-block">
+                                <p class="requests-block__title">Запросил</p>
+                                @foreach (var request in Model.RequestBooksByUser.Take(2))
+                                {
+                                    <div class="requests-block__item">
+                                        @if (string.IsNullOrEmpty(request.Book.CoverImage))
+                                        {
+                                            <img class="requests-block__item-img" src=@Url.Content("~/icons/no_img_book.svg") alt="defult-cover">
+                                        }
+                                        else
+                                        {
+                                            <img class="requests-block__item-img" onerror="this.onerror=null;this.src='@Url.Content("~/icons/no_img_book.svg")'" src='@Url.Content("~"+request.Book.CoverImage)' alt="cover">
+                                        }
+                                        @* <img src="~/icons/no_img_book.svg" class="requests-block__item-img"> *@
+                                        <div class="tooltip__underline" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                             data-bs-custom-class="custom-tooltip" data-html="true"
+                                             data-bs-title="@($"{request.Book.Title}: {string.Join(", ", request.Book.Authors.Where(a => a.BookId == request.Book.BiaId).Select(a => a.Author.FullName()))}")">
+                                            <div class="requests-block__item-text">
+                                                <span class="requests-block__item-title text-truncate-two-line" onclick="redirectToBook(@request.BookId)">
+                                                    @request.Book.Title
+                                                </span>
+                                                <p class="requests-block__item-description text-truncate-one-line" onclick="redirectToBook(@request.BookId)">
+                                                    @string.Join(", ", request.Book.Authors.Where(a => a.BookId == request.Book.BiaId).Select(a => a.Author.FullName()))
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        }
+                        @if (Model.ReadBooksByUser.Count > 0)
+                        {
+                            <div class="reads-block">
+                                <p class="reads-block__title">Читаю</p>
+                                @foreach (var read in Model.ReadBooksByUser.Take(2))
+                                {
+                                    <div class="reads-block__item">
+                                        @if (string.IsNullOrEmpty(read.TakenBook.CoverImage))
+                                        {
+                                            <img class="reads-block__item-img" src=@Url.Content("~/icons/no_img_book.svg") alt="defult-cover">
+                                        }
+                                        else
+                                        {
+                                            <img class="reads-block__item-img" onerror="this.onerror=null;this.src='@Url.Content("~/icons/no_img_book.svg")'" src='@Url.Content("~"+read.TakenBook.CoverImage)' alt="cover">
+                                        }
+                                        @* <img src="~/icons/no_img_book.svg" class="reads-block__item-img"> *@
+                                        <div class="tooltip__underline" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                             data-bs-custom-class="custom-tooltip" data-html="true"
+                                             data-bs-title="@($"{read.TakenBook.Title}: {string.Join(", ", read.TakenBook.Authors.Where(a => a.BookId == read.TakenBook.BiaId).Select(a => a.Author.FullName()))}")">
+                                            <div class="reads-block__item-text">
+                                                <span class="reads-block__item-title text-truncate-two-line" onclick="redirectToBook(@read.TakenBook.BiaId)">
+                                                    @* @(read.TakenBook.Title.Length > 20 ? read.TakenBook.Title.Substring(0, 20) + "..." : read.TakenBook.Title) *@
+                                                    @read.TakenBook.Title
+                                                </span>
+                                                <p class="reads-block__item-description" onclick="redirectToBook(@read.TakenBook.BiaId)">
+                                                    До @read.ExtendedDueDate.Date.ToString("dd.MM.yyyy")
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        <img class="empty-request-img" src="~/icons/emptyRequest.svg" />
+                    }
+                </div>
+                @* <div class="alpina">
+                <a class="nav-link aplina_link" href="https://dellin.alpinadigital.ru/" role="button" aria-expanded="false">
+                <img class="alpina-img" src="~/icons/headphones.svg" />
+                </a>
+                </div> *@
+                <partial name="faq" />
+            </div>
+        </div>
+    </section>
+    <div class="modal fade" id="requestBookModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content boks_modal_content_details">
+                <div>
+                    <div class="modal-header books_modal_details">
+                        <p class="modal-title books_modal_header_details" id="staticBackdropLabel">Подтвердите бронь книги</p>
+                        <button id="btnClose" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+                    </div>
+                    <div class="modal-body books_modal_body_details">
+                        <!-- Обложка книги -->
+                        <img id="modalCoverImage" class="img_books_modal_details" src="" />
+                        <div>
+                            <!-- Заголовок книги -->
+                            <p class="books_details_title books_modal_text_details text-truncate-two-line" id="bookTitle">Название книги</p>
+
+                            <!-- Авторы книги -->
+                            <p class="books_details_subtutle text-truncate-two-line" id="bookAuthors">Авторы книги</p>
+                        </div>
+                    </div>
+                    <div class="modal-footer books_modal_details boks_modal_futer_btn_details col-6 mx-auto">
+                        <button id="requestBookBtn" type="button" class="btn btn-bia-request_details"
+                                data-content="" data-name="">
+                            Запросить книгу
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="toast-container position-fixed top-0 end-0">
+        <div id="toastSucces" class="toast toas_content_details" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex toast_succec_details">
+                <div class="toast-body">
+                    Запрос отправлен
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="toast-container position-fixed top-0 end-0">
+        <div id="toastFail" class="toast toas_content_details" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex toast_fail_details">
+                <div class="toast-body">
+                    Что-то пошло не так, попробуйте еще раз
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+@section Scripts {
+    <script>
+        function fillModal(biaId, title, authors, coverImage) {
+            // Заполняем поля в модалке
+            $('#bookTitle').text(title);
+            $('#bookAuthors').text(authors);
+
+            // Проверка обложки книги
+            var modalCoverImage = document.getElementById('modalCoverImage');
+            var coverBook = coverImage;
+            //modalCoverImage
+            if (!coverImage || coverImage.trim() === "") {
+                coverBook = '@Url.Content("~/icons/no_img_book.svg")';
+            }
+
+            modalCoverImage.src = coverBook;
+
+            modalCoverImage.onerror = function () {
+                this.onerror = null;
+                this.src = '@Url.Content("~/icons/no_img_book.svg")';
+            };
+
+            // Заменяем значение атрибутов data-content и data-name у кнопки
+            $('#requestBookBtn').attr('data-content', biaId).attr('data-name', title);
+
+            // Открываем модальное окно
+            $('#requestBookModal').modal('show');
+        }
+
+    </script>
+}                    

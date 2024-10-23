@@ -1,0 +1,167 @@
+﻿.table-condensed {
+    width: 100%;
+    border-collapse: separate;
+}
+
+.datepicker {
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.datepicker-days table thead {
+    /* background-color: #f8f9fa; */
+    background-color: inherit;
+}
+
+.datepicker .datepicker-switch:hover,
+.datepicker .next:hover,
+.datepicker .prev:hover {
+    background-color: inherit;
+}
+
+.datepicker .datepicker-switch, .datepicker .next, .datepicker .prev, .datepicker tfoot tr th {
+    font-weight: 600;
+}
+
+.datepicker-days table tbody tr td,
+.datepicker-days table thead tr th {
+    width: 43px;
+    height: 43px;
+    max-width: 43px;
+    max-height: 43px;
+    text-align: center;
+    vertical-align: middle;
+    /*font-size: 14px;*/
+    font-family: Open Sans;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 21.79px;
+    text-align: center;
+}
+
+    .datepicker-days table tbody tr td.day:hover,
+    .datepicker-days table tbody tr td.day.active {
+        /* background-color: #e9ecef; */
+        background-color: inherit;
+        border: 1px solid;
+        color: #000;
+        border-radius: 50%;
+    }
+
+    .datepicker-days table tbody tr td.disabled,
+    .datepicker-days table tbody tr td.disabled:hover {
+        /* background-color: #e9ecef; */
+        background-color: inherit;
+        border: 1px solid;
+        color: #6c757d;
+        cursor: not-allowed;
+    }
+
+.datepicker-months table tbody tr td,
+.datepicker-years table tbody tr td,
+.datepicker-decades table tbody tr td,
+.datepicker-centuries table tbody tr td {
+    width: 100%;
+    text-align: center;
+}
+
+/* Для кастомизации текущего дня */
+
+/* .datepicker table tr td.today,
+        .datepicker table tr td.today.disabled {
+            background-color: #AABBFD !important;
+            background-image: none;
+            border-color: #AABBFD !important;
+            color: #000 !important;
+            border-radius: 50%;
+        }
+        
+        
+        .datepicker table tr td.today.disabled:hover,
+        .datepicker table tr td.today:hover{
+            background-color: #AABBFD !important;
+            background-image: none;
+            border-color: #AABBFD !important;
+            color: #fff !important;
+        } */
+
+/* Для активного дня */
+.datepicker table tr td.active,
+.datepicker table tr td.active.disabled,
+.datepicker table tr td.active.disabled:hover,
+.datepicker table tr td.active:hover {
+    background-color: #AABBFD !important;
+    background-image: none;
+    border-color: #AABBFD !important;
+    color: #fff !important;
+}
+
+/* Стрелка */
+.datepicker-dropdown:after,
+.datepicker-dropdown:before {
+    display: none;
+}
+
+
+#dpControl {
+    border-right: none;
+    border-radius: 8px 0px 0px 8px;
+    position: relative;
+    z-index: 1;
+}
+
+#dpControlImg {
+    border-radius: 0px 8px 8px 0px;
+}
+
+/*.ui.dropdown > .dropdown.icon::before {
+    content: '\f078' !important;
+}
+
+i.icon.dropdown:before {
+    content: '\f078' !important;
+}
+
+.ui.selection.dropdown > .delete.icon, .ui.selection.dropdow    n > .dropdown.icon, .ui.selection.dropdown > .search.icon {
+    content: '\f078' !important;
+}*/
+
+.inp-group {
+    border: 1px solid transparent;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+    .inp-group.focused {
+        border: 1px solid #2A74DA;
+        z-index: 2;
+    }
+
+    .inp-group input {
+        position: relative;
+        z-index: 2;
+       /* border: none;
+        outline: none;
+        flex: 1;*/
+    }
+
+    .inp-group input:focus {
+        border: none;
+        outline: none;
+        box-shadow: none;
+    }
+
+#dateDrop {
+    z-index: 3;
+    position: absolute;
+    top: -10px;
+    left: 10px;
+    padding: 0 .5rem;
+    background-color: white;
+    color: #7D7D7D;
+    /*#2A74DA*/
+    font-size: 14px;
+    display: none;
+}

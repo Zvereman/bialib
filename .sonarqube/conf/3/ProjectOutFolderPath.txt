@@ -1,0 +1,1 @@
+C:\vsproj\beck\bia.internal.booklibrary\.sonarqube\out\3

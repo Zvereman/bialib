@@ -1,0 +1,4600 @@
+{
+  "$schema": "http://json.schemastore.org/sarif-1.0.0",
+  "version": "1.0.0",
+  "runs": [
+    {
+      "tool": {
+        "name": "Компилятор Microsoft (R) Visual C#",
+        "version": "4.7.0.0",
+        "fileVersion": "4.7.0-3.23416.9 (43b0b05c)",
+        "semanticVersion": "4.7.0",
+        "language": "ru-RU"
+      },
+      "results": [
+        {
+          "ruleId": "CS1998",
+          "level": "warning",
+          "message": "В данном асинхронном методе отсутствуют операторы await, поэтому метод будет выполняться синхронно. Воспользуйтесь оператором await для ожидания неблокирующих вызовов API или оператором await Task.Run(...) для выполнения связанных с ЦП заданий в фоновом потоке.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/Api/ApiController.cs",
+                "region": {
+                  "startLine": 46,
+                  "startColumn": 42,
+                  "endLine": 46,
+                  "endColumn": 49
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS1998",
+          "level": "warning",
+          "message": "В данном асинхронном методе отсутствуют операторы await, поэтому метод будет выполняться синхронно. Воспользуйтесь оператором await для ожидания неблокирующих вызовов API или оператором await Task.Run(...) для выполнения связанных с ЦП заданий в фоновом потоке.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/Api/ApiController.cs",
+                "region": {
+                  "startLine": 94,
+                  "startColumn": 42,
+                  "endLine": 94,
+                  "endColumn": 52
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS1998",
+          "level": "warning",
+          "message": "В данном асинхронном методе отсутствуют операторы await, поэтому метод будет выполняться синхронно. Воспользуйтесь оператором await для ожидания неблокирующих вызовов API или оператором await Task.Run(...) для выполнения связанных с ЦП заданий в фоновом потоке.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Startup.cs",
+                "region": {
+                  "startLine": 36,
+                  "startColumn": 27,
+                  "endLine": 36,
+                  "endColumn": 44
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS0162",
+          "level": "warning",
+          "message": "Обнаружен недостижимый код",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/Api/ApiController.cs",
+                "region": {
+                  "startLine": 113,
+                  "startColumn": 13,
+                  "endLine": 113,
+                  "endColumn": 16
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 2
+          }
+        },
+        {
+          "ruleId": "CS1998",
+          "level": "warning",
+          "message": "В данном асинхронном методе отсутствуют операторы await, поэтому метод будет выполняться синхронно. Воспользуйтесь оператором await для ожидания неблокирующих вызовов API или оператором await Task.Run(...) для выполнения связанных с ЦП заданий в фоновом потоке.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/Api/ApiController.cs",
+                "region": {
+                  "startLine": 110,
+                  "startColumn": 42,
+                  "endLine": 110,
+                  "endColumn": 51
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS1998",
+          "level": "warning",
+          "message": "В данном асинхронном методе отсутствуют операторы await, поэтому метод будет выполняться синхронно. Воспользуйтесь оператором await для ожидания неблокирующих вызовов API или оператором await Task.Run(...) для выполнения связанных с ЦП заданий в фоновом потоке.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Startup.cs",
+                "region": {
+                  "startLine": 81,
+                  "startColumn": 27,
+                  "endLine": 81,
+                  "endColumn": 36
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS1998",
+          "level": "warning",
+          "message": "В данном асинхронном методе отсутствуют операторы await, поэтому метод будет выполняться синхронно. Воспользуйтесь оператором await для ожидания неблокирующих вызовов API или оператором await Task.Run(...) для выполнения связанных с ЦП заданий в фоновом потоке.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/Api/ApiController.cs",
+                "region": {
+                  "startLine": 140,
+                  "startColumn": 42,
+                  "endLine": 140,
+                  "endColumn": 49
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS1998",
+          "level": "warning",
+          "message": "В данном асинхронном методе отсутствуют операторы await, поэтому метод будет выполняться синхронно. Воспользуйтесь оператором await для ожидания неблокирующих вызовов API или оператором await Task.Run(...) для выполнения связанных с ЦП заданий в фоновом потоке.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AccountController.cs",
+                "region": {
+                  "startLine": 64,
+                  "startColumn": 39,
+                  "endLine": 64,
+                  "endColumn": 48
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS1998",
+          "level": "warning",
+          "message": "В данном асинхронном методе отсутствуют операторы await, поэтому метод будет выполняться синхронно. Воспользуйтесь оператором await для ожидания неблокирующих вызовов API или оператором await Task.Run(...) для выполнения связанных с ЦП заданий в фоновом потоке.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/Api/ApiController.cs",
+                "region": {
+                  "startLine": 170,
+                  "startColumn": 39,
+                  "endLine": 170,
+                  "endColumn": 50
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS1998",
+          "level": "warning",
+          "message": "В данном асинхронном методе отсутствуют операторы await, поэтому метод будет выполняться синхронно. Воспользуйтесь оператором await для ожидания неблокирующих вызовов API или оператором await Task.Run(...) для выполнения связанных с ЦП заданий в фоновом потоке.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 126,
+                  "startColumn": 39,
+                  "endLine": 126,
+                  "endColumn": 48
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS1998",
+          "level": "warning",
+          "message": "В данном асинхронном методе отсутствуют операторы await, поэтому метод будет выполняться синхронно. Воспользуйтесь оператором await для ожидания неблокирующих вызовов API или оператором await Task.Run(...) для выполнения связанных с ЦП заданий в фоновом потоке.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/Api/ApiController.cs",
+                "region": {
+                  "startLine": 195,
+                  "startColumn": 39,
+                  "endLine": 195,
+                  "endColumn": 49
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS1998",
+          "level": "warning",
+          "message": "В данном асинхронном методе отсутствуют операторы await, поэтому метод будет выполняться синхронно. Воспользуйтесь оператором await для ожидания неблокирующих вызовов API или оператором await Task.Run(...) для выполнения связанных с ЦП заданий в фоновом потоке.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 168,
+                  "startColumn": 39,
+                  "endLine": 168,
+                  "endColumn": 49
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS1998",
+          "level": "warning",
+          "message": "В данном асинхронном методе отсутствуют операторы await, поэтому метод будет выполняться синхронно. Воспользуйтесь оператором await для ожидания неблокирующих вызовов API или оператором await Task.Run(...) для выполнения связанных с ЦП заданий в фоновом потоке.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/VisitorController.cs",
+                "region": {
+                  "startLine": 61,
+                  "startColumn": 39,
+                  "endLine": 61,
+                  "endColumn": 47
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS1998",
+          "level": "warning",
+          "message": "В данном асинхронном методе отсутствуют операторы await, поэтому метод будет выполняться синхронно. Воспользуйтесь оператором await для ожидания неблокирующих вызовов API или оператором await Task.Run(...) для выполнения связанных с ЦП заданий в фоновом потоке.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 201,
+                  "startColumn": 39,
+                  "endLine": 201,
+                  "endColumn": 51
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS1998",
+          "level": "warning",
+          "message": "В данном асинхронном методе отсутствуют операторы await, поэтому метод будет выполняться синхронно. Воспользуйтесь оператором await для ожидания неблокирующих вызовов API или оператором await Task.Run(...) для выполнения связанных с ЦП заданий в фоновом потоке.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 229,
+                  "startColumn": 39,
+                  "endLine": 229,
+                  "endColumn": 51
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS1998",
+          "level": "warning",
+          "message": "В данном асинхронном методе отсутствуют операторы await, поэтому метод будет выполняться синхронно. Воспользуйтесь оператором await для ожидания неблокирующих вызовов API или оператором await Task.Run(...) для выполнения связанных с ЦП заданий в фоновом потоке.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/VisitorController.cs",
+                "region": {
+                  "startLine": 152,
+                  "startColumn": 39,
+                  "endLine": 152,
+                  "endColumn": 50
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS1998",
+          "level": "warning",
+          "message": "В данном асинхронном методе отсутствуют операторы await, поэтому метод будет выполняться синхронно. Воспользуйтесь оператором await для ожидания неблокирующих вызовов API или оператором await Task.Run(...) для выполнения связанных с ЦП заданий в фоновом потоке.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/VisitorController.cs",
+                "region": {
+                  "startLine": 176,
+                  "startColumn": 39,
+                  "endLine": 176,
+                  "endColumn": 57
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS1998",
+          "level": "warning",
+          "message": "В данном асинхронном методе отсутствуют операторы await, поэтому метод будет выполняться синхронно. Воспользуйтесь оператором await для ожидания неблокирующих вызовов API или оператором await Task.Run(...) для выполнения связанных с ЦП заданий в фоновом потоке.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 257,
+                  "startColumn": 39,
+                  "endLine": 257,
+                  "endColumn": 46
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS1998",
+          "level": "warning",
+          "message": "В данном асинхронном методе отсутствуют операторы await, поэтому метод будет выполняться синхронно. Воспользуйтесь оператором await для ожидания неблокирующих вызовов API или оператором await Task.Run(...) для выполнения связанных с ЦП заданий в фоновом потоке.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 362,
+                  "startColumn": 39,
+                  "endLine": 362,
+                  "endColumn": 47
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS1998",
+          "level": "warning",
+          "message": "В данном асинхронном методе отсутствуют операторы await, поэтому метод будет выполняться синхронно. Воспользуйтесь оператором await для ожидания неблокирующих вызовов API или оператором await Task.Run(...) для выполнения связанных с ЦП заданий в фоновом потоке.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 416,
+                  "startColumn": 39,
+                  "endLine": 416,
+                  "endColumn": 46
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS1998",
+          "level": "warning",
+          "message": "В данном асинхронном методе отсутствуют операторы await, поэтому метод будет выполняться синхронно. Воспользуйтесь оператором await для ожидания неблокирующих вызовов API или оператором await Task.Run(...) для выполнения связанных с ЦП заданий в фоновом потоке.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 460,
+                  "startColumn": 39,
+                  "endLine": 460,
+                  "endColumn": 47
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS1998",
+          "level": "warning",
+          "message": "В данном асинхронном методе отсутствуют операторы await, поэтому метод будет выполняться синхронно. Воспользуйтесь оператором await для ожидания неблокирующих вызовов API или оператором await Task.Run(...) для выполнения связанных с ЦП заданий в фоновом потоке.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 627,
+                  "startColumn": 39,
+                  "endLine": 627,
+                  "endColumn": 49
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS1998",
+          "level": "warning",
+          "message": "В данном асинхронном методе отсутствуют операторы await, поэтому метод будет выполняться синхронно. Воспользуйтесь оператором await для ожидания неблокирующих вызовов API или оператором await Task.Run(...) для выполнения связанных с ЦП заданий в фоновом потоке.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 688,
+                  "startColumn": 39,
+                  "endLine": 688,
+                  "endColumn": 47
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS1998",
+          "level": "warning",
+          "message": "В данном асинхронном методе отсутствуют операторы await, поэтому метод будет выполняться синхронно. Воспользуйтесь оператором await для ожидания неблокирующих вызовов API или оператором await Task.Run(...) для выполнения связанных с ЦП заданий в фоновом потоке.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 790,
+                  "startColumn": 39,
+                  "endLine": 790,
+                  "endColumn": 47
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS1998",
+          "level": "warning",
+          "message": "В данном асинхронном методе отсутствуют операторы await, поэтому метод будет выполняться синхронно. Воспользуйтесь оператором await для ожидания неблокирующих вызовов API или оператором await Task.Run(...) для выполнения связанных с ЦП заданий в фоновом потоке.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 846,
+                  "startColumn": 39,
+                  "endLine": 846,
+                  "endColumn": 50
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS0162",
+          "level": "warning",
+          "message": "Обнаружен недостижимый код",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 896,
+                  "startColumn": 13,
+                  "endLine": 896,
+                  "endColumn": 19
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 2
+          }
+        },
+        {
+          "ruleId": "CS1998",
+          "level": "warning",
+          "message": "В данном асинхронном методе отсутствуют операторы await, поэтому метод будет выполняться синхронно. Воспользуйтесь оператором await для ожидания неблокирующих вызовов API или оператором await Task.Run(...) для выполнения связанных с ЦП заданий в фоновом потоке.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 877,
+                  "startColumn": 39,
+                  "endLine": 877,
+                  "endColumn": 51
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS1998",
+          "level": "warning",
+          "message": "В данном асинхронном методе отсутствуют операторы await, поэтому метод будет выполняться синхронно. Воспользуйтесь оператором await для ожидания неблокирующих вызовов API или оператором await Task.Run(...) для выполнения связанных с ЦП заданий в фоновом потоке.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 899,
+                  "startColumn": 39,
+                  "endLine": 899,
+                  "endColumn": 51
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS1998",
+          "level": "warning",
+          "message": "В данном асинхронном методе отсутствуют операторы await, поэтому метод будет выполняться синхронно. Воспользуйтесь оператором await для ожидания неблокирующих вызовов API или оператором await Task.Run(...) для выполнения связанных с ЦП заданий в фоновом потоке.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 931,
+                  "startColumn": 39,
+                  "endLine": 931,
+                  "endColumn": 53
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS1998",
+          "level": "warning",
+          "message": "В данном асинхронном методе отсутствуют операторы await, поэтому метод будет выполняться синхронно. Воспользуйтесь оператором await для ожидания неблокирующих вызовов API или оператором await Task.Run(...) для выполнения связанных с ЦП заданий в фоновом потоке.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 979,
+                  "startColumn": 39,
+                  "endLine": 979,
+                  "endColumn": 50
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS0168",
+          "level": "warning",
+          "message": "Переменная \"e\" объявлена, но ни разу не использована.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 1018,
+                  "startColumn": 30,
+                  "endLine": 1018,
+                  "endColumn": 31
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 3
+          }
+        },
+        {
+          "ruleId": "CS1998",
+          "level": "warning",
+          "message": "В данном асинхронном методе отсутствуют операторы await, поэтому метод будет выполняться синхронно. Воспользуйтесь оператором await для ожидания неблокирующих вызовов API или оператором await Task.Run(...) для выполнения связанных с ЦП заданий в фоновом потоке.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 1006,
+                  "startColumn": 39,
+                  "endLine": 1006,
+                  "endColumn": 54
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS0168",
+          "level": "warning",
+          "message": "Переменная \"e\" объявлена, но ни разу не использована.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 1037,
+                  "startColumn": 30,
+                  "endLine": 1037,
+                  "endColumn": 31
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 3
+          }
+        },
+        {
+          "ruleId": "CS1998",
+          "level": "warning",
+          "message": "В данном асинхронном методе отсутствуют операторы await, поэтому метод будет выполняться синхронно. Воспользуйтесь оператором await для ожидания неблокирующих вызовов API или оператором await Task.Run(...) для выполнения связанных с ЦП заданий в фоновом потоке.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 1024,
+                  "startColumn": 39,
+                  "endLine": 1024,
+                  "endColumn": 59
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS0168",
+          "level": "warning",
+          "message": "Переменная \"e\" объявлена, но ни разу не использована.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 1061,
+                  "startColumn": 30,
+                  "endLine": 1061,
+                  "endColumn": 31
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 3
+          }
+        },
+        {
+          "ruleId": "CS1998",
+          "level": "warning",
+          "message": "В данном асинхронном методе отсутствуют операторы await, поэтому метод будет выполняться синхронно. Воспользуйтесь оператором await для ожидания неблокирующих вызовов API или оператором await Task.Run(...) для выполнения связанных с ЦП заданий в фоновом потоке.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 1043,
+                  "startColumn": 39,
+                  "endLine": 1043,
+                  "endColumn": 48
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS0168",
+          "level": "warning",
+          "message": "Переменная \"e\" объявлена, но ни разу не использована.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 1089,
+                  "startColumn": 30,
+                  "endLine": 1089,
+                  "endColumn": 31
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 3
+          }
+        },
+        {
+          "ruleId": "CS1998",
+          "level": "warning",
+          "message": "В данном асинхронном методе отсутствуют операторы await, поэтому метод будет выполняться синхронно. Воспользуйтесь оператором await для ожидания неблокирующих вызовов API или оператором await Task.Run(...) для выполнения связанных с ЦП заданий в фоновом потоке.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 1067,
+                  "startColumn": 39,
+                  "endLine": 1067,
+                  "endColumn": 51
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS0168",
+          "level": "warning",
+          "message": "Переменная \"e\" объявлена, но ни разу не использована.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 1131,
+                  "startColumn": 30,
+                  "endLine": 1131,
+                  "endColumn": 31
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 3
+          }
+        },
+        {
+          "ruleId": "CS1998",
+          "level": "warning",
+          "message": "В данном асинхронном методе отсутствуют операторы await, поэтому метод будет выполняться синхронно. Воспользуйтесь оператором await для ожидания неблокирующих вызовов API или оператором await Task.Run(...) для выполнения связанных с ЦП заданий в фоновом потоке.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 1095,
+                  "startColumn": 39,
+                  "endLine": 1095,
+                  "endColumn": 49
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS0168",
+          "level": "warning",
+          "message": "Переменная \"e\" объявлена, но ни разу не использована.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 1185,
+                  "startColumn": 30,
+                  "endLine": 1185,
+                  "endColumn": 31
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 3
+          }
+        },
+        {
+          "ruleId": "CS1998",
+          "level": "warning",
+          "message": "В данном асинхронном методе отсутствуют операторы await, поэтому метод будет выполняться синхронно. Воспользуйтесь оператором await для ожидания неблокирующих вызовов API или оператором await Task.Run(...) для выполнения связанных с ЦП заданий в фоновом потоке.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 1137,
+                  "startColumn": 39,
+                  "endLine": 1137,
+                  "endColumn": 46
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS0168",
+          "level": "warning",
+          "message": "Переменная \"e\" объявлена, но ни разу не использована.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 1229,
+                  "startColumn": 30,
+                  "endLine": 1229,
+                  "endColumn": 31
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 3
+          }
+        },
+        {
+          "ruleId": "CS1998",
+          "level": "warning",
+          "message": "В данном асинхронном методе отсутствуют операторы await, поэтому метод будет выполняться синхронно. Воспользуйтесь оператором await для ожидания неблокирующих вызовов API или оператором await Task.Run(...) для выполнения связанных с ЦП заданий в фоновом потоке.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 1191,
+                  "startColumn": 39,
+                  "endLine": 1191,
+                  "endColumn": 47
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S125",
+          "level": "warning",
+          "message": "Remove this commented out code.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 404,
+                  "startColumn": 17,
+                  "endLine": 404,
+                  "endColumn": 46
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S125",
+          "level": "warning",
+          "message": "Remove this commented out code.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 843,
+                  "startColumn": 13,
+                  "endLine": 843,
+                  "endColumn": 35
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S125",
+          "level": "warning",
+          "message": "Remove this commented out code.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 1162,
+                  "startColumn": 21,
+                  "endLine": 1162,
+                  "endColumn": 85
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S125",
+          "level": "warning",
+          "message": "Remove this commented out code.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 1214,
+                  "startColumn": 21,
+                  "endLine": 1214,
+                  "endColumn": 85
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1135",
+          "level": "warning",
+          "message": "Complete the task associated to this 'TODO' comment.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 364,
+                  "startColumn": 16,
+                  "endLine": 364,
+                  "endColumn": 20
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1118",
+          "level": "warning",
+          "message": "Add a 'protected' constructor or the 'static' keyword to the class declaration.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Program.cs",
+                "region": {
+                  "startLine": 15,
+                  "startColumn": 18,
+                  "endLine": 15,
+                  "endColumn": 25
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1118",
+          "level": "warning",
+          "message": "Add a 'protected' constructor or the 'static' keyword to the class declaration.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/S.cs",
+                "region": {
+                  "startLine": 9,
+                  "startColumn": 18,
+                  "endLine": 9,
+                  "endColumn": 19
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S125",
+          "level": "warning",
+          "message": "Remove this commented out code.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/Api/ApiController.cs",
+                "region": {
+                  "startLine": 63,
+                  "startColumn": 21,
+                  "endLine": 63,
+                  "endColumn": 67
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S125",
+          "level": "warning",
+          "message": "Remove this commented out code.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/Api/ApiController.cs",
+                "region": {
+                  "startLine": 71,
+                  "startColumn": 16,
+                  "endLine": 71,
+                  "endColumn": 68
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S125",
+          "level": "warning",
+          "message": "Remove this commented out code.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/Api/ApiController.cs",
+                "region": {
+                  "startLine": 75,
+                  "startColumn": 19,
+                  "endLine": 75,
+                  "endColumn": 139
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S125",
+          "level": "warning",
+          "message": "Remove this commented out code.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/VisitorController.cs",
+                "region": {
+                  "startLine": 197,
+                  "startColumn": 13,
+                  "endLine": 197,
+                  "endColumn": 60
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S125",
+          "level": "warning",
+          "message": "Remove this commented out code.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Extensions.cs",
+                "region": {
+                  "startLine": 34,
+                  "startColumn": 13,
+                  "endLine": 34,
+                  "endColumn": 16
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1135",
+          "level": "warning",
+          "message": "Complete the task associated to this 'TODO' comment.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Middleware/LocalAuthorityMiddleware.cs",
+                "region": {
+                  "startLine": 37,
+                  "startColumn": 23,
+                  "endLine": 37,
+                  "endColumn": 27
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1144",
+          "level": "warning",
+          "message": "Remove the unused private method 'UpdateDatabase'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Startup.cs",
+                "region": {
+                  "startLine": 113,
+                  "startColumn": 9,
+                  "endLine": 125,
+                  "endColumn": 10
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S125",
+          "level": "warning",
+          "message": "Remove this commented out code.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/S.cs",
+                "region": {
+                  "startLine": 22,
+                  "startColumn": 9,
+                  "endLine": 22,
+                  "endColumn": 66
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S125",
+          "level": "warning",
+          "message": "Remove this commented out code.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Startup.cs",
+                "region": {
+                  "startLine": 46,
+                  "startColumn": 13,
+                  "endLine": 46,
+                  "endColumn": 58
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S125",
+          "level": "warning",
+          "message": "Remove this commented out code.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Startup.cs",
+                "region": {
+                  "startLine": 63,
+                  "startColumn": 13,
+                  "endLine": 63,
+                  "endColumn": 26
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S125",
+          "level": "warning",
+          "message": "Remove this commented out code.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Startup.cs",
+                "region": {
+                  "startLine": 83,
+                  "startColumn": 13,
+                  "endLine": 83,
+                  "endColumn": 37
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S125",
+          "level": "warning",
+          "message": "Remove this commented out code.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Startup.cs",
+                "region": {
+                  "startLine": 87,
+                  "startColumn": 17,
+                  "endLine": 87,
+                  "endColumn": 51
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S125",
+          "level": "warning",
+          "message": "Remove this commented out code.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Startup.cs",
+                "region": {
+                  "startLine": 96,
+                  "startColumn": 13,
+                  "endLine": 96,
+                  "endColumn": 16
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S125",
+          "level": "warning",
+          "message": "Remove this commented out code.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Startup.cs",
+                "region": {
+                  "startLine": 101,
+                  "startColumn": 12,
+                  "endLine": 101,
+                  "endColumn": 37
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S2068",
+          "level": "warning",
+          "message": "\"password\" detected here, make sure this is not a hard-coded credential.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/appsettings.json",
+                "region": {
+                  "startLine": 15,
+                  "startColumn": 20,
+                  "endLine": 15,
+                  "endColumn": 34
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S2933",
+          "level": "warning",
+          "message": "Make '_ctx' 'readonly'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/ViewComponents/BooksActionsViewComponent.cs",
+                "region": {
+                  "startLine": 13,
+                  "startColumn": 31,
+                  "endLine": 13,
+                  "endColumn": 35
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S2933",
+          "level": "warning",
+          "message": "Make 'log' 'readonly'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AccountController.cs",
+                "region": {
+                  "startLine": 15,
+                  "startColumn": 24,
+                  "endLine": 15,
+                  "endColumn": 27
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S4487",
+          "level": "warning",
+          "message": "Remove this unread private field 'log' or refactor the code to use its value.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AccountController.cs",
+                "region": {
+                  "startLine": 15,
+                  "startColumn": 24,
+                  "endLine": 15,
+                  "endColumn": 27
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S2068",
+          "level": "warning",
+          "message": "\"pwd\" detected here, make sure this is not a hard-coded credential.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/appsettings.json",
+                "region": {
+                  "startLine": 23,
+                  "startColumn": 22,
+                  "endLine": 23,
+                  "endColumn": 100
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S2933",
+          "level": "warning",
+          "message": "Make '_ctx' 'readonly'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/ViewComponents/CathegoryViewComponent.cs",
+                "region": {
+                  "startLine": 13,
+                  "startColumn": 31,
+                  "endLine": 13,
+                  "endColumn": 35
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S2933",
+          "level": "warning",
+          "message": "Make '_ctx' 'readonly'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/ViewComponents/CustomSelectListItemsViewComponent.cs",
+                "region": {
+                  "startLine": 14,
+                  "startColumn": 31,
+                  "endLine": 14,
+                  "endColumn": 35
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S2933",
+          "level": "warning",
+          "message": "Make '_ctx' 'readonly'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/ViewComponents/ModalViewComponent.cs",
+                "region": {
+                  "startLine": 13,
+                  "startColumn": 31,
+                  "endLine": 13,
+                  "endColumn": 35
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S4487",
+          "level": "warning",
+          "message": "Remove this unread private field '_ctx' or refactor the code to use its value.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/ViewComponents/ModalViewComponent.cs",
+                "region": {
+                  "startLine": 13,
+                  "startColumn": 31,
+                  "endLine": 13,
+                  "endColumn": 35
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S2933",
+          "level": "warning",
+          "message": "Make '_ctx' 'readonly'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/ViewComponents/SelectListItemsViewComponent.cs",
+                "region": {
+                  "startLine": 14,
+                  "startColumn": 31,
+                  "endLine": 14,
+                  "endColumn": 35
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S2933",
+          "level": "warning",
+          "message": "Make 'log' 'readonly'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/HomeController.cs",
+                "region": {
+                  "startLine": 17,
+                  "startColumn": 24,
+                  "endLine": 17,
+                  "endColumn": 27
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S4487",
+          "level": "warning",
+          "message": "Remove this unread private field 'log' or refactor the code to use its value.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/HomeController.cs",
+                "region": {
+                  "startLine": 17,
+                  "startColumn": 24,
+                  "endLine": 17,
+                  "endColumn": 27
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S2933",
+          "level": "warning",
+          "message": "Make '_hostingEnvironment' 'readonly'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/Api/ApiController.cs",
+                "region": {
+                  "startLine": 33,
+                  "startColumn": 37,
+                  "endLine": 33,
+                  "endColumn": 56
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S2933",
+          "level": "warning",
+          "message": "Make '_browser' 'readonly'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/Api/ApiController.cs",
+                "region": {
+                  "startLine": 34,
+                  "startColumn": 26,
+                  "endLine": 34,
+                  "endColumn": 34
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S2933",
+          "level": "warning",
+          "message": "Make 'log' 'readonly'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/VisitorController.cs",
+                "region": {
+                  "startLine": 18,
+                  "startColumn": 24,
+                  "endLine": 18,
+                  "endColumn": 27
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S2068",
+          "level": "warning",
+          "message": "\"password\" detected here, make sure this is not a hard-coded credential.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/S.cs",
+                "region": {
+                  "startLine": 30,
+                  "startColumn": 30,
+                  "endLine": 30,
+                  "endColumn": 61
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1104",
+          "level": "warning",
+          "message": "Make this field 'private' and encapsulate it in a 'public' property.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/S.cs",
+                "region": {
+                  "startLine": 28,
+                  "startColumn": 30,
+                  "endLine": 28,
+                  "endColumn": 63
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1104",
+          "level": "warning",
+          "message": "Make this field 'private' and encapsulate it in a 'public' property.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/S.cs",
+                "region": {
+                  "startLine": 29,
+                  "startColumn": 30,
+                  "endLine": 29,
+                  "endColumn": 56
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1104",
+          "level": "warning",
+          "message": "Make this field 'private' and encapsulate it in a 'public' property.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/S.cs",
+                "region": {
+                  "startLine": 27,
+                  "startColumn": 30,
+                  "endLine": 27,
+                  "endColumn": 57
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1104",
+          "level": "warning",
+          "message": "Make this field 'private' and encapsulate it in a 'public' property.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/S.cs",
+                "region": {
+                  "startLine": 30,
+                  "startColumn": 30,
+                  "endLine": 30,
+                  "endColumn": 61
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S2223",
+          "level": "warning",
+          "message": "Change the visibility of 'MailPassword' or make it 'const' or 'readonly'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/S.cs",
+                "region": {
+                  "startLine": 30,
+                  "startColumn": 30,
+                  "endLine": 30,
+                  "endColumn": 42
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S2223",
+          "level": "warning",
+          "message": "Change the visibility of 'MailUser' or make it 'const' or 'readonly'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/S.cs",
+                "region": {
+                  "startLine": 29,
+                  "startColumn": 30,
+                  "endLine": 29,
+                  "endColumn": 38
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S2223",
+          "level": "warning",
+          "message": "Change the visibility of 'MailBot' or make it 'const' or 'readonly'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/S.cs",
+                "region": {
+                  "startLine": 28,
+                  "startColumn": 30,
+                  "endLine": 28,
+                  "endColumn": 37
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S2223",
+          "level": "warning",
+          "message": "Change the visibility of 'MailHost' or make it 'const' or 'readonly'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/S.cs",
+                "region": {
+                  "startLine": 27,
+                  "startColumn": 30,
+                  "endLine": 27,
+                  "endColumn": 38
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S2933",
+          "level": "warning",
+          "message": "Make 'log' 'readonly'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 36,
+                  "startColumn": 24,
+                  "endLine": 36,
+                  "endColumn": 27
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S4487",
+          "level": "warning",
+          "message": "Remove this unread private field '_config' or refactor the code to use its value.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 34,
+                  "startColumn": 41,
+                  "endLine": 34,
+                  "endColumn": 48
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S5773",
+          "level": "warning",
+          "message": "Restrict types of objects allowed to be deserialized.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/OperationResult.cs",
+                "region": {
+                  "startLine": 68,
+                  "startColumn": 67,
+                  "endLine": 68,
+                  "endColumn": 78
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1854",
+          "level": "warning",
+          "message": "Remove this useless assignment to local variable 'FileName'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/Api/ApiController.cs",
+                "region": {
+                  "startLine": 65,
+                  "startColumn": 21,
+                  "endLine": 65,
+                  "endColumn": 45
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1854",
+          "level": "warning",
+          "message": "Remove this useless assignment to local variable 'FileName'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/Api/ApiController.cs",
+                "region": {
+                  "startLine": 68,
+                  "startColumn": 21,
+                  "endLine": 68,
+                  "endColumn": 64
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1116",
+          "level": "warning",
+          "message": "Remove this empty statement.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/Api/ApiController.cs",
+                "region": {
+                  "startLine": 64,
+                  "startColumn": 18,
+                  "endLine": 64,
+                  "endColumn": 19
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1066",
+          "level": "warning",
+          "message": "Merge this if statement with the enclosing one.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/VisitorController.cs",
+                "region": {
+                  "startLine": 51,
+                  "startColumn": 17,
+                  "endLine": 51,
+                  "endColumn": 19
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/VisitorController.cs",
+                "region": {
+                  "startLine": 49,
+                  "startColumn": 13,
+                  "endLine": 49,
+                  "endColumn": 15
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S3168",
+          "level": "warning",
+          "message": "Return 'Task' instead.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Startup.cs",
+                "region": {
+                  "startLine": 36,
+                  "startColumn": 22,
+                  "endLine": 36,
+                  "endColumn": 26
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S3776",
+          "level": "warning",
+          "message": "Refactor this method to reduce its Cognitive Complexity from 23 to the 15 allowed.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Middleware/LocalAuthorityMiddleware.cs",
+                "region": {
+                  "startLine": 28,
+                  "startColumn": 27,
+                  "endLine": 28,
+                  "endColumn": 33
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Middleware/LocalAuthorityMiddleware.cs",
+                "region": {
+                  "startLine": 34,
+                  "startColumn": 17,
+                  "endLine": 34,
+                  "endColumn": 19
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Middleware/LocalAuthorityMiddleware.cs",
+                "region": {
+                  "startLine": 43,
+                  "startColumn": 21,
+                  "endLine": 43,
+                  "endColumn": 26
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Middleware/LocalAuthorityMiddleware.cs",
+                "region": {
+                  "startLine": 49,
+                  "startColumn": 21,
+                  "endLine": 49,
+                  "endColumn": 23
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Middleware/LocalAuthorityMiddleware.cs",
+                "region": {
+                  "startLine": 55,
+                  "startColumn": 25,
+                  "endLine": 55,
+                  "endColumn": 27
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Middleware/LocalAuthorityMiddleware.cs",
+                "region": {
+                  "startLine": 61,
+                  "startColumn": 25,
+                  "endLine": 61,
+                  "endColumn": 29
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Middleware/LocalAuthorityMiddleware.cs",
+                "region": {
+                  "startLine": 67,
+                  "startColumn": 25,
+                  "endLine": 67,
+                  "endColumn": 29
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Middleware/LocalAuthorityMiddleware.cs",
+                "region": {
+                  "startLine": 80,
+                  "startColumn": 25,
+                  "endLine": 80,
+                  "endColumn": 30
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Middleware/LocalAuthorityMiddleware.cs",
+                "region": {
+                  "startLine": 91,
+                  "startColumn": 25,
+                  "endLine": 91,
+                  "endColumn": 32
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Middleware/LocalAuthorityMiddleware.cs",
+                "region": {
+                  "startLine": 103,
+                  "startColumn": 21,
+                  "endLine": 103,
+                  "endColumn": 25
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Middleware/LocalAuthorityMiddleware.cs",
+                "region": {
+                  "startLine": 105,
+                  "startColumn": 25,
+                  "endLine": 105,
+                  "endColumn": 27
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Middleware/LocalAuthorityMiddleware.cs",
+                "region": {
+                  "startLine": 111,
+                  "startColumn": 25,
+                  "endLine": 111,
+                  "endColumn": 29
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Middleware/LocalAuthorityMiddleware.cs",
+                "region": {
+                  "startLine": 123,
+                  "startColumn": 17,
+                  "endLine": 123,
+                  "endColumn": 21
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Middleware/LocalAuthorityMiddleware.cs",
+                "region": {
+                  "startLine": 129,
+                  "startColumn": 13,
+                  "endLine": 129,
+                  "endColumn": 18
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "0": "+1",
+              "1": "+2 (incl 1 for nesting)",
+              "10": "+1",
+              "11": "+1",
+              "12": "+1",
+              "2": "+2 (incl 1 for nesting)",
+              "3": "+3 (incl 2 for nesting)",
+              "4": "+1",
+              "5": "+1",
+              "6": "+3 (incl 2 for nesting)",
+              "7": "+3 (incl 2 for nesting)",
+              "8": "+1",
+              "9": "+3 (incl 2 for nesting)"
+            }
+          }
+        },
+        {
+          "ruleId": "S3168",
+          "level": "warning",
+          "message": "Return 'Task' instead.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Startup.cs",
+                "region": {
+                  "startLine": 81,
+                  "startColumn": 22,
+                  "endLine": 81,
+                  "endColumn": 26
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1481",
+          "level": "warning",
+          "message": "Remove the unused local variable 'dowloads'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 120,
+                  "startColumn": 17,
+                  "endLine": 120,
+                  "endColumn": 25
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1481",
+          "level": "warning",
+          "message": "Remove the unused local variable 'uploads'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 121,
+                  "startColumn": 17,
+                  "endLine": 121,
+                  "endColumn": 24
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1481",
+          "level": "warning",
+          "message": "Remove the unused local variable 'user'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/Api/ApiController.cs",
+                "region": {
+                  "startLine": 118,
+                  "startColumn": 21,
+                  "endLine": 118,
+                  "endColumn": 25
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1481",
+          "level": "warning",
+          "message": "Remove the unused local variable 'book'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/Api/ApiController.cs",
+                "region": {
+                  "startLine": 119,
+                  "startColumn": 21,
+                  "endLine": 119,
+                  "endColumn": 25
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1481",
+          "level": "warning",
+          "message": "Remove the unused local variable 'url'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/Api/ApiController.cs",
+                "region": {
+                  "startLine": 121,
+                  "startColumn": 21,
+                  "endLine": 121,
+                  "endColumn": 24
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S3776",
+          "level": "warning",
+          "message": "Refactor this method to reduce its Cognitive Complexity from 23 to the 15 allowed.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/VisitorController.cs",
+                "region": {
+                  "startLine": 61,
+                  "startColumn": 39,
+                  "endLine": 61,
+                  "endColumn": 47
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/VisitorController.cs",
+                "region": {
+                  "startLine": 74,
+                  "startColumn": 17,
+                  "endLine": 74,
+                  "endColumn": 19
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/VisitorController.cs",
+                "region": {
+                  "startLine": 78,
+                  "startColumn": 17,
+                  "endLine": 78,
+                  "endColumn": 21
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/VisitorController.cs",
+                "region": {
+                  "startLine": 80,
+                  "startColumn": 21,
+                  "endLine": 80,
+                  "endColumn": 23
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/VisitorController.cs",
+                "region": {
+                  "startLine": 80,
+                  "startColumn": 76,
+                  "endLine": 80,
+                  "endColumn": 78
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/VisitorController.cs",
+                "region": {
+                  "startLine": 93,
+                  "startColumn": 21,
+                  "endLine": 93,
+                  "endColumn": 23
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/VisitorController.cs",
+                "region": {
+                  "startLine": 113,
+                  "startColumn": 25,
+                  "endLine": 113,
+                  "endColumn": 27
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/VisitorController.cs",
+                "region": {
+                  "startLine": 117,
+                  "startColumn": 29,
+                  "endLine": 117,
+                  "endColumn": 36
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/VisitorController.cs",
+                "region": {
+                  "startLine": 124,
+                  "startColumn": 21,
+                  "endLine": 124,
+                  "endColumn": 25
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/VisitorController.cs",
+                "region": {
+                  "startLine": 126,
+                  "startColumn": 25,
+                  "endLine": 126,
+                  "endColumn": 27
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/VisitorController.cs",
+                "region": {
+                  "startLine": 130,
+                  "startColumn": 29,
+                  "endLine": 130,
+                  "endColumn": 36
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/VisitorController.cs",
+                "region": {
+                  "startLine": 146,
+                  "startColumn": 13,
+                  "endLine": 146,
+                  "endColumn": 18
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "0": "+1",
+              "1": "+1",
+              "10": "+1",
+              "2": "+2 (incl 1 for nesting)",
+              "3": "+1",
+              "4": "+2 (incl 1 for nesting)",
+              "5": "+3 (incl 2 for nesting)",
+              "6": "+4 (incl 3 for nesting)",
+              "7": "+1",
+              "8": "+3 (incl 2 for nesting)",
+              "9": "+4 (incl 3 for nesting)"
+            }
+          }
+        },
+        {
+          "ruleId": "S1481",
+          "level": "warning",
+          "message": "Remove the unused local variable 'ignored'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 113,
+                  "startColumn": 17,
+                  "endLine": 113,
+                  "endColumn": 24
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S3973",
+          "level": "warning",
+          "message": "Use curly braces or indentation to denote the code conditionally executed by this 'if'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/VisitorController.cs",
+                "region": {
+                  "startLine": 183,
+                  "startColumn": 17,
+                  "endLine": 183,
+                  "endColumn": 69
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/VisitorController.cs",
+                "region": {
+                  "startLine": 184,
+                  "startColumn": 17,
+                  "endLine": 184,
+                  "endColumn": 55
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S2681",
+          "level": "warning",
+          "message": "This line will not be executed conditionally; only the first line of this 7-line block will be. The rest will execute unconditionally.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/VisitorController.cs",
+                "region": {
+                  "startLine": 190,
+                  "startColumn": 17,
+                  "endLine": 190,
+                  "endColumn": 35
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/VisitorController.cs",
+                "region": {
+                  "startLine": 184,
+                  "startColumn": 17,
+                  "endLine": 188,
+                  "endColumn": 20
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1481",
+          "level": "warning",
+          "message": "Remove the unused local variable 'result'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 128,
+                  "startColumn": 17,
+                  "endLine": 128,
+                  "endColumn": 23
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1125",
+          "level": "warning",
+          "message": "Remove the unnecessary Boolean literal(s).",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 282,
+                  "startColumn": 32,
+                  "endLine": 282,
+                  "endColumn": 39
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1854",
+          "level": "warning",
+          "message": "Remove this useless assignment to local variable 'coverName'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 384,
+                  "startColumn": 21,
+                  "endLine": 384,
+                  "endColumn": 46
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1854",
+          "level": "warning",
+          "message": "Remove this useless assignment to local variable 'coverName'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 388,
+                  "startColumn": 21,
+                  "endLine": 388,
+                  "endColumn": 65
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1116",
+          "level": "warning",
+          "message": "Remove this empty statement.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 382,
+                  "startColumn": 18,
+                  "endLine": 382,
+                  "endColumn": 19
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S3928",
+          "level": "warning",
+          "message": "The parameter name 'Incoming model is empty' is not declared in the argument list.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 263,
+                  "startColumn": 27,
+                  "endLine": 263,
+                  "endColumn": 79
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S4457",
+          "level": "warning",
+          "message": "Split this method into two, one handling parameters check and the other handling the asynchronous code.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 257,
+                  "startColumn": 39,
+                  "endLine": 257,
+                  "endColumn": 46
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 263,
+                  "startColumn": 27,
+                  "endLine": 263,
+                  "endColumn": 79
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1854",
+          "level": "warning",
+          "message": "Remove this useless assignment to local variable 'FileName'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 434,
+                  "startColumn": 21,
+                  "endLine": 434,
+                  "endColumn": 45
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1854",
+          "level": "warning",
+          "message": "Remove this useless assignment to local variable 'FileName'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 437,
+                  "startColumn": 21,
+                  "endLine": 437,
+                  "endColumn": 64
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1116",
+          "level": "warning",
+          "message": "Remove this empty statement.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 433,
+                  "startColumn": 18,
+                  "endLine": 433,
+                  "endColumn": 19
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1481",
+          "level": "warning",
+          "message": "Remove the unused local variable 'result'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/VisitorController.cs",
+                "region": {
+                  "startLine": 154,
+                  "startColumn": 17,
+                  "endLine": 154,
+                  "endColumn": 23
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1125",
+          "level": "warning",
+          "message": "Remove the unnecessary Boolean literal(s).",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 551,
+                  "startColumn": 62,
+                  "endLine": 551,
+                  "endColumn": 67
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S3776",
+          "level": "warning",
+          "message": "Refactor this method to reduce its Cognitive Complexity from 65 to the 15 allowed.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 460,
+                  "startColumn": 39,
+                  "endLine": 460,
+                  "endColumn": 47
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 466,
+                  "startColumn": 17,
+                  "endLine": 466,
+                  "endColumn": 19
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 469,
+                  "startColumn": 21,
+                  "endLine": 469,
+                  "endColumn": 23
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 475,
+                  "startColumn": 17,
+                  "endLine": 475,
+                  "endColumn": 19
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 478,
+                  "startColumn": 21,
+                  "endLine": 478,
+                  "endColumn": 23
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 485,
+                  "startColumn": 17,
+                  "endLine": 485,
+                  "endColumn": 19
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 490,
+                  "startColumn": 17,
+                  "endLine": 490,
+                  "endColumn": 19
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 491,
+                  "startColumn": 21,
+                  "endLine": 491,
+                  "endColumn": 23
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 495,
+                  "startColumn": 17,
+                  "endLine": 495,
+                  "endColumn": 19
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 496,
+                  "startColumn": 21,
+                  "endLine": 496,
+                  "endColumn": 23
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 500,
+                  "startColumn": 17,
+                  "endLine": 500,
+                  "endColumn": 19
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 501,
+                  "startColumn": 21,
+                  "endLine": 501,
+                  "endColumn": 23
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 505,
+                  "startColumn": 17,
+                  "endLine": 505,
+                  "endColumn": 19
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 506,
+                  "startColumn": 21,
+                  "endLine": 506,
+                  "endColumn": 23
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 510,
+                  "startColumn": 17,
+                  "endLine": 510,
+                  "endColumn": 19
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 511,
+                  "startColumn": 21,
+                  "endLine": 511,
+                  "endColumn": 23
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 515,
+                  "startColumn": 17,
+                  "endLine": 515,
+                  "endColumn": 19
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 517,
+                  "startColumn": 21,
+                  "endLine": 517,
+                  "endColumn": 23
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 519,
+                  "startColumn": 21,
+                  "endLine": 519,
+                  "endColumn": 23
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 523,
+                  "startColumn": 21,
+                  "endLine": 523,
+                  "endColumn": 25
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 526,
+                  "startColumn": 25,
+                  "endLine": 526,
+                  "endColumn": 27
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 530,
+                  "startColumn": 25,
+                  "endLine": 530,
+                  "endColumn": 29
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 536,
+                  "startColumn": 17,
+                  "endLine": 536,
+                  "endColumn": 19
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 540,
+                  "startColumn": 17,
+                  "endLine": 540,
+                  "endColumn": 19
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 541,
+                  "startColumn": 21,
+                  "endLine": 541,
+                  "endColumn": 23
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 545,
+                  "startColumn": 17,
+                  "endLine": 545,
+                  "endColumn": 19
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 546,
+                  "startColumn": 21,
+                  "endLine": 546,
+                  "endColumn": 23
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 551,
+                  "startColumn": 17,
+                  "endLine": 551,
+                  "endColumn": 19
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 557,
+                  "startColumn": 17,
+                  "endLine": 557,
+                  "endColumn": 19
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 560,
+                  "startColumn": 75,
+                  "endLine": 560,
+                  "endColumn": 77
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 561,
+                  "startColumn": 21,
+                  "endLine": 561,
+                  "endColumn": 23
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 566,
+                  "startColumn": 21,
+                  "endLine": 566,
+                  "endColumn": 28
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 568,
+                  "startColumn": 25,
+                  "endLine": 568,
+                  "endColumn": 27
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 579,
+                  "startColumn": 17,
+                  "endLine": 579,
+                  "endColumn": 21
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 582,
+                  "startColumn": 21,
+                  "endLine": 582,
+                  "endColumn": 23
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 586,
+                  "startColumn": 17,
+                  "endLine": 586,
+                  "endColumn": 19
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 590,
+                  "startColumn": 64,
+                  "endLine": 590,
+                  "endColumn": 66
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 591,
+                  "startColumn": 21,
+                  "endLine": 591,
+                  "endColumn": 23
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 596,
+                  "startColumn": 21,
+                  "endLine": 596,
+                  "endColumn": 28
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 598,
+                  "startColumn": 25,
+                  "endLine": 598,
+                  "endColumn": 27
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 609,
+                  "startColumn": 17,
+                  "endLine": 609,
+                  "endColumn": 21
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 612,
+                  "startColumn": 21,
+                  "endLine": 612,
+                  "endColumn": 23
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 620,
+                  "startColumn": 13,
+                  "endLine": 620,
+                  "endColumn": 18
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "0": "+1",
+              "1": "+2 (incl 1 for nesting)",
+              "10": "+2 (incl 1 for nesting)",
+              "11": "+1",
+              "12": "+2 (incl 1 for nesting)",
+              "13": "+1",
+              "14": "+2 (incl 1 for nesting)",
+              "15": "+1",
+              "16": "+2 (incl 1 for nesting)",
+              "17": "+2 (incl 1 for nesting)",
+              "18": "+1",
+              "19": "+3 (incl 2 for nesting)",
+              "2": "+1",
+              "20": "+1",
+              "21": "+1",
+              "22": "+1",
+              "23": "+2 (incl 1 for nesting)",
+              "24": "+1",
+              "25": "+2 (incl 1 for nesting)",
+              "26": "+1",
+              "27": "+1",
+              "28": "+1",
+              "29": "+2 (incl 1 for nesting)",
+              "3": "+2 (incl 1 for nesting)",
+              "30": "+2 (incl 1 for nesting)",
+              "31": "+3 (incl 2 for nesting)",
+              "32": "+1",
+              "33": "+2 (incl 1 for nesting)",
+              "34": "+1",
+              "35": "+1",
+              "36": "+2 (incl 1 for nesting)",
+              "37": "+2 (incl 1 for nesting)",
+              "38": "+3 (incl 2 for nesting)",
+              "39": "+1",
+              "4": "+1",
+              "40": "+2 (incl 1 for nesting)",
+              "41": "+1",
+              "5": "+1",
+              "6": "+2 (incl 1 for nesting)",
+              "7": "+1",
+              "8": "+2 (incl 1 for nesting)",
+              "9": "+1"
+            }
+          }
+        },
+        {
+          "ruleId": "S1066",
+          "level": "warning",
+          "message": "Merge this if statement with the enclosing one.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 491,
+                  "startColumn": 21,
+                  "endLine": 491,
+                  "endColumn": 23
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 490,
+                  "startColumn": 17,
+                  "endLine": 490,
+                  "endColumn": 19
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1066",
+          "level": "warning",
+          "message": "Merge this if statement with the enclosing one.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 496,
+                  "startColumn": 21,
+                  "endLine": 496,
+                  "endColumn": 23
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 495,
+                  "startColumn": 17,
+                  "endLine": 495,
+                  "endColumn": 19
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1066",
+          "level": "warning",
+          "message": "Merge this if statement with the enclosing one.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 501,
+                  "startColumn": 21,
+                  "endLine": 501,
+                  "endColumn": 23
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 500,
+                  "startColumn": 17,
+                  "endLine": 500,
+                  "endColumn": 19
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1066",
+          "level": "warning",
+          "message": "Merge this if statement with the enclosing one.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 506,
+                  "startColumn": 21,
+                  "endLine": 506,
+                  "endColumn": 23
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 505,
+                  "startColumn": 17,
+                  "endLine": 505,
+                  "endColumn": 19
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1066",
+          "level": "warning",
+          "message": "Merge this if statement with the enclosing one.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 511,
+                  "startColumn": 21,
+                  "endLine": 511,
+                  "endColumn": 23
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 510,
+                  "startColumn": 17,
+                  "endLine": 510,
+                  "endColumn": 19
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1066",
+          "level": "warning",
+          "message": "Merge this if statement with the enclosing one.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 541,
+                  "startColumn": 21,
+                  "endLine": 541,
+                  "endColumn": 23
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 540,
+                  "startColumn": 17,
+                  "endLine": 540,
+                  "endColumn": 19
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1066",
+          "level": "warning",
+          "message": "Merge this if statement with the enclosing one.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 546,
+                  "startColumn": 21,
+                  "endLine": 546,
+                  "endColumn": 23
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 545,
+                  "startColumn": 17,
+                  "endLine": 545,
+                  "endColumn": 19
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S3776",
+          "level": "warning",
+          "message": "Refactor this method to reduce its Cognitive Complexity from 27 to the 15 allowed.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 688,
+                  "startColumn": 39,
+                  "endLine": 688,
+                  "endColumn": 47
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 696,
+                  "startColumn": 17,
+                  "endLine": 696,
+                  "endColumn": 19
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 703,
+                  "startColumn": 17,
+                  "endLine": 703,
+                  "endColumn": 19
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 705,
+                  "startColumn": 21,
+                  "endLine": 705,
+                  "endColumn": 23
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 709,
+                  "startColumn": 25,
+                  "endLine": 709,
+                  "endColumn": 27
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 714,
+                  "startColumn": 99,
+                  "endLine": 714,
+                  "endColumn": 101
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 715,
+                  "startColumn": 25,
+                  "endLine": 715,
+                  "endColumn": 27
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 735,
+                  "startColumn": 25,
+                  "endLine": 735,
+                  "endColumn": 27
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 751,
+                  "startColumn": 25,
+                  "endLine": 751,
+                  "endColumn": 29
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 754,
+                  "startColumn": 29,
+                  "endLine": 754,
+                  "endColumn": 31
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 758,
+                  "startColumn": 33,
+                  "endLine": 758,
+                  "endColumn": 40
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 773,
+                  "startColumn": 21,
+                  "endLine": 773,
+                  "endColumn": 25
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 778,
+                  "startColumn": 17,
+                  "endLine": 778,
+                  "endColumn": 21
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 783,
+                  "startColumn": 13,
+                  "endLine": 783,
+                  "endColumn": 18
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "0": "+1",
+              "1": "+1",
+              "10": "+1",
+              "11": "+1",
+              "12": "+1",
+              "2": "+2 (incl 1 for nesting)",
+              "3": "+3 (incl 2 for nesting)",
+              "4": "+1",
+              "5": "+3 (incl 2 for nesting)",
+              "6": "+3 (incl 2 for nesting)",
+              "7": "+1",
+              "8": "+4 (incl 3 for nesting)",
+              "9": "+5 (incl 4 for nesting)"
+            }
+          }
+        },
+        {
+          "ruleId": "S1481",
+          "level": "warning",
+          "message": "Remove the unused local variable 'uriPath'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 391,
+                  "startColumn": 21,
+                  "endLine": 391,
+                  "endColumn": 28
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1481",
+          "level": "warning",
+          "message": "Remove the unused local variable 'result'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/VisitorController.cs",
+                "region": {
+                  "startLine": 178,
+                  "startColumn": 17,
+                  "endLine": 178,
+                  "endColumn": 23
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1481",
+          "level": "warning",
+          "message": "Remove the unused local variable 'check'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/VisitorController.cs",
+                "region": {
+                  "startLine": 181,
+                  "startColumn": 21,
+                  "endLine": 181,
+                  "endColumn": 26
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S2259",
+          "level": "warning",
+          "message": "'rent' is null on at least one execution path.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 860,
+                  "startColumn": 28,
+                  "endLine": 860,
+                  "endColumn": 32
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1481",
+          "level": "warning",
+          "message": "Remove the unused local variable 'result'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 848,
+                  "startColumn": 17,
+                  "endLine": 848,
+                  "endColumn": 23
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S2259",
+          "level": "warning",
+          "message": "'review' is null on at least one execution path.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 883,
+                  "startColumn": 28,
+                  "endLine": 883,
+                  "endColumn": 34
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1125",
+          "level": "warning",
+          "message": "Remove the unnecessary Boolean literal(s).",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 1049,
+                  "startColumn": 91,
+                  "endLine": 1049,
+                  "endColumn": 96
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1481",
+          "level": "warning",
+          "message": "Remove the unused local variable 'result'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/VisitorController.cs",
+                "region": {
+                  "startLine": 63,
+                  "startColumn": 17,
+                  "endLine": 63,
+                  "endColumn": 23
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1481",
+          "level": "warning",
+          "message": "Remove the unused local variable 'date'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/VisitorController.cs",
+                "region": {
+                  "startLine": 69,
+                  "startColumn": 21,
+                  "endLine": 69,
+                  "endColumn": 25
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1481",
+          "level": "warning",
+          "message": "Remove the unused local variable 'result'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 981,
+                  "startColumn": 17,
+                  "endLine": 981,
+                  "endColumn": 23
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S112",
+          "level": "warning",
+          "message": "'System.Exception' should not be thrown by user code.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 1086,
+                  "startColumn": 27,
+                  "endLine": 1086,
+                  "endColumn": 42
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S112",
+          "level": "warning",
+          "message": "'System.Exception' should not be thrown by user code.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 518,
+                  "startColumn": 31,
+                  "endLine": 518,
+                  "endColumn": 85
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S112",
+          "level": "warning",
+          "message": "'System.Exception' should not be thrown by user code.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 528,
+                  "startColumn": 35,
+                  "endLine": 528,
+                  "endColumn": 94
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S112",
+          "level": "warning",
+          "message": "'System.Exception' should not be thrown by user code.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 285,
+                  "startColumn": 31,
+                  "endLine": 285,
+                  "endColumn": 85
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S112",
+          "level": "warning",
+          "message": "'System.Exception' should not be thrown by user code.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 289,
+                  "startColumn": 31,
+                  "endLine": 289,
+                  "endColumn": 90
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1481",
+          "level": "warning",
+          "message": "Remove the unused local variable 'result'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/vsproj/beck/bia.internal.booklibrary/Bia.Internal.BookLibrary/Controllers/AdminController.cs",
+                "region": {
+                  "startLine": 279,
+                  "startColumn": 21,
+                  "endLine": 279,
+                  "endColumn": 27
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        }
+      ],
+      "rules": {
+        "CS0162": {
+          "id": "CS0162",
+          "shortDescription": "Обнаружен недостижимый код",
+          "defaultLevel": "warning",
+          "helpUri": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn&k=k(CS0162)",
+          "properties": {
+            "category": "Compiler",
+            "isEnabledByDefault": true,
+            "tags": [
+              "Compiler",
+              "Telemetry"
+            ]
+          }
+        },
+        "CS0168": {
+          "id": "CS0168",
+          "shortDescription": "Переменная объявлена, но не используется",
+          "defaultLevel": "warning",
+          "helpUri": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn&k=k(CS0168)",
+          "properties": {
+            "category": "Compiler",
+            "isEnabledByDefault": true,
+            "tags": [
+              "Compiler",
+              "Telemetry"
+            ]
+          }
+        },
+        "CS1998": {
+          "id": "CS1998",
+          "shortDescription": "В асинхронном методе отсутствуют операторы await, будет выполнен синхронный метод",
+          "defaultLevel": "warning",
+          "helpUri": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn&k=k(CS1998)",
+          "properties": {
+            "category": "Compiler",
+            "isEnabledByDefault": true,
+            "tags": [
+              "Compiler",
+              "Telemetry"
+            ]
+          }
+        },
+        "S1066": {
+          "id": "S1066",
+          "shortDescription": "Collapsible \"if\" statements should be merged",
+          "fullDescription": "Merging collapsible if statements increases the code’s readability.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-1066",
+          "properties": {
+            "category": "Major Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "TestSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S1104": {
+          "id": "S1104",
+          "shortDescription": "Fields should not have public accessibility",
+          "fullDescription": "Public fields in public classes do not respect the encapsulation principle and has three main disadvantages:",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-1104",
+          "properties": {
+            "category": "Minor Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S1116": {
+          "id": "S1116",
+          "shortDescription": "Empty statements should be removed",
+          "fullDescription": "Empty statements, i.e. ;, are usually introduced by mistake, for example because:",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-1116",
+          "properties": {
+            "category": "Minor Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "TestSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S1118": {
+          "id": "S1118",
+          "shortDescription": "Utility classes should not have public constructors",
+          "fullDescription": "Utility classes, which are collections of static members, are not meant to be instantiated.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-1118",
+          "properties": {
+            "category": "Major Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "TestSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S112": {
+          "id": "S112",
+          "shortDescription": "General exceptions should never be thrown",
+          "fullDescription": "Throwing such general exceptions as Exception, SystemException, ApplicationException, IndexOutOfRangeException, NullReferenceException, OutOfMemoryException and ExecutionEngineException prevents calling methods from handling true, system-generated exceptions differently than application-generated errors.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-112",
+          "properties": {
+            "category": "Major Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S1125": {
+          "id": "S1125",
+          "shortDescription": "Boolean literals should not be redundant",
+          "fullDescription": "Redundant Boolean literals should be removed from expressions to improve readability.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-1125",
+          "properties": {
+            "category": "Minor Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "TestSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S1135": {
+          "id": "S1135",
+          "shortDescription": "Track uses of \"TODO\" tags",
+          "fullDescription": "TODO tags are commonly used to mark places where some more code is required, but which the developer wants to implement later.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-1135",
+          "properties": {
+            "category": "Info Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "TestSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S1144": {
+          "id": "S1144",
+          "shortDescription": "Unused private types or members should be removed",
+          "fullDescription": "private or internal types or private members that are never executed or referenced are dead code: unnecessary, inoperative code that should be removed. Cleaning out dead code decreases the size of the maintained codebase, making it easier to understand the program and preventing bugs from being introduced.",
+          "defaultLevel": "note",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-1144",
+          "properties": {
+            "category": "Major Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "TestSourceScope",
+              "SonarWay",
+              "Unnecessary"
+            ]
+          }
+        },
+        "S125": {
+          "id": "S125",
+          "shortDescription": "Sections of code should not be commented out",
+          "fullDescription": "Programmers should not comment out code as it bloats programs and reduces readability.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-125",
+          "properties": {
+            "category": "Major Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "TestSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S1481": {
+          "id": "S1481",
+          "shortDescription": "Unused local variables should be removed",
+          "fullDescription": "If a local variable is declared but not used, it is dead code and should be removed. Doing so will improve maintainability because developers will not wonder what the variable is used for.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-1481",
+          "properties": {
+            "category": "Minor Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "TestSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S1854": {
+          "id": "S1854",
+          "shortDescription": "Unused assignments should be removed",
+          "fullDescription": "A dead store happens when a local variable is assigned a value that is not read by any subsequent instruction. Calculating or retrieving a value only to then overwrite it or throw it away, could indicate a serious error in the code. Even if it’s not an error, it is at best a waste of resources. Therefore all calculated values should be used.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-1854",
+          "properties": {
+            "category": "Major Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "TestSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S2068": {
+          "id": "S2068",
+          "shortDescription": "Hard-coded credentials are security-sensitive",
+          "fullDescription": "Because it is easy to extract strings from an application source code or binary, credentials should not be hard-coded. This is particularly true for applications that are distributed or that are open-source.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-2068",
+          "properties": {
+            "category": "Blocker Security Hotspot",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S2223": {
+          "id": "S2223",
+          "shortDescription": "Non-constant static fields should not be visible",
+          "fullDescription": "A static field that is neither constant nor read-only is not thread-safe. Correctly accessing these fields from different threads needs synchronization with locks. Improper synchronization may lead to unexpected results, thus publicly visible static fields are best suited for storing non-changing data shared by many consumers. To enforce this intent, these fields should be marked readonly or converted to constants.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-2223",
+          "properties": {
+            "category": "Critical Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S2259": {
+          "id": "S2259",
+          "shortDescription": "Null pointers should not be dereferenced",
+          "fullDescription": "A reference to null should never be dereferenced/accessed. Doing so will cause a NullReferenceException to be thrown. At best, such an exception will cause abrupt program termination. At worst, it could expose debugging information that would be useful to an attacker, or it could allow an attacker to bypass security measures.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-2259",
+          "properties": {
+            "category": "Major Bug",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S2681": {
+          "id": "S2681",
+          "shortDescription": "Multiline blocks should be enclosed in curly braces",
+          "fullDescription": "Curly braces can be omitted from a one-line block, such as with an if statement or for loop, but doing so can be misleading and induce bugs.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-2681",
+          "properties": {
+            "category": "Major Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "TestSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S2933": {
+          "id": "S2933",
+          "shortDescription": "Fields that are only assigned in the constructor should be \"readonly\"",
+          "fullDescription": "readonly fields can only be assigned in a class constructor. If a class has a field that’s not marked readonly but is only set in the constructor, it could cause confusion about the field’s intended use. To avoid confusion, such fields should be marked readonly to make their intended use explicit, and to prevent future maintainers from inadvertently changing their use.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-2933",
+          "properties": {
+            "category": "Major Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "TestSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S3168": {
+          "id": "S3168",
+          "shortDescription": "\"async\" methods should not return \"void\"",
+          "fullDescription": "An async method with a void return type is a \"fire and forget\" method best reserved for event handlers because there’s no way to wait for the method’s execution to complete and respond accordingly. There’s also no way to catch exceptions thrown from the method.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-3168",
+          "properties": {
+            "category": "Major Bug",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "TestSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S3776": {
+          "id": "S3776",
+          "shortDescription": "Cognitive Complexity of methods should not be too high",
+          "fullDescription": "Cognitive Complexity is a measure of how hard the control flow of a method is to understand. Methods with high Cognitive Complexity will be difficult to maintain.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-3776",
+          "properties": {
+            "category": "Critical Code Smell",
+            "isEnabledByDefault": false,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "TestSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S3928": {
+          "id": "S3928",
+          "shortDescription": "Parameter names used into ArgumentException constructors should match an existing one ",
+          "fullDescription": "Some constructors of the ArgumentException, ArgumentNullException, ArgumentOutOfRangeException and DuplicateWaitObjectException classes must be fed with a valid parameter name. This rule raises an issue in two cases:",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-3928",
+          "properties": {
+            "category": "Major Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "TestSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S3973": {
+          "id": "S3973",
+          "shortDescription": "A conditionally executed single line should be denoted by indentation",
+          "fullDescription": "In the absence of enclosing curly braces, the line immediately after a conditional is the one that is conditionally executed. By both convention and good practice, such lines are indented. In the absence of both curly braces and indentation the intent of the original programmer is entirely unclear and perhaps not actually what is executed. Additionally, such code is highly likely to be confusing to maintainers.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-3973",
+          "properties": {
+            "category": "Critical Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "TestSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S4457": {
+          "id": "S4457",
+          "shortDescription": "Parameter validation in \"async\"/\"await\" methods should be wrapped",
+          "fullDescription": "Because of the way async/await methods are rewritten by the compiler, any exceptions thrown during the parameters check will happen only when the task is observed. That could happen far away from the source of the buggy code or never happen for fire-and-forget tasks.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-4457",
+          "properties": {
+            "category": "Major Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "TestSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S4487": {
+          "id": "S4487",
+          "shortDescription": "Unread \"private\" fields should be removed",
+          "fullDescription": "Private fields only used to store values without reading them later is a case of dead store. So changing the value of such field is useless and most probably indicates a serious error in the code.",
+          "defaultLevel": "note",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-4487",
+          "properties": {
+            "category": "Critical Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "TestSourceScope",
+              "SonarWay",
+              "Unnecessary"
+            ]
+          }
+        },
+        "S5773": {
+          "id": "S5773",
+          "shortDescription": "Types allowed to be deserialized should be restricted",
+          "fullDescription": "During the deserialization process, the state of an object will be reconstructed from the serialized data stream which can contain dangerous operations.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-5773",
+          "properties": {
+            "category": "Major Vulnerability",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "SonarWay"
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <div style="margin: 0px; padding: 0px; font-family: Arial, sans-serif, serif, EmojiFont; background: rgb(255, 255, 255);">
+        <table align="center" cellpadding="0" cellspacing="0"
+               style="border-collapse:collapse; width:100%; background:#fff;">
+            <tbody>
+                <tr>
+                    <td align="center" style="padding:50px 30px; background:#fff;">
+                        <table align="center" cellpadding="0" cellspacing="0"
+                               style="border-collapse:collapse; max-width:700px; width:100%;">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <img src="{book.headerUrl}"
+                                             width="700" height="auto"
+                                             style="display:block; width:100%; max-width:700px; height:auto;">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 0px 32px; color:#333333; background-color:#EEF1FF;">
+                                        <p style="font-size:20px; font-weight:700; margin:0; line-height: 30px;">
+                                            {user.name}, привет!
+                                        </p>
+                                        <div></div>
+                                        <p style="font-size:16px; font-weight:400; margin-top:24px; color:#2D2D2D; line-height: 24px;">
+                                            Книга <a href="{book.url}" target="_blank"
+                                                     style="color: #1a73e8; text-decoration: underline;">
+                                                {book.name}
+                                            </a> была выдана до {data.date}. Пожалуйста, верни книгу на ресепшен.
+                                        </p>
+                                        <div></div>
+                                        <div>
+                                            <table cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
+                                                <tr>
+                                                    <td style="padding-right: 24px;">
+                                                        <table cellpadding="10" cellspacing="0">
+                                                            <tr>
+                                                                <td style="padding: 0px;">
+                                                                    <a href="mailto:{admin.mail}?subject=[BIA.Books] я уже сдал книгу&body=Здравствуйте, я уже сдал книгу {book.name}, измените ее статус, пожалуйста!" target="_blank" style="text-decoration: none;">
+                                                                        <img src="{book.btnPass}" alt="Я уже сдал книгу"
+                                                                             style="display:block; width:100%; max-width:178px; height:41px;">
+                                                                    </a>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                    <td>
+                                                        <table cellpadding="10" cellspacing="0">
+                                                            <tr>
+                                                                <td style="padding: 0px;">
+                                                                    <a href="mailto:{admin.mail}?subject=[BIA.Books] я хочу продлить книгу&body=Здравствуйте, продлите, пожалуйста, книгу {book.name}." target="_blank" style="text-decoration: none;">
+                                                                        <img src="{book.btnNotPass}" alt="Я хочу продлить книгу"
+                                                                             style="display:block; width:100%; max-width:163px; height:41px;">
+                                                                    </a>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                        <div></div>
+                                        <p style="font-size:16px; font-style:italic; margin-top:36px; color:#7D7D7D; line-height: 20px;">
+                                            С уважением, BIATeam
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="height: 20px; display:block; max-width:700px;">
+                                        <img src="{book.footerUrl}"
+                                             width="700" height="20"
+                                             style="display:block; width:100%; max-width:700px; height:20px;">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>

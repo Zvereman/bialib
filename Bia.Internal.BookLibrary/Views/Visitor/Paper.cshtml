@@ -1,0 +1,489 @@
+﻿@using Bia.Internal.BookLibrary.Data;
+@using Bia.Internal.BookLibrary;
+@model PaperBookViewModel
+@{
+    ViewData["Title"] = "Книги";
+    ViewBag.accessOrder = 1;
+    string sortBy = ViewBag.SortBy;
+    string sortOrder = ViewBag.SortOrder;
+    int pageNumber = ViewBag.PageNumber;
+    int pageSize = ViewBag.PageSize;
+    int totalPages = ViewBag.TotalPages;
+    string selectedCategories = ViewBag.SelectedCategories;
+}
+
+<link href="~/css/table_books.css" rel="stylesheet" />
+<script src="~/js/books_details.js"></script>
+
+<section class="main_section">
+    <section class="container">
+        @* <section class="container-fluid"> *@
+        <div class="row">
+            <div class="breadcrumb_control">
+                <nav>
+                    <ol class="breadcrumb breadcrumb_conteiner">
+                        <li class="breadcrumb-item breadcrumb_link"><a class="" href="@Url.Action("Index","Home")">Главная</a></li>
+                        <li class="breadcrumb-item breadcrumb_text" aria-current="page">Каталог</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="books_filter">
+                    <button type="button" class="btn btn-bia-filter" data-category="Все">Все</button>
+                    @if (Model.Categories.Count > 0)
+                    {
+                        @foreach (var cat in Model.Categories)
+                        {
+                            var categoryName = cat.CategoryName;
+                            var formattedCategoryName = char.ToUpper(categoryName[0]) + categoryName.Substring(1).ToLower();
+                            <button type="button" class="btn btn-bia-filter" data-category="@cat.CategoryName">@formattedCategoryName</button>
+                        }
+                    }
+                </div>
+                <div>
+                    <div class="table_conteiner table-responsive">
+                        @*Table Load*@
+                        @*!!!*@
+                        @*Table Data*@
+                        <table class="table table-borderless @(Model.PaperBooks.Count == 0 ? "" : "table-striped table-hover") table-books">
+                            <thead>
+                                <tr>
+                                    <th scope="col" class="sortable table_book_th" data-column="title">
+                                        <div class="table_book_th_div">
+                                            Название
+                                            <img src="~/icons/sort.svg" />
+                                        </div>
+                                    </th>
+                                    <th scope="col" class="sortable table_book_th" data-column="authors">
+                                        <div class="table_book_th_div">
+                                            Авторы
+                                            <img src="~/icons/sort.svg" />
+                                        </div>
+                                    </th>
+                                    <th scope="col" class="sortable table_book_th" data-column="categories">
+                                        <div class="table_book_th_div">
+                                            Категории
+                                            <img src="~/icons/sort.svg" />
+                                        </div>
+                                    </th>
+                                    <th scope="col" class="sortable table_book_th" data-column="rating">
+                                        <div class="table_book_th_div">
+                                            Рейтинг
+                                            <img src="~/icons/sort.svg" />
+                                        </div>
+                                    </th>
+                                    <th scope="col" class="sortable table_book_th" data-column="language">
+                                        <div class="table_book_th_div">
+                                            Язык
+                                            <img src="~/icons/sort.svg" />
+                                        </div>
+                                    </th>
+                                    <th scope="col" class="sortable table_book_th" data-column="actions">
+                                        <div class="table_book_th_div">
+                                            Действия
+                                            <img src="~/icons/sort.svg" />
+                                        </div>
+                                    </th>
+                                </tr>
+                            </thead>
+                            @if (Model.PaperBooks.Count > 0)
+                            {
+                                <tbody>
+                                    @foreach (var book in Model.PaperBooks)
+                                    {
+                                        <tr>
+                                            <td class="col-4 first-td">
+                                                <div class="table_books_img_td">
+                                                    <div class="table_books_img_div">
+                                                        @* <img class="table_books_img" src="~/icons/no_img_book.svg"> *@
+                                                        @if (string.IsNullOrEmpty(book.CoverImage))
+                                                        {
+                                                            <img class="table_books_img" src=@Url.Content("~/icons/no_img_book.svg") alt="defult-cover">
+                                                        }
+                                                        else
+                                                        {
+                                                            <img class="table_books_img" onerror="this.onerror=null;this.src='@Url.Content("~/icons/no_img_book.svg")'" src='@Url.Content("~"+book.CoverImage)' alt="cover">
+                                                        }
+                                                    </div>
+                                                    <div class="tooltip__underline" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                                         data-bs-custom-class="custom-tooltip"
+                                                         data-bs-title="@book.Title">
+                                                        <p class="text-truncate-one-line" onclick="redirectToBook(@book.BiaId)">
+                                                            @* @(book.Title.Length > 25 ? book.Title.Substring(0, 25) + "..." : book.Title) *@
+                                                            @book.Title
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="col-2">
+                                                @* @(string.Join(", ", book.Authors.Where(a => a.BookId == book.BiaId).Select(a => a.Author.FullName())).Count() > 17 ?
+                                        string.Join(", ", book.Authors.Where(a => a.BookId == book.BiaId).Select(a => a.Author.FullName())).Substring(0, 14) + "..." :
+                                        string.Join(", ", book.Authors.Where(a => a.BookId == book.BiaId).Select(a => a.Author.FullName()))) *@
+                                                @* <div class="text-truncate-one-line">@(string.Join(", ", book.Authors.Where(a => a.BookId == book.BiaId).Select(a => a.Author.FullName())))</div> *@
+                                                @{
+                                                    var authors = book.Authors.Where(a => a.BookId == book.BiaId)
+                                                    .Select(a => a.Author.FullName())
+                                                    .Where(name => !string.IsNullOrWhiteSpace(name))
+                                                    .ToList();
+                                                }
+                                                @if (authors.Any())
+                                                {
+                                                    <div class="tooltip-catalog-manage" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                                         data-bs-custom-class="custom-tooltip"
+                                                         data-bs-title="@string.Join(", ", authors)">
+                                                        <span class="text-truncate-one-line">
+                                                            @string.Join(", ", authors)
+                                                        </span>
+                                                    </div>
+                                                }
+                                            </td>
+                                            <td class="col-2">
+                                                @*  @(string.Join(", ", book.Cathegories.Where(c => c.BookId == book.BiaId).Select(c => c.Category.CategoryName)).Count() > 15 ?
+                                        string.Join(", ", book.Cathegories.Where(a => a.BookId == book.BiaId).Select(a => a.Category.CategoryName)).Substring(0, 13) + "..." :
+                                        string.Join(", ", book.Cathegories.Where(a => a.BookId == book.BiaId).Select(a => a.Category.CategoryName))) *@
+                                                @* <div class="text-truncate-one-line">@(string.Join(", ", book.Cathegories.Where(c => c.BookId == book.BiaId).Select(c => c.Category.CategoryName)))</div> *@
+                                                @{
+                                                    var categories = book.Cathegories.Where(a => a.BookId == book.BiaId)
+                                                    .Select(a => a.Category.CategoryName)
+                                                    .Where(name => !string.IsNullOrWhiteSpace(name))
+                                                    .ToList();
+                                                }
+                                                @if (categories.Any())
+                                                {
+                                                    <div class="tooltip-catalog-manage" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                                         data-bs-custom-class="custom-tooltip"
+                                                         data-bs-title="@string.Join(", ", categories.Select(category => char.ToUpper(category[0]) + category.Substring(1).ToLower()))">
+                                                        <span class="text-truncate-one-line">
+                                                            @string.Join(", ", categories.Select(category => char.ToUpper(category[0]) + category.Substring(1).ToLower()))
+                                                        </span>
+                                                    </div>
+                                                }
+                                            </td>
+                                            <td class="col-2">
+                                                <div class="star_conteiner_paper" style="display: none;">@(book.AverageRating)</div>
+                                                @switch (book.AverageRating)
+                                                {
+                                                    case (0):
+                                                        {
+                                                            <div class="star_conteiner_paper">
+                                                                <img class="star_img_paper" src="~/icons/clear-star.svg" />
+                                                                <img class="star_img_paper" src="~/icons/clear-star.svg" />
+                                                                <img class="star_img_paper" src="~/icons/clear-star.svg" />
+                                                                <img class="star_img_paper" src="~/icons/clear-star.svg" />
+                                                                <img class="star_img_paper" src="~/icons/clear-star.svg" />
+                                                            </div>
+                                                            break;
+
+                                                        }
+                                                    case (1):
+                                                        {
+                                                            <div class="star_conteiner_paper">
+                                                                <img class="star_img_paper" src="~/icons/star.svg" />
+                                                                <img class="star_img_paper" src="~/icons/clear-star.svg" />
+                                                                <img class="star_img_paper" src="~/icons/clear-star.svg" />
+                                                                <img class="star_img_paper" src="~/icons/clear-star.svg" />
+                                                                <img class="star_img_paper" src="~/icons/clear-star.svg" />
+                                                            </div>
+                                                            break;
+                                                        }
+                                                    case (2):
+                                                        {
+                                                            <div class="star_conteiner_paper">
+                                                                <img class="star_img_paper" src="~/icons/star.svg" />
+                                                                <img class="star_img_paper" src="~/icons/star.svg" />
+                                                                <img class="star_img_paper" src="~/icons/clear-star.svg" />
+                                                                <img class="star_img_paper" src="~/icons/clear-star.svg" />
+                                                                <img class="star_img_paper" src="~/icons/clear-star.svg" />
+                                                            </div>
+                                                            break;
+                                                        }
+                                                    case (3):
+                                                        {
+                                                            <div class="star_conteiner_paper">
+                                                                <img class="star_img_paper" src="~/icons/star.svg" />
+                                                                <img class="star_img_paper" src="~/icons/star.svg" />
+                                                                <img class="star_img_paper" src="~/icons/star.svg" />
+                                                                <img class="star_img_paper" src="~/icons/clear-star.svg" />
+                                                                <img class="star_img_paper" src="~/icons/clear-star.svg" />
+                                                            </div>
+                                                            break;
+                                                        }
+                                                    case (4):
+                                                        {
+                                                            <div class="star_conteiner_paper">
+                                                                <img class="star_img_paper" src="~/icons/star.svg" />
+                                                                <img class="star_img_paper" src="~/icons/star.svg" />
+                                                                <img class="star_img_paper" src="~/icons/star.svg" />
+                                                                <img class="star_img_paper" src="~/icons/star.svg" />
+                                                                <img class="star_img_paper" src="~/icons/clear-star.svg" />
+                                                            </div>
+                                                            break;
+                                                        }
+                                                    case (5):
+                                                        {
+                                                            <div class="star_conteiner_paper">
+                                                                <img class="star_img_paper" src="~/icons/star.svg" />
+                                                                <img class="star_img_paper" src="~/icons/star.svg" />
+                                                                <img class="star_img_paper" src="~/icons/star.svg" />
+                                                                <img class="star_img_paper" src="~/icons/star.svg" />
+                                                                <img class="star_img_paper" src="~/icons/star.svg" />
+                                                            </div>
+                                                            break;
+                                                        }
+                                                }
+                                            </td>
+                                            <td class="col-1">
+                                                @if ((int)book.Language == 1)
+                                                {
+                                                    <text>Рус.</text>
+                                                }
+                                                else
+                                                {
+                                                    <text>Англ.</text>
+                                                }
+                                            </td>
+                                            <td class="col-1 last-td">
+                                                @if (book.TakenByUser != null || book.ReqestBooks.Any())
+                                                {
+                                                    <button class="btn btn-paper_not_request_book" onclick="redirectToBook(@book.BiaId)">Недоступна</button>
+                                                }
+                                                else
+                                                {
+                                                    <button class="btn btn-paper_request_book" data-bs-toggle="modal" data-bs-target="#requestBookModal"
+                                                            onclick="fillModal('@book.BiaId', '@book.Title', '@(string.Join(", ", @book.Authors.Select(a => a.Author.FullName())))', '@book.CoverImage')">
+                                                        Запросить
+                                                    </button>
+                                                }
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            }
+                            else
+                            {
+                                <tbody>
+                                    <tr>
+                                        <td class="table_not_book_td" colspan="6">
+                                            <div class="table_not_book">
+                                                Ничего не найдено
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            }
+                        </table>
+                    </div>
+                </div>
+            </div>
+            @* Model.PaperBooks.Count() >= 50 || (pageNumber == totalPages && Model.PaperBooks.Count() <= 50 *@
+            @if (Model.TotalCount >= 50)
+            {
+                <div class="col-12 paper_pagination">
+                    <nav>
+                        <ul class="pagination justify-content-center paper_pagination_ul">
+                            <li class="page-item @(pageNumber == 1 ? "disabled paper_pagination_btn_down_up_op" : "") paper_pagination_item">
+                                <a class="page-link paper_pagination_btn_down_up" asp-action="Books" asp-route-sortBy="@sortBy"
+                                   asp-route-sortOrder="@sortOrder" asp-route-pageNumber="@(pageNumber - 1)" asp-route-pageSize="@pageSize"
+                                   asp-route-selectedCategories="@selectedCategories">
+                                    <img class="paper_pagination_img_left" src="~/icons/left.svg" /> Назад
+                                </a>
+                            </li>
+                            @if (pageNumber > 4)
+                            {
+                                <li class="page-item paper_pagination_item">
+                                    <a class="page-link paper_pagination_a" asp-action="Books" asp-route-sortBy="@sortBy" asp-route-sortOrder="@sortOrder"
+                                       asp-route-pageNumber="1" asp-route-pageSize="@pageSize"
+                                       asp-route-selectedCategories="@selectedCategories">1</a>
+                                </li>
+                                <li class="page-item disabled paper_pagination_item">
+                                    <span class="page-link paper_pagination_a">...</span>
+                                </li>
+                            }
+                            @for (int i = pageNumber - 3; i < pageNumber; i++)
+                            {
+                                if (i > 0)
+                                {
+                                    <li class="page-item paper_pagination_item">
+                                        <a class="page-link paper_pagination_a" asp-action="Books" asp-route-sortBy="@sortBy" asp-route-sortOrder="@sortOrder"
+                                           asp-route-pageNumber="@i" asp-route-pageSize="@pageSize"
+                                           asp-route-selectedCategories="@selectedCategories">@i</a>
+                                    </li>
+                                }
+                            }
+                            <li class="page-item active paper_pagination_item">
+                                <span class="page-link paper_pagination_a">@pageNumber</span>
+                            </li>
+                            @for (int i = pageNumber + 1; i <= pageNumber + 3; i++)
+                            {
+                                if (i <= totalPages)
+                                {
+                                    <li class="page-item paper_pagination_item">
+                                        <a class="page-link paper_pagination_a" asp-action="Books" asp-route-sortBy="@sortBy" asp-route-sortOrder="@sortOrder"
+                                           asp-route-pageNumber="@i" asp-route-pageSize="@pageSize"
+                                           asp-route-selectedCategories="@selectedCategories">@i</a>
+                                    </li>
+                                }
+                            }
+                            @if (pageNumber + 3 < totalPages)
+                            {
+                                <li class="page-item disabled paper_pagination_item">
+                                    <span class="page-link paper_pagination_a">...</span>
+                                </li>
+                            }
+                            @if (pageNumber + 3 < totalPages)
+                            {
+                                <li class="page-item paper_pagination_item">
+                                    <a class="page-link paper_pagination_a" asp-action="Books" asp-route-sortBy="@sortBy" asp-route-sortOrder="@sortOrder"
+                                       asp-route-pageNumber="@totalPages" asp-route-pageSize="@pageSize"
+                                       asp-route-selectedCategories="@selectedCategories">@totalPages</a>
+                                </li>
+                            }
+                            <li class="page-item @(pageNumber == totalPages ? "disabled paper_pagination_btn_down_up_op" : "") paper_pagination_item">
+                                <a class="page-link paper_pagination_btn_down_up" asp-action="Books" asp-route-sortBy="@sortBy" asp-route-sortOrder="@sortOrder"
+                                   asp-route-pageNumber="@(pageNumber + 1)" asp-route-pageSize="@pageSize"
+                                   asp-route-selectedCategories="@selectedCategories">
+                                    Далее <img class="paper_pagination_img_rigth" src="~/icons/right.svg" />
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            }
+        </div>
+    </section>
+    <div class="modal fade" id="requestBookModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content boks_modal_content_details">
+                <div>
+                    <div class="modal-header books_modal_details">
+                        <p class="modal-title books_modal_header_details" id="staticBackdropLabel">Подтвердите бронь книги</p>
+                        <button id="btnClose" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+                    </div>
+                    <div class="modal-body books_modal_body_details">
+                        <!-- Обложка книги -->
+                        <img id="modalCoverImage" class="img_books_modal_details" src="" />
+                        <div>
+                            <!-- Заголовок книги -->
+                            <p class="books_details_title books_modal_text_details text-truncate-two-line" id="bookTitle">Название книги</p>
+
+                            <!-- Авторы книги -->
+                            <p class="books_details_subtutle text-truncate-two-line" id="bookAuthors">Авторы книги</p>
+                        </div>
+                    </div>
+                    <div class="modal-footer books_modal_details boks_modal_futer_btn_details col-6 mx-auto">
+                        <button id="requestBookBtn" type="button" class="btn btn-bia-request_details"
+                                data-content="" data-name="">
+                            Запросить книгу
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="toast-container position-fixed top-0 end-0">
+        <div id="toastSucces" class="toast toas_content_details" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex toast_succec_details">
+                <div class="toast-body">
+                    Запрос отправлен
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="toast-container position-fixed top-0 end-0">
+        <div id="toastFail" class="toast toas_content_details" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex toast_fail_details">
+                <div class="toast-body">
+                    Что-то пошло не так, попробуйте еще раз
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <script>
+        function changeSortOrder(sortBy, cat) {
+            var currentSortOrder = '@ViewBag.SortOrder';
+            var newSortOrder = (sortBy === '@ViewBag.SortBy' && currentSortOrder === 'asc') ? 'desc' : 'asc';
+            var url = '@Url.Action("Books", "Visitor")' + '?sortBy=' + sortBy + '&sortOrder=' + newSortOrder +
+                '&pageNumber=' + '1' + '&pageSize=' + '@ViewBag.PageSize' + '&selectedCategories=' + cat;
+            window.location.href = url;
+        }
+
+        $(document).ready(function () {
+            var currentUrl = window.location.href;
+            var urlParams = new URLSearchParams(window.location.search);
+            var cat = urlParams.get('selectedCategories');
+            if (cat != null) {
+                var buttons = $("button.btn.btn-bia-filter");
+                buttons.each(function () {
+                    if ($(this).text().trim() === cat) {
+                        $(this).addClass("active");
+                    }
+                });
+            }
+
+            $('.sortable').click(function () {
+                var sortBy = $(this).data('column');
+                changeSortOrder(sortBy, cat);
+            });
+            //
+            $('.btn-bia-filter').click(function () {
+                $('.btn-bia-filter').removeClass('active');
+                $(this).addClass('active');
+                //
+                var category = $(this).text();
+                var currentUrl = '@Url.Action("Books", "Visitor")' +
+                    '?sortBy=' + '@ViewBag.SortBy' +
+                    '&sortOrder=' + '@ViewBag.SortOrder' +
+                    '&pageNumber=1' +
+                    '&pageSize=' + '@ViewBag.PageSize' +
+                    '&selectedCategories=' + encodeURIComponent(category);
+                window.location.href = currentUrl;
+            });
+        });
+
+        function fillModal(biaId, title, authors, coverImage) {
+            // Заполняем поля в модалке
+            $('#bookTitle').text(title);
+            $('#bookAuthors').text(authors);
+
+            // Проверка обложки книги
+            var modalCoverImage = document.getElementById('modalCoverImage');
+            var coverBook = coverImage;
+            //modalCoverImage
+            if (!coverImage || coverImage.trim() === "") {
+                coverBook = '@Url.Content("~/icons/no_img_book.svg")';
+            }
+
+            modalCoverImage.src = coverBook;
+
+            modalCoverImage.onerror = function () {
+                this.onerror = null;
+                this.src = '@Url.Content("~/icons/no_img_book.svg")';
+            };
+
+            // Заменяем значение атрибутов data-content и data-name у кнопки
+            $('#requestBookBtn').attr('data-content', biaId).attr('data-name', title);
+
+            // Открываем модальное окно
+            $('#requestBookModal').modal('show');
+        }
+
+    </script>
+}
+
+@* @section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('.sortable').click(function () {
+                var sortBy = $(this).data('column'); // Получаем имя столбца из атрибута data-column
+                var sortOrder = $(this).hasClass('asc') ? 'desc' : 'asc'; // Получаем порядок сортировки
+                window.location.href = '/Visitor/Books?sortBy=' + sortBy + '&sortOrder=' + sortOrder; // Отправляем запрос на сервер с параметрами сортировки
+            });
+        });
+    </script>
+} *@
+

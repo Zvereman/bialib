@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <div style="margin: 0px; padding: 0px; font-family: Arial, sans-serif, serif, EmojiFont; background: rgb(255, 255, 255);">
+        <table align="center" cellpadding="0" cellspacing="0"
+               style="border-collapse:collapse; width:100%; background:#fff;">
+            <tbody>
+                <tr>
+                    <td align="center" style="padding:50px 30px; background:#fff;">
+                        <table align="center" cellpadding="0" cellspacing="0"
+                               style="border-collapse:collapse; max-width:700px; width:100%;">
+                            <tbody>
+                                <tr>
+                                    <td align="center">
+                                        <img src="{book.headerUrl}"
+                                             width="700" height="auto"
+                                             style="display:block; width:100%; max-width:700px; height:auto;">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 0px 32px; color:#333333; background-color:#FFEFED;">
+                                        <p style="font-size:20px; font-weight:700; margin:0; line-height: 30px;">Продление книги</p>
+                                        <div></div>
+                                        <p style="font-size:16px; font-weight:400; margin-top:24px; color:#2D2D2D; line-height: 24px;">
+                                            {user.name} продлил(а) книгу <a href="{book.url}" target="_blank"
+                                                                            style="color: #1a73e8; text-decoration: underline;">
+                                                {book.name}
+                                            </a> до {data.date}.
+                                        </p>
+                                        <div></div>
+                                        <p>
+                                            <a href="{book.request}">
+                                                <img src="{book.btn}" alt="Продление книги"
+                                                     width="178" height="41"
+                                                     style="display:block; width:100%; max-width:178px; height:41px;">
+                                            </a>
+                                        </p>
+                                        <div></div>
+                                        <p style="font-size:16px; font-style:italic; margin-top:36px; color:#7D7D7D; line-height: 20px;">
+                                            С уважением, BIATeam
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="height: 20px; display:block; max-width:700px;">
+                                        <img src="{book.footerUrl}"
+                                             width="700" height="20"
+                                             style="display:block; width:100%; max-width:700px; height:auto;">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>

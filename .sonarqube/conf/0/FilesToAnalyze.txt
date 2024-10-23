@@ -1,0 +1,4 @@
+﻿C:\vsproj\beck\bia.internal.booklibrary\NUnitTest\UnitTest1.cs
+C:\Users\la-azachitaylov\.nuget\packages\nunit3testadapter\3.11.0\build\netcoreapp1.0\NUnit3.TestAdapter.dll
+C:\Users\la-azachitaylov\.nuget\packages\nunit3testadapter\3.11.0\build\netcoreapp1.0\NUnit3.TestAdapter.pdb
+C:\Users\la-azachitaylov\.nuget\packages\nunit3testadapter\3.11.0\build\netcoreapp1.0\nunit.engine.netstandard.dll

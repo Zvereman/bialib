@@ -1,0 +1,7 @@
+﻿C:\vsproj\beck\bia.internal.booklibrary\Bia.Internal.BookLibrary.Notification\Program.cs
+C:\Users\la-azachitaylov\.nuget\packages\nlog.config\4.6.7\contentFiles\any\any\NLog.config
+C:\vsproj\beck\bia.internal.booklibrary\Bia.Internal.BookLibrary.Notification\appsettings.json
+C:\vsproj\beck\bia.internal.booklibrary\Bia.Internal.BookLibrary.Notification\Properties\PublishProfiles\FolderProfile.pubxml
+C:\vsproj\beck\bia.internal.booklibrary\Bia.Internal.BookLibrary.Notification\ReadMe.txt
+C:\vsproj\beck\bia.internal.booklibrary\Bia.Internal.BookLibrary.Notification\Temlate\template1.html
+C:\vsproj\beck\bia.internal.booklibrary\Bia.Internal.BookLibrary.Notification\Temlate\template2.html

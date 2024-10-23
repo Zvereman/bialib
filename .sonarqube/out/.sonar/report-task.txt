@@ -1,0 +1,6 @@
+projectKey=bia-library
+serverUrl=http://sonar.bia-tech.ru
+serverVersion=9.9.1-SNAPSHOT
+dashboardUrl=http://sonar.bia-tech.ru/dashboard?id=bia-library
+ceTaskId=AY56phtQ79pcRoyG8Hgd
+ceTaskUrl=http://sonar.bia-tech.ru/api/ce/task?id=AY56phtQ79pcRoyG8Hgd

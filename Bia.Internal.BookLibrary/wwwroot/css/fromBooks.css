@@ -1,0 +1,16 @@
+﻿.form-books {
+    font-family: Open Sans;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 21.79px;
+    text-align: left;
+}
+
+    .form-books input[type=text],
+    input[type=number],
+    .form-books textarea,
+    .form-books select {
+        height: 42px;
+        min-height: 42px;
+        border-color: #BDBDBD;
+    }

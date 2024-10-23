@@ -1,0 +1,64 @@
+r
+NC:\vsproj\beck\bia.internal.booklibrary\Bia.Internal.BookLibrary.Data\Admin.cs 8r	
+Çå
+TC:\vsproj\beck\bia.internal.booklibrary\Bia.Internal.BookLibrary.Data\AdminNotify.cs 8r'	!#$&'()*+,Ç)∏
+PC:\vsproj\beck\bia.internal.booklibrary\Bia.Internal.BookLibrary.Data\AppUser.cs +8+j	
+rK!"#$%')*+,-/12345689:;<=?@ABCDGHIJKLNPRTUVWYZ[\]^Ç	#+3:AIV[p
+TC:\vsproj\beck\bia.internal.booklibrary\Bia.Internal.BookLibrary.Data\Arrangement.cs 8r	
+ã
+OC:\vsproj\beck\bia.internal.booklibrary\Bia.Internal.BookLibrary.Data\Author.cs 8jr&	
+ !#%&'()*+,-Ç*Ω
+MC:\vsproj\beck\bia.internal.booklibrary\Bia.Internal.BookLibrary.Data\Book.cs %8%j4689;rP	
+ "#%&()+,./12=>?@ABDEFGHIKLMNOPRSTUVWYZ[\]_bdeghijkmnopqvÇ?FMT[jo‚
+VC:\vsproj\beck\bia.internal.booklibrary\Bia.Internal.BookLibrary.Data\BookDbContext.cs &8&j
+âórå	 !"#$%'()*+,./0234678:;<>?@BCDFGHJKLNOPRSTVWXZ[]^_`bcdeghjklmopqrtuwxyz|}ÄÅÇÑÖÜáäãåçèêëíîïòôöõÇf)*+,./0234678:;<>?@BCDFGHJKLNOPRSTVWXZ[]^_`bcdeghjklmopqrtuwxyz|}ÄÅÇÑÖÜáäãåçèêëíîïò∫
+]C:\vsproj\beck\bia.internal.booklibrary\Bia.Internal.BookLibrary.Data\BookDbContextFactory.cs 8	j
+ !"#%')+r4	
+.02356789;<=>@ABCDEGIJKLNOPQSTxÇ.027BCDGKPÑ
+QC:\vsproj\beck\bia.internal.booklibrary\Bia.Internal.BookLibrary.Data\Category.cs 
+8
+r"	
+ "#$%&'(Ç%ê
+XC:\vsproj\beck\bia.internal.booklibrary\Bia.Internal.BookLibrary.Data\DownloadHistory.cs 8j	
+r!!"$&'()+,Ç(u
+NC:\vsproj\beck\bia.internal.booklibrary\Bia.Internal.BookLibrary.Data\Ebook.cs 
+8
+r	
+Ç£
+fC:\vsproj\beck\bia.internal.booklibrary\Bia.Internal.BookLibrary.Data\EfManyToManyModels\BookAuthor.cs 8jr&	
+ "$%'()*+,-Ç*§
+hC:\vsproj\beck\bia.internal.booklibrary\Bia.Internal.BookLibrary.Data\EfManyToManyModels\BookCategory.cs 8j
+r%	 !#%&(*+,-./Ç,¶
+[C:\vsproj\beck\bia.internal.booklibrary\Bia.Internal.BookLibrary.Data\Enum\AccessGroupId.cs 8j	
+r( !"#$%&'()*,-./xÇ !"#%'(),m
+^C:\vsproj\beck\bia.internal.booklibrary\Bia.Internal.BookLibrary.Data\Enum\AdminNotifyTypes.csr	
+m
+[C:\vsproj\beck\bia.internal.booklibrary\Bia.Internal.BookLibrary.Data\Enum\EbookFormatId.csr	
+g
+XC:\vsproj\beck\bia.internal.booklibrary\Bia.Internal.BookLibrary.Data\Enum\LanguageId.csr	
+o
+TC:\vsproj\beck\bia.internal.booklibrary\Bia.Internal.BookLibrary.Data\IgnoredUser.cs 8r	
+≥	
+jC:\vsproj\beck\bia.internal.booklibrary\Bia.Internal.BookLibrary.Data\Migrations\20231009131655_Initial.csN 8r–	
+ !"#$%&'()*+-./012345678:;<=>?@ABCDEFGHIJLMNOPQRSTUVWXYZ[\^_`abcdefghijklmnopqrstuvwxyz{|}~ÄÅÇÉÑÖÜáàâäãåçéèëíìîïñóòôöõúùûü†°¢£§•¶ß©™´¨≠ÆØ∞±≤≥¥µ∂∑∏π∫ªºΩæø¡¬√ƒ≈∆«»… ÀÃÕŒœ–—“”‘’÷◊ÿŸ€‹›ﬁﬂ‡·‚„‰ÂÊÁËÈÍÎÏÌÓÔÒÚÛÙıˆ¯˘˙˚¸˝˛ˇÄÅÇÉÑÖÜáàâäãåçéèëíìîïñóòôöõúùûü†°¢£§•¶ß®©™¨≠ÆØ∞±≤≥¥µ∂∑∏π∫ªºΩæø¿¡¬√≈∆«»… ÀÃÕŒœ–—“”‘’÷◊ÿŸ⁄€›ﬁﬂ‡‚„‰ÂÁËÈÍÏÌÓÔÒÚÛÙˆ˜¯˘˚¸˝˛ÄÅÇÉÖÜáàäãåçèêëíîïñóôöõúùü†°¢§•ß®™´≠Æ∞±≥¥∂∑π∫ºΩø¿¬√≈∆»…ÀÃÕŒœÇË!#$%&(*-/12357:<>?ACDFILNPQSUVX[^`bcdefghijklmnopqrsuwxz}ÄÇÑÜàâãéëìïñòöõù†°£¶©´≠Æ∞≤≥µ∏πªæ¡√≈∆«» ÃÕœ“”’ÿ€›ﬂ‡·‚„‰ÂÁÈÍÏÔÚı¯˙¸˝˛ÄÇÉÖàâãéëìïñóòôõùû†£§¶©¨Æ∞±≤¥∂∑πºΩø¬≈«… ÃŒœ—‘’◊⁄›‚ÁÏÒˆ˚ÄÖäèîô°§ß™≠∞≥∂πºø¬≈»Àé
+wC:\vsproj\beck\bia.internal.booklibrary\Bia.Internal.BookLibrary.Data\Migrations\20231009135839_PropertySaveBehavior.cs 8r
+≤
+wC:\vsproj\beck\bia.internal.booklibrary\Bia.Internal.BookLibrary.Data\Migrations\20231116094055_AdminNotifyEditModel.cs 8r%	
+!"#%&'()*+Ç
+!%á
+RC:\vsproj\beck\bia.internal.booklibrary\Bia.Internal.BookLibrary.Data\PaperBook.cs 
+8
+jr!	
+ "#$%&()*Ç$ö
+TC:\vsproj\beck\bia.internal.booklibrary\Bia.Internal.BookLibrary.Data\RentHistory.cs 8j		
+r)!#$%&'(*+,-./134689:;<=Ç%,:ç
+TC:\vsproj\beck\bia.internal.booklibrary\Bia.Internal.BookLibrary.Data\RequestBook.cs 8r'	
+ !"$&()+,-./01Ç .é
+OC:\vsproj\beck\bia.internal.booklibrary\Bia.Internal.BookLibrary.Data\Review.cs 8j
+r(	 !"#$%(*+-/01234Ç"1i
+JC:\vsproj\beck\bia.internal.booklibrary\Bia.Internal.BookLibrary.Data\S.csjr	
+ì
+VC:\vsproj\beck\bia.internal.booklibrary\Bia.Internal.BookLibrary.Data\UploadHistory.cs 8j	
+r& !"#%'(*,-./12Ç.â
+SC:\vsproj\beck\bia.internal.booklibrary\Bia.Internal.BookLibrary.Data\UserNotify.cs 8r$	
+!"$%&'(*+Ç'

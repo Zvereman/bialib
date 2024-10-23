@@ -1,0 +1,9 @@
+﻿C:\vsproj\beck\bia.internal.booklibrary\GitConnectionPass\Program.cs
+C:\vsproj\beck\bia.internal.booklibrary\GitConnectionPass\obj\Debug\net6.0\GetConnectionStr.GlobalUsings.g.cs
+C:\vsproj\beck\bia.internal.booklibrary\GitConnectionPass\obj\Debug\net6.0\.NETCoreApp,Version=v6.0.AssemblyAttributes.cs
+C:\vsproj\beck\bia.internal.booklibrary\GitConnectionPass\obj\Debug\net6.0\GetConnectionStr.AssemblyInfo.cs
+C:\vsproj\beck\bia.internal.booklibrary\GitConnectionPass\obj\Debug\net6.0\GetConnectionStr.MvcApplicationPartsAssemblyInfo.cs
+C:\vsproj\beck\bia.internal.booklibrary\GitConnectionPass\appsettings.Development.json
+C:\vsproj\beck\bia.internal.booklibrary\GitConnectionPass\appsettings.json
+C:\vsproj\beck\bia.internal.booklibrary\GitConnectionPass\Properties\launchSettings.json
+C:\vsproj\beck\bia.internal.booklibrary\GitConnectionPass\Properties\PublishProfiles\FolderProfile.pubxml

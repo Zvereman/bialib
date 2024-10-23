@@ -1,0 +1,11 @@
+﻿C:\vsproj\beck\bia.internal.booklibrary\WebApiBookLibrary\GetBadBook.cs
+C:\vsproj\beck\bia.internal.booklibrary\WebApiBookLibrary\Program.cs
+C:\vsproj\beck\bia.internal.booklibrary\WebApiBookLibrary\WebApiAdoNet.cs
+C:\vsproj\beck\bia.internal.booklibrary\WebApiBookLibrary\obj\Debug\net6.0\WebApiBookLibrary.GlobalUsings.g.cs
+C:\vsproj\beck\bia.internal.booklibrary\WebApiBookLibrary\obj\Debug\net6.0\.NETCoreApp,Version=v6.0.AssemblyAttributes.cs
+C:\vsproj\beck\bia.internal.booklibrary\WebApiBookLibrary\obj\Debug\net6.0\WebApiBookLibrary.AssemblyInfo.cs
+C:\vsproj\beck\bia.internal.booklibrary\WebApiBookLibrary\obj\Debug\net6.0\WebApiBookLibrary.MvcApplicationPartsAssemblyInfo.cs
+C:\vsproj\beck\bia.internal.booklibrary\WebApiBookLibrary\appsettings.Development.json
+C:\vsproj\beck\bia.internal.booklibrary\WebApiBookLibrary\appsettings.json
+C:\vsproj\beck\bia.internal.booklibrary\WebApiBookLibrary\Properties\launchSettings.json
+C:\vsproj\beck\bia.internal.booklibrary\WebApiBookLibrary\Properties\PublishProfiles\FolderProfile.pubxml

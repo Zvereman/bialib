@@ -1,0 +1,8 @@
+P
+GC:\vsproj\beck\bia.internal.booklibrary\WebApiBookLibrary\GetBadBook.csutf-8T
+DC:\vsproj\beck\bia.internal.booklibrary\WebApiBookLibrary\Program.cswindows-1251R
+IC:\vsproj\beck\bia.internal.booklibrary\WebApiBookLibrary\WebApiAdoNet.csutf-8y
+nC:\vsproj\beck\bia.internal.booklibrary\WebApiBookLibrary\obj\Debug\net6.0\WebApiBookLibrary.GlobalUsings.g.csutf-8„
+yC:\vsproj\beck\bia.internal.booklibrary\WebApiBookLibrary\obj\Debug\net6.0\.NETCoreApp,Version=v6.0.AssemblyAttributes.csutf-8w
+lC:\vsproj\beck\bia.internal.booklibrary\WebApiBookLibrary\obj\Debug\net6.0\WebApiBookLibrary.AssemblyInfo.csutf-8Š
+C:\vsproj\beck\bia.internal.booklibrary\WebApiBookLibrary\obj\Debug\net6.0\WebApiBookLibrary.MvcApplicationPartsAssemblyInfo.csutf-8

@@ -1,0 +1,519 @@
+﻿@model MyRequestViewModal
+@{
+    ViewData["Title"] = "Мои запросы";
+    string sortBy = ViewBag.SortBy;
+    string sortOrder = ViewBag.SortOrder;
+    int pageNumber = ViewBag.PageNumber;
+    int pageSize = ViewBag.PageSize;
+    int totalPages = ViewBag.TotalPages;
+    string selectedRequest = ViewBag.SelectedRequest;
+}
+
+<link href="~/css/table_books.css" rel="stylesheet" />
+
+<section class="main_section">
+    <section class="container">
+        <div class="row">
+            <div class="breadcrumb_control">
+                <nav>
+                    <ol class="breadcrumb breadcrumb_conteiner">
+                        <li class="breadcrumb-item breadcrumb_link"><a class="" href="@Url.Action("Index","Home")">Главная</a></li>
+                        <li class="breadcrumb-item breadcrumb_text" aria-current="page">Мои запросы</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="books_filter">
+                    <button type="button" class="btn btn-bia-filter" data-category="Все">Все</button>
+                    <button type="button" class="btn btn-bia-filter" data-category="Запросил">Запросил</button>
+                    <button type="button" class="btn btn-bia-filter" data-category="Читаю">Читаю</button>
+                    <button type="button" class="btn btn-bia-filter" data-category="Вернул">Вернул</button>
+                </div>
+                <div>
+                    <div class="table_conteiner table-responsive">
+                        @*Table Load*@
+                        <div id="tableLoader" class="loader-container">
+                            <div class="loader"></div>
+                        </div>
+                        @*Table Data*@
+                        <div id="tableContent">
+                            <table class="table table-borderless table-striped table-hover table-books">
+                                <thead>
+                                    <tr>
+                                        <th scope="col" class="sortable request_th" data-column="id">
+                                            <div class="request_th_div">
+                                                ID
+                                                <img src="~/icons/sort.svg" />
+                                            </div>
+                                        </th>
+                                        <th scope="col" class="sortable request_th" data-column="name">
+                                            <div class="request_th_div">
+                                                Название
+                                                <img src="~/icons/sort.svg" />
+                                            </div>
+                                        </th>
+                                        <th scope="col" class="sortable request_th" data-column="return">
+                                            <div class="request_th_div">
+                                                Возврат
+                                                <img src="~/icons/sort.svg" />
+                                            </div>
+                                        </th>
+                                        <th scope="col" class="sortable request_th" data-column="status">
+                                            <div class="request_th_div">
+                                                Статус
+                                                <img src="~/icons/sort.svg" />
+                                            </div>
+                                        </th>
+                                        <th scope="col" class="sortable request_th" data-column="actions">
+                                            <div class="request_th_div">
+                                                Действия
+                                                <img src="~/icons/sort.svg" />
+                                            </div>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                @if (Model.MyRequestBooks.Count > 0)
+                                {
+                                    <tbody>
+                                        @foreach (var keyValue in Model.MyRequestBooks)
+                                        {
+                                            @foreach (var book in keyValue.Value)
+                                            {
+                                                <tr>
+                                                    <td class="col-1">
+                                                        @book.BiaId
+                                                    </td>
+                                                    <td class="col-8">
+                                                        <div class="table_books_img_td">
+                                                            <div class="table_books_img_div">
+                                                                @if (string.IsNullOrEmpty(book.CoverImage))
+                                                                {
+                                                                    <img class="table_books_img" src=@Url.Content("~/icons/no_img_book.svg") alt="defult-cover">
+                                                                }
+                                                                else
+                                                                {
+                                                                    <img class="table_books_img" onerror="this.onerror=null;this.src='@Url.Content("~/icons/no_img_book.svg")'" src='@Url.Content("~"+book.CoverImage)' alt="cover">
+                                                                }
+                                                            </div>
+                                                            <div class="tooltip__underline" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                                                 data-bs-custom-class="custom-tooltip"
+                                                                 data-bs-title="@book.Title">
+                                                                <p class="text-truncate-one-line" onclick="redirectToBook(@book.BiaId)">
+                                                                    @book.Title
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td class="col-1">
+                                                        @if (book.TakenDue.HasValue)
+                                                        {
+                                                            DateTime dueDate = book.TakenDue.Value;
+                                                            if (dueDate.Date <= DateTime.Now.AddDays(7).Date)
+                                                            {
+                                                                <div style="color: #D22630;">
+                                                                    @dueDate.ToString("dd.MM.yyyy")
+                                                                </div>
+                                                            }
+                                                            else
+                                                            {
+                                                                <div>
+                                                                    @dueDate.ToString("dd.MM.yyyy")
+                                                                </div>
+                                                            }
+                                                        }
+                                                        else
+                                                        {
+                                                            <div>&mdash;</div>
+                                                        }
+                                                    </td>
+                                                    <td class="col-1">
+                                                        @switch (keyValue.Key)
+                                                        {
+                                                            case "read":
+                                                                {
+                                                                    <button class="btn btn-return-book-status">Вернул</button>
+                                                                    break;
+                                                                }
+                                                            case "reading":
+                                                                {
+                                                                    <button class="btn btn-reading-book-status">Читаю</button>
+                                                                    break;
+                                                                }
+                                                            case "request":
+                                                                {
+                                                                    <button class="btn btn-request-book-status">Запросил</button>
+                                                                    break;
+                                                                }
+                                                        }
+                                                    </td>
+                                                    <td class="col-1">
+                                                        @switch (keyValue.Key)
+                                                        {
+                                                            case "read":
+                                                                {
+                                                                    <div class="request_div_action">
+                                                                        <img class="tooltip_hover" data-bs-toggle="tooltip"
+                                                                             data-bs-placement="bottom" data-bs-html="true"
+                                                                             data-bs-title="Оставить отзыв и оценить книгу"
+                                                                             src="~/icons/myrequest_review.svg"
+                                                                             onmouseenter="this.src='/icons/myrequest_review_blue.svg'"
+                                                                             onmouseleave="this.src='/icons/myrequest_review.svg'"
+                                                                             onclick="reviewClick(@book.BiaId)">
+                                                                    </div>
+                                                                    break;
+                                                                }
+                                                            case "reading":
+                                                                {
+                                                                    <div class="request_div_action">
+                                                                        <div data-bs-toggle="modal" data-bs-target="#continueBook">
+                                                                            <img class="tooltip_hover" data-bs-toggle="tooltip"
+                                                                                 data-bs-placement="bottom" data-bs-html="true"
+                                                                                 data-bs-title="Продлить книгу"
+                                                                                 src="~/icons/myrequest_continuebook.svg"
+                                                                                 onmouseenter="this.src='/icons/myrequest_continuebook_blue.svg'"
+                                                                                 onmouseleave="this.src='/icons/myrequest_continuebook.svg'"
+                                                                                 onclick="populateModal('@book.BiaId', '@book.Title',
+                                                                                '@book.TakenDue.Value.ToString("dd.MM.yyyy")',
+                                                                                '@book.TakenDue.Value.AddDays(30).ToString("dd.MM.yyyy")',
+                                                                                '@Url.Content("~" + @book.CoverImage)')">
+                                                                        </div>
+                                                                        <a href="mailto:sk@bia-tech.ru?subject=@book.Title">
+                                                                            <img class="tooltip_hover" data-bs-toggle="tooltip"
+                                                                                 data-bs-placement="bottom" data-bs-html="true"
+                                                                                 data-bs-title="Сообщить администратору о сдаче книги"
+                                                                                 src="~/icons/myrequest_returnbook.svg"
+                                                                                 onmouseenter="this.src='/icons/myrequest_returnbook_blue.svg'"
+                                                                                 onmouseleave="this.src='/icons/myrequest_returnbook.svg'">
+                                                                        </a>
+                                                                    </div>
+                                                                    break;
+                                                                }
+                                                            case "request":
+                                                                {
+                                                                    <div class="request_div_action">
+                                                                        <img class="tooltip_hover deleteRequestBtn" data-bs-toggle="tooltip"
+                                                                             data-bs-placement="bottom" data-bs-title="Отменить запрос"
+                                                                             src="~/icons/trash_basket.svg"
+                                                                             onmouseenter="this.src='/icons/trash_basket_blue.svg'"
+                                                                             onmouseleave="this.src='/icons/trash_basket.svg'"
+                                                                             onclick="deleteRequest(@book.BiaId)">
+                                                                    </div>
+                                                                    break;
+                                                                }
+                                                        }
+                                                    </td>
+                                                </tr>
+                                            }
+                                        }
+                                    </tbody>
+                                }
+                                else
+                                {
+                                    <tbody>
+                                        <tr>
+                                            <td class="table_not_book_td" colspan="6">
+                                                <div class="table_not_book">
+                                                    Ничего не найдено
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                }
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @if (Model.CountMyRequestsBooks >= 50)
+            {
+                <div class="row paper_pagination">
+                    <nav>
+                        <ul class="pagination justify-content-center paper_pagination_ul">
+                            <li class="page-item @(pageNumber == 1 ? "disabled paper_pagination_btn_down_up_op" : "") paper_pagination_item">
+                                <a class="page-link paper_pagination_btn_down_up" asp-action="MyRequest" asp-route-sortBy="@sortBy"
+                                   asp-route-sortOrder="@sortOrder" asp-route-pageNumber="@(pageNumber - 1)" asp-route-pageSize="@pageSize"
+                                   asp-route-selectedRequest="@selectedRequest">
+                                    <img class="paper_pagination_img_left" src="~/icons/left.svg" /> Назад
+                                </a>
+                            </li>
+                            @if (pageNumber > 4)
+                            {
+                                <li class="page-item paper_pagination_item">
+                                    <a class="page-link paper_pagination_a" asp-action="MyRequest" asp-route-sortBy="@sortBy"
+                                       asp-route-sortOrder="@sortOrder" asp-route-pageNumber="1" asp-route-pageSize="@pageSize"
+                                       asp-route-selectedRequest="@selectedRequest">1</a>
+                                </li>
+                                <li class="page-item disabled paper_pagination_item">
+                                    <span class="page-link paper_pagination_a">...</span>
+                                </li>
+                            }
+                            @for (int i = pageNumber - 3; i < pageNumber; i++)
+                            {
+                                if (i > 0)
+                                {
+                                    <li class="page-item paper_pagination_item">
+                                        <a class="page-link paper_pagination_a" asp-action="MyRequest" asp-route-sortBy="@sortBy"
+                                           asp-route-sortOrder="@sortOrder" asp-route-pageNumber="@i" asp-route-pageSize="@pageSize"
+                                           asp-route-selectedRequest="@selectedRequest">@i</a>
+                                    </li>
+                                }
+                            }
+                            <li class="page-item active paper_pagination_item">
+                                <span class="page-link paper_pagination_a">@pageNumber</span>
+                            </li>
+                            @for (int i = pageNumber + 1; i <= pageNumber + 3; i++)
+                            {
+                                if (i <= totalPages)
+                                {
+                                    <li class="page-item paper_pagination_item">
+                                        <a class="page-link paper_pagination_a" asp-action="MyRequest" asp-route-sortBy="@sortBy"
+                                           asp-route-sortOrder="@sortOrder" asp-route-pageNumber="@i" asp-route-pageSize="@pageSize"
+                                           asp-route-selectedRequest="@selectedRequest">@i</a>
+                                    </li>
+                                }
+                            }
+                            @if (pageNumber + 3 < totalPages)
+                            {
+                                <li class="page-item disabled paper_pagination_item">
+                                    <span class="page-link paper_pagination_a">...</span>
+                                </li>
+                            }
+                            @if (pageNumber + 3 < totalPages)
+                            {
+                                <li class="page-item paper_pagination_item">
+                                    <a class="page-link paper_pagination_a" asp-action="MyRequest" asp-route-sortBy="@sortBy"
+                                       asp-route-sortOrder="@sortOrder" asp-route-pageNumber="@totalPages" asp-route-pageSize="@pageSize"
+                                       asp-route-selectedRequest="@selectedRequest">@totalPages</a>
+                                </li>
+                            }
+                            <li class="page-item @(pageNumber == totalPages ? "disabled paper_pagination_btn_down_up_op" : "") paper_pagination_item">
+                                <a class="page-link paper_pagination_btn_down_up" asp-action="MyRequest" asp-route-sortBy="@sortBy"
+                                   asp-route-sortOrder="@sortOrder" asp-route-pageNumber="@(pageNumber + 1)" asp-route-pageSize="@pageSize"
+                                   asp-route-selectedRequest="@selectedRequest">
+                                    Далее <img class="paper_pagination_img_rigth" src="~/icons/right.svg" />
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            }
+        </div>
+        <div class="toast-container position-fixed top-0 end-0">
+            <div id="toastSucces" class="toast toas_content_details" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="d-flex toast_succec_details">
+                    <div class="toast-body">
+                        Письмо администратору отправлено
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="toast-container position-fixed top-0 end-0">
+            <div id="toastFail" class="toast toas_content_details" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="d-flex toast_fail_details">
+                    <div class="toast-body">
+                        Что-то пошло не так, попробуйте еще раз
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="toast-container position-fixed top-0 end-0">
+            <div id="toastFailContinue" class="toast toas_content_details" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="d-flex toast_fail_details">
+                    <div class="toast-body">
+                        Книга уже была продлена
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="toast-container position-fixed top-0 end-0">
+            <div id="toastSuccesDelRequest" class="toast toas_content_details" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="d-flex toast_succec_details">
+                    <div class="toast-body">
+                        Запрос успешно отменен
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>
+
+<div class="modal fade" id="continueBook" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content modal-sm boks_modal_content_details">
+            <div>
+                <div class="modal-header books_modal_details">
+                    <p class="modal-title books_modal_header_details" id="staticBackdropLabel">Продлить бронь книги</p>
+                    <button id="btnClose" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+                </div>
+                <div class="modal-body books_modal_body_details">
+                    <img id="modalCoverImage" class="img_books_modal_details" src="" />
+                    <div>
+                        <p class="books_details_title books_modal_text_details" id="modalBookTitle"></p>
+                        <p class="books_details_subtutle"><span id="modalDueDate"></span> &mdash; <span id="modalNewDate"></span></p>
+                    </div>
+                </div>
+                <div class="modal-footer books_modal_details boks_modal_futer_btn_details col-6 mx-auto">
+                    <input type="hidden" id="modalBookId" />
+                    <button id="btnReNewBook" type="button" class="btn btn-bia-request_details">
+                        Продлить книгу
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            //
+            // $('#tableLoader').show();
+            // $('#tableContent').hide();
+
+            // setTimeout(function () {
+            //     $('#tableLoader').hide();
+            //     $('#tableContent').show();
+            // }, 1000);
+            //
+            var currentUrl = window.location.href;
+            var urlParams = new URLSearchParams(window.location.search);
+            var request = urlParams.get('selectedRequest');
+            if (request != null) {
+                var button = $("button.btn.btn-bia-filter:contains('" + request + "')");
+                if (button.length > 0) {
+                    button.addClass("active");
+                }
+            }
+
+            $('#btnReNewBook').click(function (e) {
+                var bookId = $('#modalBookId').val();
+                var url = window.location.origin + '/Account/RenewBook';
+                var btnClose = $('#btnClose');
+                var btn = this;
+
+                reNewBook(bookId, url, btn, btnClose);
+            });
+
+            $('.sortable').click(function () {
+                var sortBy = $(this).data('column');
+                changeSortOrder(sortBy, request);
+            });
+
+            $('.btn-bia-filter').click(function () {
+                $('.btn-bia-filter').removeClass('active');
+                $(this).addClass('active');
+                //
+                var category = $(this).text();
+                var currentUrl = '@Url.Action("MyRequest", "Account")' +
+                    '?sortBy=' + '@ViewBag.SortBy' +
+                    '&sortOrder=' + '@ViewBag.SortOrder' +
+                    '&pageNumber=1' +
+                    '&pageSize=' + '@ViewBag.PageSize' +
+                    '&selectedRequest=' + encodeURIComponent(category);
+                window.location.href = currentUrl;
+            });
+        });
+
+        function changeSortOrder(sortBy, request) {
+            var currentSortOrder = '@ViewBag.SortOrder';
+            var newSortOrder = (sortBy === '@ViewBag.SortBy' && currentSortOrder === 'asc') ? 'desc' : 'asc';
+            var url = '@Url.Action("MyRequest", "Account")' + '?sortBy=' + sortBy + '&sortOrder=' + newSortOrder +
+                '&pageNumber=' + '1' + ' & pageSize=' + '@ViewBag.PageSize' +
+                '&selectedRequest=' + request;
+            window.location.href = url;
+        }
+
+        function populateModal(bookId, title, dueDate, newDate, coverImageUrl) {
+            var modalBookId = document.getElementById("modalBookId");
+            var modalTitle = document.getElementById("modalBookTitle");
+            var modalDueDate = document.getElementById("modalDueDate");
+            var modalNewDate = document.getElementById("modalNewDate");
+            var modalCoverImage = document.getElementById('modalCoverImage');
+            //
+            if (!coverImageUrl || coverImageUrl.trim() === "") {
+                coverImageUrl = '@Url.Content("~/icons/no_img_book.svg")';
+            }
+
+            modalCoverImage.src = coverImageUrl;
+
+            modalCoverImage.onerror = function () {
+                this.onerror = null;
+                this.src = '@Url.Content("~/icons/no_img_book.svg")';
+            };
+            //
+            modalBookId.value = bookId;
+            modalTitle.innerText = title;
+            modalDueDate.innerText = dueDate;
+            modalNewDate.innerText = newDate;
+        }
+
+        function deleteRequest(bookId) {
+            $.ajax({
+                url: '@Url.Action("DeleteRequest", "Account")',
+                method: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(bookId),
+                success: function (data) {
+                    if (data.status === 'Success') {
+                        $('#toastSuccesDelRequest').toast('show');
+                        setTimeout(function () {
+                            window.location.reload();
+                        }, 500);
+                    } else {
+                        $('#toastFail').toast('show');
+                    }
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    console.error('Ошибка при выполнении запроса: ' + textStatus);
+                }
+            });
+        }
+
+        function reviewClick(bookId) {
+            var url = '/Visitor/Book/' + bookId;
+            $(location).attr('href', url);
+        }
+
+        function reNewBook(model, url, btn, btnClose) {
+            if (btn !== null) {
+                $(btn).prop('disabled', true);
+            }
+            if (btnClose !== null) {
+                $(btnClose).prop('disabled', true);
+            }
+
+            $.ajax({
+                type: "POST",
+                data: JSON.stringify(model),
+                url: url,
+                contentType: "application/json"
+            }).done(function (res) {
+                if (res.status === 'Success') {
+                    $('#toastSucces').toast('show');
+                } else {
+                    if (res.details === "Книгу уже продлялась") {
+                        $('#toastFailContinue').toast('show');
+                    } else {
+                        $('#toastFail').toast('show');
+                    }
+                }
+                setTimeout(function () {
+                    location.reload();
+                }, 1000);
+
+            }).fail(function (res) {
+                $('#toastFail').toast('show');
+            }).always(function () {
+                if (btn !== null) {
+                    $(btn).prop('disabled', false);
+                }
+                if (btnClose !== null) {
+                    $(btnClose).prop('disabled', false);
+                }
+            });
+        }
+    </script>
+
+}
